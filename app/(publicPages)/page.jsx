@@ -111,9 +111,9 @@ export default function Page() {
                 embedded
                 id="value-proposition-2"
                 idSuffix="-copy-2"
-                label="VALUE PROPOSITIONS"
-                title="Farm side —"
-                highlight="Grow for higher-value markets"
+                label=""
+                title="Vendor side —"
+                highlight="Source better, sell with confidence"
                 description="BEDEBO's first core value is to build quality into the entire horticultural journey rather than inspect quality only when products reach the market, It can connect production planning, technical support, grading, transparent transactions and suitable buyers"
                 quote="Grow Quality. Access Better Markets. Earn More from Every Harvest."
                 image="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2Fcc748ff1df7140e383d1591a5b5ad7ec?format=webp&width=800&height=1200"
@@ -126,7 +126,7 @@ export default function Page() {
                 embedded
                 id="value-proposition-3"
                 idSuffix="-copy-3"
-                label="VALUE PROPOSITIONS"
+                label=""
                 title="Farm side —"
                 highlight="Grow for higher-value markets"
                 description="BEDEBO's first core value is to build quality into the entire horticultural journey rather than inspect quality only when products reach the market, It can connect production planning, technical support, grading, transparent transactions and suitable buyers"

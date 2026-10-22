@@ -26,11 +26,13 @@ export default function SectionTitle({ label, title, highlight, description, ali
 
     return (
         <header ref={headerRef} className={`section-header ${isCentered ? "section-header--centered" : ""} ${isVisible ? "section-header--visible" : ""} ${className}`.trim()}>
-            <div className="section-header-label">
-                {isCentered && <span className="section-header-line" aria-hidden="true" />}
-                <p>{label}</p>
-                <span className="section-header-line" aria-hidden="true" />
-            </div>
+            {label && (
+                <div className="section-header-label">
+                    {isCentered && <span className="section-header-line" aria-hidden="true" />}
+                    <p>{label}</p>
+                    <span className="section-header-line" aria-hidden="true" />
+                </div>
+            )}
             <h2 id={headingId} className="section-header-title">
                 {title} <span>{highlight}</span>
             </h2>
