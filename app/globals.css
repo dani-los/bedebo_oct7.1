@@ -175,18 +175,7 @@ html {
 }
 
 #about-copy .section-header-title {
-    background-image: linear-gradient(90deg, #1e2841 0%, #3db268 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-#about-copy .section-header-title span {
-    color: transparent;
-}
-
-.dark #about-copy .section-header-title {
-    background-image: linear-gradient(90deg, #f8fafc 0%, #3db268 100%);
+    font-size: clamp(2.25rem, 3.8vw, 3.5rem);
 }
 
 @keyframes about-quote-reveal {
