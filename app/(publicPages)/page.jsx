@@ -92,6 +92,8 @@ export default function Page() {
 
             <OurStory />
 
+            <OurStory idSuffix="-copy" />
+
             <section id="solutions" className="scroll-mt-24">
                 <div className="bedebo-site-container">
                     <SectionTitle label="OUR SOLUTIONS" title="Our" highlight="Solutions" description="We have a wide range of solutions that we have provided" headingId="solutions-title" />

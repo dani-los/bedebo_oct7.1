@@ -1,9 +1,9 @@
 import Image from "next/image";
 import SectionTitle from "@/components/SectionTitle";
 
-export default function OurStory() {
+export default function OurStory({ idSuffix = "" }) {
     return (
-        <section id="about" aria-labelledby="our-story-title" className="scroll-mt-20 pt-24 pb-12 md:pt-32 md:pb-8">
+        <section id={`about${idSuffix}`} aria-labelledby={`our-story-title${idSuffix}`} className="scroll-mt-20 pt-24 pb-12 md:pt-32 md:pb-8">
             <div className="bedebo-site-container grid grid-cols-1 items-center gap-14 md:grid-cols-2 lg:gap-20">
                 <div className="relative mx-auto aspect-square w-full max-w-[420px]">
                     <div className="absolute bottom-0 left-0 z-0 h-[36%] w-[44%] opacity-60" style={{ backgroundImage: "radial-gradient(#3DB268 1.5px, transparent 1.5px)", backgroundSize: "16px 16px" }} />
@@ -19,7 +19,7 @@ export default function OurStory() {
                         highlight="Company"
                         alignment="left"
                         className="section-header--flush"
-                        headingId="our-story-title"
+                        headingId={`our-story-title${idSuffix}`}
                         description={(
                             <p className="about-description">
                                 Founded by visionaries from the Ethiopian diaspora, Bedebo is committed to transforming Ethiopian agriculture into a sustainable, productive, and profitable sector. Our integrated approach brings modern technology and renewable energy solutions to the heart of Ethiopia&apos;s farming communities.
