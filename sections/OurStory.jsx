@@ -1,8 +1,10 @@
 import Image from "next/image";
 import SectionTitle from "@/components/SectionTitle";
+import ValueCarousel from "@/components/ValueCarousel";
 
 export default function OurStory({
     idSuffix = "",
+    slides,
     label = "ABOUT US",
     title = "Let's Talk About",
     highlight = "Company",
@@ -30,18 +32,20 @@ export default function OurStory({
                         alignment="left"
                         className="section-header--flush"
                         headingId={`our-story-title${idSuffix}`}
-                        description={(
+                        description={slides ? <ValueCarousel slides={slides} /> : (
                             <p className="about-description">
                                 {description}
                             </p>
                         )}
                     />
-                    <blockquote className="about-quote">
-                        <span className="about-quote-mark about-quote-mark--open" aria-hidden="true">“</span>
-                        <p>
-                            {quote}<span className="about-quote-mark about-quote-mark--close" aria-hidden="true">”</span>
-                        </p>
-                    </blockquote>
+                    {!slides && (
+                        <blockquote className="about-quote">
+                            <span className="about-quote-mark about-quote-mark--open" aria-hidden="true">“</span>
+                            <p>
+                                {quote}<span className="about-quote-mark about-quote-mark--close" aria-hidden="true">”</span>
+                            </p>
+                        </blockquote>
+                    )}
                 </div>
             </div>
         </section>
