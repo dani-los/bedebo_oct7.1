@@ -95,6 +95,7 @@ export default function Page() {
             <section id="value-propositions" aria-label="Value propositions" className="scroll-mt-20 pt-24 pb-12 md:pt-32 md:pb-8">
             <OurStory
                 embedded
+                id="value-proposition-1"
                 idSuffix="-copy"
                 label="VALUE PROPOSITIONS"
                 title="Farm side —"
@@ -108,6 +109,7 @@ export default function Page() {
 
             <OurStory
                 embedded
+                id="value-proposition-2"
                 idSuffix="-copy-2"
                 label="VALUE PROPOSITIONS"
                 title="Farm side —"
@@ -122,6 +124,7 @@ export default function Page() {
 
             <OurStory
                 embedded
+                id="value-proposition-3"
                 idSuffix="-copy-3"
                 label="VALUE PROPOSITIONS"
                 title="Farm side —"
