@@ -21,7 +21,7 @@ export default function Page() {
         const hero = heroRef.current;
         if (!hero || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
-        const setSpotlight = (visible) => hero.style.setProperty("--spot-radius", visible ? "50px" : "0px");
+        const setSpotlight = (visible) => hero.style.setProperty("--spot-radius", visible ? "150px" : "0px");
 
         const handlePointerMove = (event) => {
             const rect = hero.getBoundingClientRect();
