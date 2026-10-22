@@ -263,7 +263,7 @@ button {
 }
 
 .bedebo-hero::before {
-    background: linear-gradient(90deg, rgba(var(--hero-gradient-rgb), 0.85) 0%, rgba(var(--hero-gradient-rgb), 0.8) 20%, rgba(var(--hero-gradient-rgb), 0.45) 34%, rgba(var(--hero-gradient-rgb), 0.12) 44%, rgba(var(--hero-gradient-rgb), 0) 52%);
+    background: linear-gradient(90deg, rgba(var(--hero-gradient-rgb), 0.7) 0%, rgba(var(--hero-gradient-rgb), 0.62) 20%, rgba(var(--hero-gradient-rgb), 0.3) 34%, rgba(var(--hero-gradient-rgb), 0.08) 44%, rgba(var(--hero-gradient-rgb), 0) 52%);
 }
 
 .bedebo-hero::after {
@@ -522,6 +522,7 @@ button {
 .bedebo-navbar--over-hero {
     border-bottom: 1px solid rgba(30, 40, 65, 0.08);
     background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 0 0 12px 12px;
     box-shadow: 0 6px 20px rgba(30, 40, 65, 0.06);
 }
 
