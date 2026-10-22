@@ -21,19 +21,26 @@ export default function Page() {
         const hero = heroRef.current;
         if (!hero || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
-        const handleMouseMove = (event) => {
-            const rect = hero.getBoundingClientRect();
-            hero.style.setProperty("--mouse-x", `${event.clientX - rect.left}px`);
-            hero.style.setProperty("--mouse-y", `${event.clientY - rect.top}px`);
-            hero.style.setProperty("--spot-radius", "150px");
-        };
-        const handleMouseLeave = () => hero.style.setProperty("--spot-radius", "0px");
+        const setSpotlight = (visible) => hero.style.setProperty("--spot-radius", visible ? "50px" : "0px");
 
-        hero.addEventListener("mousemove", handleMouseMove);
-        hero.addEventListener("mouseleave", handleMouseLeave);
+        const handlePointerMove = (event) => {
+            const rect = hero.getBoundingClientRect();
+            const isInside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+            if (isInside) {
+                hero.style.setProperty("--mouse-x", `${event.clientX - rect.left}px`);
+                hero.style.setProperty("--mouse-y", `${event.clientY - rect.top}px`);
+            }
+            setSpotlight(isInside);
+        };
+        const handlePointerOut = (event) => {
+            if (!event.relatedTarget) setSpotlight(false);
+        };
+
+        window.addEventListener("pointermove", handlePointerMove, { passive: true });
+        document.addEventListener("pointerout", handlePointerOut);
         return () => {
-            hero.removeEventListener("mousemove", handleMouseMove);
-            hero.removeEventListener("mouseleave", handleMouseLeave);
+            window.removeEventListener("pointermove", handlePointerMove);
+            document.removeEventListener("pointerout", handlePointerOut);
         };
     }, []);
 
