@@ -249,7 +249,7 @@ button {
     background-size: cover;
     background-repeat: no-repeat;
     background-color: var(--hero-background);
-    transition: background-color 300ms ease;
+    transition: background-color 300ms ease, --mouse-x 120ms ease-out, --mouse-y 120ms ease-out, --spot-radius 400ms ease;
 }
 
 .bedebo-hero::before,
@@ -259,7 +259,7 @@ button {
     inset: 0;
     pointer-events: none;
     content: "";
-    transition: background 300ms ease, opacity 400ms ease;
+    transition: background 300ms ease;
 }
 
 .bedebo-hero::before {
@@ -278,9 +278,32 @@ button {
     background: var(--hero-photo-overlay);
 }
 
-@media (hover: hover) {
-    .bedebo-hero:has(.bedebo-hero-text:hover)::before {
-        opacity: 0.2;
+@property --mouse-x {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: -400px;
+}
+
+@property --mouse-y {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: -400px;
+}
+
+@property --spot-radius {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0px;
+}
+
+.bedebo-hero::before {
+    -webkit-mask-image: radial-gradient(circle var(--spot-radius) at var(--mouse-x) var(--mouse-y), transparent 45%, #000 100%);
+    mask-image: radial-gradient(circle var(--spot-radius) at var(--mouse-x) var(--mouse-y), transparent 45%, #000 100%);
+}
+
+@media (hover: none) {
+    .bedebo-hero::before {
+        opacity: 0.7;
     }
 }
 
@@ -289,6 +312,11 @@ button {
     flex-direction: column;
     align-items: flex-start;
     max-width: 100%;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.85);
+}
+
+.dark .bedebo-hero-text {
+    text-shadow: 0 0 12px rgba(10, 18, 14, 0.7);
 }
 
 .bedebo-hero-content {
@@ -491,26 +519,21 @@ button {
     height: 72px;
 }
 
-.bedebo-navbar::before {
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    content: "";
+.bedebo-navbar--over-hero {
     border-bottom: 1px solid rgba(30, 40, 65, 0.08);
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: rgba(255, 255, 255, 0.85);
     box-shadow: 0 6px 20px rgba(30, 40, 65, 0.06);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+}
+
+.bedebo-navbar--blur {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 }
 
 .dark .bedebo-navbar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(18, 24, 21, 0.85);
     color: #e8eeea;
-}
-
-.dark .bedebo-navbar::before {
-    border-bottom-color: rgba(255, 255, 255, 0.08);
-    background-color: rgba(31, 36, 34, 0.92);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .dark .bedebo-navbar-logo {

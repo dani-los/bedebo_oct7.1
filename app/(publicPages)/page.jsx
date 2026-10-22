@@ -11,12 +11,36 @@ import OurBlogs from "@/sections/OurBlogs";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Marquee from "react-fast-marquee";
+import { useEffect, useRef } from "react";
 
 export default function Page() {
     const { theme } = useThemeContext();
+    const heroRef = useRef(null);
+
+    useEffect(() => {
+        const hero = heroRef.current;
+        if (!hero || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+        const handleMouseMove = (event) => {
+            const rect = hero.getBoundingClientRect();
+            hero.style.setProperty("--mouse-x", `${event.clientX - rect.left}px`);
+            hero.style.setProperty("--mouse-y", `${event.clientY - rect.top}px`);
+            hero.style.setProperty("--spot-radius", "150px");
+        };
+        const handleMouseLeave = () => hero.style.setProperty("--spot-radius", "0px");
+
+        hero.addEventListener("mousemove", handleMouseMove);
+        hero.addEventListener("mouseleave", handleMouseLeave);
+        return () => {
+            hero.removeEventListener("mousemove", handleMouseMove);
+            hero.removeEventListener("mouseleave", handleMouseLeave);
+        };
+    }, []);
+
     return (
         <>
             <section
+                ref={heroRef}
                 className="bedebo-hero"
                 aria-labelledby="hero-heading"
                 style={{ backgroundImage: "url('https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2F6400563790c14afb90ddef24e75f9221?format=webp&width=800&height=1200')" }}
