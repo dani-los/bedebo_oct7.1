@@ -101,6 +101,7 @@ export default function Page() {
                 quote="Grow Quality. Access Better Markets. Earn More from Every Harvest."
                 image="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2Fcc748ff1df7140e383d1591a5b5ad7ec?format=webp&width=800&height=1200"
                 imageAlt="Workers harvesting tomatoes into green crates in a greenhouse field"
+                chamferedImage
             />
 
             <section id="solutions" className="scroll-mt-24">

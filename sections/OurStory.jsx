@@ -10,13 +10,14 @@ export default function OurStory({
     quote = "To leverage digital innovation and sustainable energy to improve market access, productivity",
     image = "/assets/about-image.webp",
     imageAlt = "Combine harvester working in a sunlit field",
+    chamferedImage = false,
 }) {
     return (
         <section id={`about${idSuffix}`} aria-labelledby={`our-story-title${idSuffix}`} className="scroll-mt-20 pt-24 pb-12 md:pt-32 md:pb-8">
             <div className="bedebo-site-container grid grid-cols-1 items-center gap-14 md:grid-cols-2 lg:gap-20">
-                <div className="relative mx-auto aspect-square w-full max-w-[420px]">
+                <div className={`relative mx-auto w-full ${chamferedImage ? "aspect-[2/3] max-w-[340px]" : "aspect-square max-w-[420px]"}`}>
                     <div className="absolute bottom-0 left-0 z-0 h-[36%] w-[44%] opacity-60" style={{ backgroundImage: "radial-gradient(#3DB268 1.5px, transparent 1.5px)", backgroundSize: "16px 16px" }} />
-                    <div className="absolute inset-0 z-10 overflow-hidden rounded-full border-[3px] border-white shadow-[0_24px_60px_rgba(15,23,42,0.16)] dark:border-slate-950">
+                    <div className={`absolute inset-0 z-10 overflow-hidden border-[3px] border-white shadow-[0_24px_60px_rgba(15,23,42,0.16)] dark:border-slate-950 ${chamferedImage ? "" : "rounded-full"}`} style={chamferedImage ? { clipPath: "polygon(18% 0, 82% 0, 100% 7%, 100% 93%, 82% 100%, 18% 100%, 0 93%, 0 7%)" } : undefined}>
                         <Image fill sizes="(max-width: 768px) 100vw, 420px" className="object-cover" src={image} alt={imageAlt} />
                     </div>
                 </div>
