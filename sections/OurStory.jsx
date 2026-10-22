@@ -12,9 +12,12 @@ export default function OurStory({
     imageAlt = "Combine harvester working in a sunlit field",
     chamferedImage = false,
     reverse = false,
+    embedded = false,
 }) {
+    const Wrapper = embedded ? "div" : "section";
+
     return (
-        <section id={`about${idSuffix}`} aria-labelledby={`our-story-title${idSuffix}`} className="scroll-mt-20 pt-24 pb-12 md:pt-32 md:pb-8">
+        <Wrapper id={`about${idSuffix}`} aria-labelledby={embedded ? undefined : `our-story-title${idSuffix}`} className={embedded ? "pb-16 md:pb-24" : "scroll-mt-20 pt-24 pb-12 md:pt-32 md:pb-8"}>
             <div className={`bedebo-site-container grid grid-cols-1 gap-14 md:grid-cols-2 lg:gap-20 ${chamferedImage ? "md:items-start" : "items-center"}`}>
                 <div className={`relative mx-auto w-full ${reverse ? "md:order-last" : ""} ${chamferedImage ? "aspect-[7/4] max-w-[600px] md:mt-9 transition-transform duration-500 ease-out hover:scale-[1.03]" : "aspect-square max-w-[420px]"}`}>
                     <div className="absolute bottom-0 left-0 z-0 h-[36%] w-[44%] opacity-60" style={{ backgroundImage: "radial-gradient(#3DB268 1.5px, transparent 1.5px)", backgroundSize: "16px 16px" }} />
@@ -45,6 +48,6 @@ export default function OurStory({
                     </blockquote>
                 </div>
             </div>
-        </section>
+        </Wrapper>
     );
 }

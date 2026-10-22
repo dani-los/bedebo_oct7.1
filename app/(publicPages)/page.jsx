@@ -92,7 +92,9 @@ export default function Page() {
 
             <OurStory />
 
+            <section id="value-propositions" aria-label="Value propositions" className="scroll-mt-20 pt-24 pb-12 md:pt-32 md:pb-8">
             <OurStory
+                embedded
                 idSuffix="-copy"
                 label="VALUE PROPOSITIONS"
                 title="Farm side —"
@@ -105,6 +107,7 @@ export default function Page() {
             />
 
             <OurStory
+                embedded
                 idSuffix="-copy-2"
                 label="VALUE PROPOSITIONS"
                 title="Farm side —"
@@ -118,6 +121,7 @@ export default function Page() {
             />
 
             <OurStory
+                embedded
                 idSuffix="-copy-3"
                 label="VALUE PROPOSITIONS"
                 title="Farm side —"
@@ -128,6 +132,7 @@ export default function Page() {
                 imageAlt="Workers harvesting tomatoes into green crates in a greenhouse field"
                 chamferedImage
             />
+            </section>
 
             <section id="solutions" className="scroll-mt-24">
                 <div className="bedebo-site-container">
