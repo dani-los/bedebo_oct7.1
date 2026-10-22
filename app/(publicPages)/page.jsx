@@ -22,21 +22,23 @@ export default function Page() {
                 style={{ backgroundImage: "url('https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2F6400563790c14afb90ddef24e75f9221?format=webp&width=800&height=1200')" }}
             >
                 <div className="bedebo-hero-content bedebo-site-container">
-                    <h1 id="hero-heading" className="bedebo-hero-heading">
-                        Premium Produce.<br className="bedebo-desktop-break" />{" "}
-                        Trusted Quality.<br className="bedebo-desktop-break" />{" "}
-                        <span>Connected Markets</span>
-                    </h1>
-                    <p className="bedebo-hero-subheadline">
-                        Freshness protected from farm to market
-                    </p>
-                    <p className="bedebo-hero-copy">
-                        Connecting Ethiopian growers and quality-assured fruits and vegetables with premium supermarkets, hotels, catering businesses and professional vendors through a digitally coordinated value chain
-                    </p>
-                    <button type="button" className="bedebo-hero-button">
-                        Download Bedebo Apps
-                        <ArrowRight aria-hidden="true" size={22} strokeWidth={2} />
-                    </button>
+                    <div className="bedebo-hero-text">
+                        <h1 id="hero-heading" className="bedebo-hero-heading">
+                            Premium Produce.<br className="bedebo-desktop-break" />{" "}
+                            Trusted Quality.<br className="bedebo-desktop-break" />{" "}
+                            <span>Connected Markets</span>
+                        </h1>
+                        <p className="bedebo-hero-subheadline">
+                            Freshness protected from farm to market
+                        </p>
+                        <p className="bedebo-hero-copy">
+                            Connecting Ethiopian growers and quality-assured fruits and vegetables with premium supermarkets, hotels, catering businesses and professional vendors through a digitally coordinated value chain
+                        </p>
+                        <button type="button" className="bedebo-hero-button">
+                            Download Bedebo Apps
+                            <ArrowRight aria-hidden="true" size={22} strokeWidth={2} />
+                        </button>
+                    </div>
                 </div>
             </section>
 

@@ -241,10 +241,10 @@ button {
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    min-height: 680px;
-    aspect-ratio: 2.4 / 1;
+    min-height: min(85vh, 700px);
     overflow: hidden;
     padding-top: calc(var(--navbar-height, 80px) + 56px);
+    padding-bottom: 56px;
     background-position: right 30%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -259,11 +259,11 @@ button {
     inset: 0;
     pointer-events: none;
     content: "";
-    transition: background 300ms ease;
+    transition: background 300ms ease, opacity 400ms ease;
 }
 
 .bedebo-hero::before {
-    background: linear-gradient(90deg, rgba(var(--hero-gradient-rgb), 0.97) 0%, rgba(var(--hero-gradient-rgb), 0.92) 30%, rgba(var(--hero-gradient-rgb), 0.65) 40%, rgba(var(--hero-gradient-rgb), 0.25) 50%, rgba(var(--hero-gradient-rgb), 0) 60%);
+    background: linear-gradient(90deg, rgba(var(--hero-gradient-rgb), 0.85) 0%, rgba(var(--hero-gradient-rgb), 0.8) 20%, rgba(var(--hero-gradient-rgb), 0.45) 34%, rgba(var(--hero-gradient-rgb), 0.12) 44%, rgba(var(--hero-gradient-rgb), 0) 52%);
 }
 
 .bedebo-hero::after {
@@ -271,11 +271,24 @@ button {
 }
 
 .dark .bedebo-hero::before {
-    background: linear-gradient(90deg, rgba(var(--hero-gradient-rgb), 0.96) 0%, rgba(var(--hero-gradient-rgb), 0.9) 30%, rgba(var(--hero-gradient-rgb), 0.55) 42%, rgba(var(--hero-gradient-rgb), 0.2) 52%, rgba(var(--hero-gradient-rgb), 0) 62%);
+    background: linear-gradient(90deg, rgba(var(--hero-gradient-rgb), 0.92) 0%, rgba(var(--hero-gradient-rgb), 0.86) 20%, rgba(var(--hero-gradient-rgb), 0.5) 34%, rgba(var(--hero-gradient-rgb), 0.15) 44%, rgba(var(--hero-gradient-rgb), 0) 52%);
 }
 
 .dark .bedebo-hero::after {
     background: var(--hero-photo-overlay);
+}
+
+@media (hover: hover) {
+    .bedebo-hero:has(.bedebo-hero-text:hover)::before {
+        opacity: 0.2;
+    }
+}
+
+.bedebo-hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 100%;
 }
 
 .bedebo-hero-content {
@@ -373,20 +386,20 @@ button {
 
 @media (max-width: 1023px) {
     .bedebo-hero {
-        min-height: 900px;
-        aspect-ratio: auto;
+        min-height: 0;
+        padding-bottom: 120px;
     }
 
     .bedebo-hero::before {
-        background: linear-gradient(180deg, rgba(var(--hero-gradient-rgb), 0.98) 0%, rgba(var(--hero-gradient-rgb), 0.95) 48%, rgba(var(--hero-gradient-rgb), 0.82) 70%, rgba(var(--hero-gradient-rgb), 0.5) 86%, rgba(var(--hero-gradient-rgb), 0) 100%);
+        background: linear-gradient(180deg, rgba(var(--hero-gradient-rgb), 0.9) 0%, rgba(var(--hero-gradient-rgb), 0.86) 60%, rgba(var(--hero-gradient-rgb), 0.55) 80%, rgba(var(--hero-gradient-rgb), 0) 100%);
     }
 
     .dark .bedebo-hero::before {
-        background: linear-gradient(180deg, rgba(var(--hero-gradient-rgb), 0.96) 0%, rgba(var(--hero-gradient-rgb), 0.9) 48%, rgba(var(--hero-gradient-rgb), 0.55) 70%, rgba(var(--hero-gradient-rgb), 0.2) 86%, rgba(var(--hero-gradient-rgb), 0) 100%);
+        background: linear-gradient(180deg, rgba(var(--hero-gradient-rgb), 0.94) 0%, rgba(var(--hero-gradient-rgb), 0.9) 60%, rgba(var(--hero-gradient-rgb), 0.6) 80%, rgba(var(--hero-gradient-rgb), 0) 100%);
     }
 
     .bedebo-hero {
-        background-position: 58% center;
+        background-position: 65% 35%;
     }
 
     .bedebo-hero-content {
@@ -410,10 +423,6 @@ button {
 }
 
 @media (max-width: 640px) {
-    .bedebo-hero {
-        min-height: 820px;
-    }
-
     .bedebo-hero-content {
         padding-block: 24px 48px;
     }
@@ -482,12 +491,26 @@ button {
     height: 72px;
 }
 
-.dark .bedebo-navbar {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    background-color: rgba(10, 18, 14, 0.85);
-    color: #e8eeea;
+.bedebo-navbar::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: "";
+    border-bottom: 1px solid rgba(30, 40, 65, 0.08);
+    background-color: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 6px 20px rgba(30, 40, 65, 0.06);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
+}
+
+.dark .bedebo-navbar {
+    color: #e8eeea;
+}
+
+.dark .bedebo-navbar::before {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(31, 36, 34, 0.92);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .dark .bedebo-navbar-logo {
