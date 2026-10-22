@@ -263,7 +263,7 @@ button {
 }
 
 .bedebo-hero::before {
-    background: linear-gradient(90deg, rgba(var(--hero-gradient-rgb), 0.7) 0%, rgba(var(--hero-gradient-rgb), 0.62) 20%, rgba(var(--hero-gradient-rgb), 0.3) 34%, rgba(var(--hero-gradient-rgb), 0.08) 44%, rgba(var(--hero-gradient-rgb), 0) 52%);
+    background: linear-gradient(90deg, rgba(var(--hero-gradient-rgb), 0.8) 0%, rgba(var(--hero-gradient-rgb), 0.76) 30%, rgba(var(--hero-gradient-rgb), 0.66) 44%, rgba(var(--hero-gradient-rgb), 0.35) 56%, rgba(var(--hero-gradient-rgb), 0.12) 64%, rgba(var(--hero-gradient-rgb), 0) 72%);
 }
 
 .bedebo-hero::after {
