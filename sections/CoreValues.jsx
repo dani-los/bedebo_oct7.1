@@ -391,7 +391,7 @@ export function AgriculturalServicesSection() {
                 <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     {agriculturalServices.map((service) => (
                         <article key={service.title} className="rounded-lg border border-white/10 bg-[#132A1F] p-5">
-                            <h3 className="text-base font-semibold text-white">{service.title}</h3>
+                            <h3 className="text-base font-semibold text-[#3DB268]">{service.title}</h3>
                             <p className="mt-2 text-sm leading-relaxed text-slate-300">{service.description}</p>
                         </article>
                     ))}
