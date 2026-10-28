@@ -170,9 +170,14 @@ export default function Page() {
                         <h2 className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">
                             Farm side — <span className="text-[#3DB268]">Grow for higher-value markets</span>
                         </h2>
-                        <p className="mt-5 text-base leading-relaxed text-slate-500 dark:text-slate-300">
-                            BEDEBO&apos;s first core value is to build quality into the entire horticultural journey rather than inspect quality only when products reach the market, It can connect production planning, technical support, grading, transparent transactions and suitable buyers
-                        </p>
+                        <div className="mt-5 space-y-4 text-base leading-relaxed text-slate-500 dark:text-slate-300">
+                            <p>
+                                More than <span className="font-bold text-[#3DB268]">200+</span> international certified farmers produce according to planned demand and quality requirements.
+                            </p>
+                            <p>
+                                The source of every crate: farmers grow and harvest horticulture produce to standard and join one connected network with direct links to buyers.
+                            </p>
+                        </div>
                         <ul className="mt-8 divide-y divide-[#1E2841]/10 border-y border-[#1E2841]/10 dark:divide-white/10 dark:border-white/10">
                             {farmerBenefits.map((benefit) => (
                                 <li key={benefit.title} className="py-4">
