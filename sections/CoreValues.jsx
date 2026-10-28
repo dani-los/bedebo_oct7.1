@@ -495,11 +495,12 @@ export default function CoreValues() {
 }
 
 export function CoreValuesIntegration() {
+    const integrationTabs = tabItems.slice(0, 2);
     const [activeTab, setActiveTab] = useState(0);
     const [tabPill, setTabPill] = useState({ left: 5, width: 0 });
     const tabRefs = useRef([]);
     const tabColor = "#267A47";
-    const selectTab = (index) => setActiveTab((index + tabItems.length) % tabItems.length);
+    const selectTab = (index) => setActiveTab((index + integrationTabs.length) % integrationTabs.length);
 
     useEffect(() => {
         const updatePill = () => {
@@ -513,10 +514,10 @@ export function CoreValuesIntegration() {
 
     const handleTabKeyDown = (event) => {
         let nextTab = activeTab;
-        if (event.key === "ArrowRight") nextTab = (activeTab + 1) % tabItems.length;
-        if (event.key === "ArrowLeft") nextTab = (activeTab - 1 + tabItems.length) % tabItems.length;
+        if (event.key === "ArrowRight") nextTab = (activeTab + 1) % integrationTabs.length;
+        if (event.key === "ArrowLeft") nextTab = (activeTab - 1 + integrationTabs.length) % integrationTabs.length;
         if (event.key === "Home") nextTab = 0;
-        if (event.key === "End") nextTab = tabItems.length - 1;
+        if (event.key === "End") nextTab = integrationTabs.length - 1;
         if (nextTab !== activeTab) {
             event.preventDefault();
             selectTab(nextTab);
@@ -529,21 +530,37 @@ export function CoreValuesIntegration() {
             <div className="mt-14 w-full md:mt-16">
                 <div role="tablist" aria-label="Core value chain layers" aria-orientation="horizontal" className="relative mb-6 flex w-full gap-1 overflow-x-auto rounded-[18px] border border-slate-200 bg-white p-[5px] dark:border-slate-800 dark:bg-slate-900" onKeyDown={handleTabKeyDown}>
                     <span aria-hidden="true" className="pointer-events-none absolute bottom-[5px] top-[5px] z-0 rounded-[14px] transition-[left,width,background-color] duration-300" style={{ left: tabPill.left, width: tabPill.width, backgroundColor: tabColor }} />
-                    {tabItems.map((item, index) => {
+                    {integrationTabs.map((item, index) => {
                         const Icon = tabIcons[index];
                         return <button key={item.label} ref={(node) => { tabRefs.current[index] = node; }} id={`core-tab-${index}`} type="button" role="tab" aria-label={item.label} aria-selected={activeTab === index} aria-controls={`core-panel-${index}`} tabIndex={activeTab === index ? 0 : -1} onClick={() => selectTab(index)} className={`relative z-10 flex min-w-max flex-1 items-center justify-center gap-2 rounded-[14px] px-4 py-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#27965a] ${activeTab === index ? "text-white" : "text-slate-600 dark:text-slate-300"}`}><Icon size={18} aria-hidden="true" /><span className="hidden sm:inline">{item.label}</span></button>;
                     })}
                 </div>
-                <div id={`core-panel-${activeTab}`} role="tabpanel" aria-labelledby={`core-tab-${activeTab}`} tabIndex={0} className={`min-w-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#27965a] ${activeTab === 2 ? "rounded-2xl bg-[#f4faf6] p-3 sm:p-5 dark:bg-slate-950/40" : ""}`}>
+                <div id={`core-panel-${activeTab}`} role="tabpanel" aria-labelledby={`core-tab-${activeTab}`} tabIndex={0} className={`min-w-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#27965a]`}>
                     <IntroCard item={tabItems[activeTab]} />
                     {activeTab === 0 && <Traceability />}
                     {activeTab === 1 && <DigitalIntegration />}
-                    {activeTab === 2 && <FreshnessTab />}
-                    {activeTab === 3 && <QualityTrace />}
                 </div>
             </div>
 
             <div className="mt-10 flex w-full items-center justify-center rounded-2xl bg-[#27965a] px-5 py-4 text-center text-sm font-semibold leading-5 text-white sm:px-8 sm:py-5 sm:text-base">Coordinating the journey from production to market</div>
+        </section>
+    );
+}
+
+export function ColdChainSection() {
+    return (
+        <section className="bedebo-site-container pb-20">
+            <IntroCard item={tabItems[2]} />
+            <FreshnessTab />
+        </section>
+    );
+}
+
+export function QualityTraceabilitySection() {
+    return (
+        <section className="bedebo-site-container pb-20">
+            <IntroCard item={tabItems[3]} />
+            <QualityTrace />
         </section>
     );
 }
