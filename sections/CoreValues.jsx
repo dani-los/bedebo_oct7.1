@@ -253,7 +253,7 @@ export default function CoreValues() {
     };
 
     return (
-        <section id="core-values" aria-labelledby="core-values-title" className="bedebo-site-container scroll-mt-24 pb-20">
+        <section id="core-values" aria-labelledby="core-values-title" className="bedebo-site-container scroll-mt-24">
             <SectionTitle label="CORE VALUES" title="Our Core" highlight="Values" headingId="core-values-title" />
             <div className="mt-7 w-full">
                 <div className="grid items-stretch gap-4 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
