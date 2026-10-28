@@ -489,31 +489,32 @@ export function CoreValuesIntegration() {
 export function ColdChainSection() {
     return (
         <section aria-labelledby="cold-chain-title" className="bedebo-site-container pb-20">
-            <div className="max-w-3xl">
+            <div className="max-w-4xl">
                 <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">COLD CHAIN & LOGISTICS</p>
                 <h2 id="cold-chain-title" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] sm:text-4xl dark:text-slate-50">
-                    <span className="block">Freshness protected</span>
-                    <span className="block">from farm gate</span>
-                    <span className="block">to delivery.</span>
+                    Freshness protected from farm gate<br />
+                    <span className="text-[#3DB268]">to delivery.</span>
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-slate-500 dark:text-slate-300">Fresh horticultural products lose value quickly when harvesting, handling, transport, storage and market access are poorly coordinated. BEDEBO treats loss reduction as value creation, not merely as an operational issue.</p>
             </div>
-            <ul className="mt-8 divide-y divide-slate-200 border-y border-slate-200 dark:divide-slate-800 dark:border-slate-800">
-                {coldChainSteps.map((step) => (
-                    <li key={step.title} className="grid gap-2 py-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:gap-6">
-                        <h3 className="text-sm font-semibold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
-                        <p className="text-sm leading-6 text-slate-500 dark:text-slate-300">{step.detail}</p>
-                    </li>
-                ))}
-            </ul>
-            <figure className="mt-8">
-                <div className="flex aspect-[16/7] items-end rounded-2xl border border-dashed border-[#3DB268]/60 bg-[repeating-linear-gradient(135deg,rgba(61,178,104,0.08)_0_12px,transparent_12px_24px)] p-5 dark:bg-[repeating-linear-gradient(135deg,rgba(61,178,104,0.12)_0_12px,transparent_12px_24px)]">
-                    <figcaption className="max-w-md rounded-xl bg-white p-4 shadow-sm dark:bg-slate-900">
-                        <p className="font-mono text-[10px] tracking-[0.18em] text-[#267A47] dark:text-[#3DB268]">PHOTO SLOT - COLD CHAIN</p>
-                        <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Pre-cooled crates being loaded into a temperature-controlled vehicle at a BEDEBO cold room.</p>
-                    </figcaption>
-                </div>
-            </figure>
+            <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch">
+                <ul className="divide-y divide-slate-200 border-y border-slate-200 dark:divide-slate-800 dark:border-slate-800">
+                    {coldChainSteps.map((step) => (
+                        <li key={step.title} className="grid gap-2 py-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:gap-6">
+                            <h3 className="text-sm font-semibold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
+                            <p className="text-sm leading-6 text-slate-500 dark:text-slate-300">{step.detail}</p>
+                        </li>
+                    ))}
+                </ul>
+                <figure className="min-h-[360px]">
+                    <div className="flex h-full min-h-[360px] items-end rounded-2xl border border-dashed border-[#3DB268]/60 bg-[repeating-linear-gradient(135deg,rgba(61,178,104,0.08)_0_12px,transparent_12px_24px)] p-5 dark:bg-[repeating-linear-gradient(135deg,rgba(61,178,104,0.12)_0_12px,transparent_12px_24px)]">
+                        <figcaption className="max-w-md rounded-xl bg-white p-4 shadow-sm dark:bg-slate-900">
+                            <p className="font-mono text-[10px] tracking-[0.18em] text-[#267A47] dark:text-[#3DB268]">PHOTO SLOT - COLD CHAIN</p>
+                            <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Pre-cooled crates being loaded into a temperature-controlled vehicle at a BEDEBO cold room.</p>
+                        </figcaption>
+                    </div>
+                </figure>
+            </div>
         </section>
     );
 }
