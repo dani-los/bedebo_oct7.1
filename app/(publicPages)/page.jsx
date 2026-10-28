@@ -143,8 +143,6 @@ export default function Page() {
                 </div>
             </section>
 
-            <OurStory />
-
             <section id="value-propositions" aria-label="Value propositions" className="scroll-mt-20 pt-16 pb-12 md:pt-20 md:pb-8">
             <div id="value-proposition-1" className="pb-16 md:pb-24">
                 <div className="bedebo-site-container grid grid-cols-1 items-start gap-14 md:grid-cols-2 lg:gap-20">
@@ -258,6 +256,10 @@ export default function Page() {
             <PremiumBuyers />
             </section>
 
+            <CoreValues />
+
+            <OurStory />
+
             <section id="solutions" className="scroll-mt-24">
                 <div className="bedebo-site-container">
                     <SectionTitle label="OUR SOLUTIONS" title="Our" highlight="Solutions" description="We have a wide range of solutions that we have provided" headingId="solutions-title" />
@@ -277,8 +279,6 @@ export default function Page() {
             <OurImpact />
 
             <GetInvolved />
-
-            <CoreValues />
 
             <OurBlogs />
 
