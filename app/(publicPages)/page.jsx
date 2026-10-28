@@ -2,7 +2,6 @@
 import SectionTitle from "@/components/SectionTitle";
 import { useThemeContext } from "@/context/ThemeContext";
 import { featuresData } from "@/data/featuresData";
-import OurImpact from "@/sections/OurImpact";
 import GetInvolved from "@/sections/GetInvolved";
 import CoreValues, { AgriculturalServicesSection, BedeboPartnersSection, ColdChainSection, QualityTraceabilitySection } from "@/sections/CoreValues";
 import OurStory from "@/sections/OurStory";
@@ -365,8 +364,6 @@ export default function Page() {
                     </div>
                 </div>
             </section>
-
-            <OurImpact />
 
             <GetInvolved />
 
