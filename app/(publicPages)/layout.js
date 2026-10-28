@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import SiteFooter from "@/components/SiteFooter";
 
 export default function Layout({ children }) {
     return (
@@ -7,6 +8,7 @@ export default function Layout({ children }) {
             <Navbar />
             {children}
             <Footer />
+            <SiteFooter />
         </>
     );
 }
