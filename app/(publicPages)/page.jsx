@@ -239,7 +239,7 @@ export default function Page() {
                             Vendor side — <span className="text-[#3DB268]">Better Source, sell with confidence</span>
                         </h2>
                         <p className="mt-5 text-base leading-relaxed text-slate-500 dark:text-slate-300">
-                            BEDEBO&apos;s first core value is to build quality into the entire horticultural journey rather than inspect quality only when products reach the market, It can connect production planning, technical support, grading, transparent transactions and suitable buyers
+                            Source graded produce with more visibility of what is coming. Sell to your own customers, or coordinate with premium retail and institutional demand.
                         </p>
                         <ul className="mt-8 divide-y divide-[#1E2841]/10 border-y border-[#1E2841]/10 dark:divide-white/10 dark:border-white/10">
                             {vendorBenefits.map((benefit) => (
