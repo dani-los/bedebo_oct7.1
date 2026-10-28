@@ -77,7 +77,7 @@ export default function PremiumBuyers() {
             <div className="bedebo-site-container">
                 <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">FOR PREMIUM BUYERS</p>
                 <h2 id="premium-buyers-heading" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">
-                    Premium Fresh Produce<br />for Businesses That<br />Demand Quality.
+                    Premium Fresh Produce<br />for Businesses That<br /><span className="text-[#3DB268]">Demand Quality.</span>
                 </h2>
                 <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-500 dark:text-slate-300">
                     A procurement manager needs consistent specifications, enough volume, predictable deliveries, clear terms and a supplier who answers when something goes wrong. Choose your business type to see what we offer.
@@ -110,11 +110,11 @@ export default function PremiumBuyers() {
                     </div>
 
                     <div id="buyer-panel" role="tabpanel" aria-labelledby={`buyer-tab-${active.id}`} className="bg-white p-6 md:p-8 dark:bg-[#0F1A14]">
-                        <p className="font-mono text-[11px] tracking-[0.2em] text-slate-500 dark:text-slate-400">MAIN PURCHASING PRIORITY</p>
-                        <h3 className="mt-3 text-2xl font-bold text-[#1E2841] dark:text-slate-50">{active.name}</h3>
-                        <p className="mt-3 text-lg font-semibold leading-snug text-[#267A47] dark:text-[#3DB268]">{active.priority}</p>
+                        <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">MAIN PURCHASING PRIORITY</p>
+                        <h3 className="mt-3 text-[25px] font-bold text-[#1E2841] dark:text-slate-50">{active.name}</h3>
+                        <p className="mt-3 max-w-[18rem] text-lg font-semibold leading-snug text-[#267A47] dark:text-[#3DB268]">{active.priority}</p>
 
-                        <p className="mt-8 font-mono text-[11px] tracking-[0.2em] text-slate-500 dark:text-slate-400">WHAT BEDEBO PROVIDES</p>
+                        <p className="mt-8 font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">WHAT BEDEBO PROVIDES</p>
                         <ul className="mt-3 space-y-3">
                             {active.provides.map((item) => (
                                 <li key={item} className="flex gap-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
