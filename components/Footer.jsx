@@ -47,7 +47,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-2 lg:gap-20">
                     <div>
                         <p className="font-mono text-xs tracking-[0.2em] text-[#3DB268]">CONTACT / BECOME A PARTNER</p>
-                        <h2 id="contact-title" className="mt-4 text-4xl font-extrabold leading-[1.1] tracking-tight text-[#3DB268] md:text-5xl">
+                        <h2 id="contact-title" className="mt-4 text-4xl font-extrabold leading-[1.1] tracking-tight text-white md:text-5xl">
                             Tell us what you need,<br />
                             or what you can<br />
                             supply.
@@ -84,7 +84,7 @@ export default function Footer() {
                         </address>
                     </div>
 
-                    <form className="space-y-5 rounded-2xl border border-white/10 bg-[#11201a]/5 p-6 shadow-xl shadow-black/20 sm:p-8">
+                    <form className="space-y-5 rounded-2xl border border-white/10 bg-[#11201a]/80 p-6 shadow-xl shadow-black/20 sm:p-8">
                         <fieldset>
                             <legend className="mb-2 text-xs font-semibold text-white">I am a</legend>
                             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
