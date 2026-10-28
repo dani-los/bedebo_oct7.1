@@ -77,7 +77,7 @@ export default function PremiumBuyers() {
             <div className="bedebo-site-container">
                 <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">FOR PREMIUM BUYERS</p>
                 <h2 id="premium-buyers-heading" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">
-                    Premium Fresh Produce for Businesses That Demand Quality.
+                    Premium Fresh Produce<br />for Businesses That<br />Demand Quality.
                 </h2>
                 <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-500 dark:text-slate-300">
                     A procurement manager needs consistent specifications, enough volume, predictable deliveries, clear terms and a supplier who answers when something goes wrong. Choose your business type to see what we offer.
