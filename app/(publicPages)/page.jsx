@@ -31,6 +31,13 @@ const farmerBenefits = [
     { title: "Transparent transactions", description: "Prices, volumes and payment status are visible to you." },
 ];
 
+const vendorBenefits = [
+    { title: "Graded produce", description: "Transparent grading so you know what you are buying before it arrives." },
+    { title: "Supply visibility", description: "See expected volumes and availability to plan purchasing." },
+    { title: "Quality-linked buying", description: "Buying arrangements that reward consistent quality." },
+    { title: "Fewer rejections, better margins", description: "Predictable sourcing and clear specifications reduce returns and waste." },
+];
+
 const yieldComparison = [
     { label: "Typical fragmented chain", value: "54 kg", lost: "46%", width: "46%" },
     { label: "BEDEBO coordinated chain (target)", value: "77 kg", lost: "23%", width: "23%" },
@@ -205,20 +212,47 @@ export default function Page() {
                 </div>
             </div>
 
-            <OurStory
-                embedded
-                id="value-proposition-2"
-                idSuffix="-copy-2"
-                label=""
-                title="Vendor side —"
-                highlight="Source better, sell with confidence"
-                description="BEDEBO's first core value is to build quality into the entire horticultural journey rather than inspect quality only when products reach the market, It can connect production planning, technical support, grading, transparent transactions and suitable buyers"
-                quote="Consistent Quality. Dependable Supply. Stronger Market Opportunities."
-                image="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2F5247a03fce49458999b38320a60a0908?format=webp&width=800&height=1200"
-                imageAlt="Produce processing facility with a worker inspecting produce in green crates"
-                chamferedImage
-                reverse
-            />
+            <div id="value-proposition-2" className="pb-16 md:pb-24">
+                <div className="bedebo-site-container grid grid-cols-1 items-start gap-14 md:grid-cols-2 lg:gap-20">
+                    <div>
+                        <h2 className="text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">
+                            Vendor side — <span className="text-[#3DB268]">Source better, sell with confidence</span>
+                        </h2>
+                        <p className="mt-5 text-base leading-relaxed text-slate-500 dark:text-slate-300">
+                            BEDEBO&apos;s first core value is to build quality into the entire horticultural journey rather than inspect quality only when products reach the market, It can connect production planning, technical support, grading, transparent transactions and suitable buyers
+                        </p>
+                        <ul className="mt-8 divide-y divide-[#1E2841]/10 border-y border-[#1E2841]/10 dark:divide-white/10 dark:border-white/10">
+                            {vendorBenefits.map((benefit) => (
+                                <li key={benefit.title} className="py-4">
+                                    <p className="flex items-center gap-3 font-semibold text-[#1E2841] dark:text-slate-50">
+                                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#3DB268]" aria-hidden="true" />
+                                        {benefit.title}
+                                    </p>
+                                    <p className="mt-1 pl-5 text-sm leading-relaxed text-slate-500 dark:text-slate-300">{benefit.description}</p>
+                                </li>
+                            ))}
+                        </ul>
+                        <blockquote className="mt-8 border-l-4 border-[#3DB268] pl-5 text-lg font-semibold text-[#1E2841] dark:text-slate-50">
+                            Consistent Quality. Dependable Supply. Stronger Market Opportunities.
+                        </blockquote>
+                        <button type="button" className="mt-6 rounded-full bg-[#267A47] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#1E663A]">
+                            Apply as a vendor
+                        </button>
+                    </div>
+
+                    <div>
+                        <div className="relative aspect-[7/4] overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.16)]" style={{ borderRadius: "0 48px 0 48px" }}>
+                            <Image
+                                src="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2F5247a03fce49458999b38320a60a0908?format=webp&width=800&height=1200"
+                                alt="Produce processing facility with a worker inspecting produce in green crates"
+                                fill
+                                sizes="(min-width: 768px) 50vw, 100vw"
+                                className="object-cover"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <OurStory
                 embedded
