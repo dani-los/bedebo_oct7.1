@@ -284,7 +284,17 @@ export default function Page() {
                     <p className="mt-5 max-w-4xl text-base leading-relaxed text-slate-500 dark:text-slate-300">
                         The platform joins physical supply with digital coordination. It brings together supply visibility, quality matching, orders, logistics and payment tracking in one place.
                     </p>
-                    <ol className="mt-10 grid grid-cols-1 overflow-hidden rounded-xl border border-[#1E2841]/10 bg-white divide-y divide-[#1E2841]/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 xl:grid-cols-7 xl:divide-x dark:border-white/10 dark:bg-white/5 dark:divide-white/10">
+                    <div className="relative mt-10 w-full overflow-hidden rounded-2xl">
+                        <Image
+                            src="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2Fb4f8b23dc6eb4bb4965ba20b81f6a0c8?format=webp&width=800&height=1200"
+                            alt="BEDEBO Ethiopia mobile app showing a login screen and a dashboard with active orders"
+                            width={800}
+                            height={600}
+                            sizes="(min-width: 1280px) 1200px, 100vw"
+                            className="h-auto w-full"
+                        />
+                    </div>
+                    <ol className="mt-8 grid grid-cols-1 overflow-hidden rounded-xl border border-[#1E2841]/10 bg-white divide-y divide-[#1E2841]/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 xl:grid-cols-7 xl:divide-x dark:border-white/10 dark:bg-white/5 dark:divide-white/10">
                         {digitalMarketplaceSteps.map((step) => (
                             <li key={step.number} className="p-5">
                                 <span className="font-mono text-[11px] tracking-widest text-[#267A47] dark:text-[#3DB268]">{step.number}</span>
