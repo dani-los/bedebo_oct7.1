@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { QRCodeSVG } from "qrcode.react";
 import { Check, Target, FileText } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
@@ -421,13 +422,14 @@ export function ColdChainSection() {
                         </li>
                     ))}
                 </ul>
-                <figure className="min-h-[360px]">
-                    <div className="flex h-full min-h-[360px] items-end rounded-2xl border border-dashed border-[#3DB268]/60 bg-[repeating-linear-gradient(135deg,rgba(61,178,104,0.08)_0_12px,transparent_12px_24px)] p-5 dark:bg-[repeating-linear-gradient(135deg,rgba(61,178,104,0.12)_0_12px,transparent_12px_24px)]">
-                        <figcaption className="max-w-md rounded-xl bg-white p-4 shadow-sm dark:bg-slate-900">
-                            <p className="font-mono text-[10px] tracking-[0.18em] text-[#267A47] dark:text-[#3DB268]">PHOTO SLOT - COLD CHAIN</p>
-                            <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Pre-cooled crates being loaded into a temperature-controlled vehicle at a BEDEBO cold room.</p>
-                        </figcaption>
-                    </div>
+                <figure className="relative min-h-[360px] overflow-hidden rounded-2xl shadow-[0_24px_60px_rgba(15,23,42,0.16)]">
+                    <Image
+                        src="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2F77c282c07e4347d99b6a57ac0e764fb2?format=webp&width=800&height=1200"
+                        alt="Fresh produce displayed in a supermarket cold section with onions, peppers, tomatoes and cabbages"
+                        fill
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className="object-cover"
+                    />
                 </figure>
             </div>
         </section>
