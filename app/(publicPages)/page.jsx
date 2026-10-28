@@ -54,6 +54,16 @@ const yieldComparison = [
     { label: "BEDEBO coordinated chain (target)", value: "77 kg", lost: "23%", width: "23%" },
 ];
 
+const trustedByLogos = [
+    { src: "/images/partners/feed-the-future.png", alt: "Feed the Future", width: 82, height: 60 },
+    { src: "/images/partners/challenge-fund-for-youth-employment.png", alt: "Challenge Fund for Youth Employment", width: 48, height: 44 },
+    { src: "/images/partners/xsyn-corporation.png", alt: "XSyn Corporation", width: 75, height: 40 },
+    { src: "/images/partners/sukoon.png", alt: "Sukoon", width: 59, height: 37 },
+    { src: "/images/partners/cams-engineering.png", alt: "CAMS Engineering", width: 68, height: 44 },
+    { src: "/images/partners/usaid.png", alt: "USAID", width: 75, height: 28 },
+    { src: "/images/partners/soybean-innovation-lab.png", alt: "Soybean Innovation Lab", width: 83, height: 44 },
+];
+
 export default function Page() {
     const { theme } = useThemeContext();
     const heroRef = useRef(null);
@@ -129,18 +139,16 @@ export default function Page() {
                     </h3>
                     <div className="bedebo-logo-marquee">
                         <Marquee className="mx-auto max-w-5xl pb-12" gradient={true} speed={25} gradientColor={theme === "dark" ? "#0A120E" : "#fff"}>
-                            <div className="flex items-center justify-center">
-                                {Array.from({ length: 3 }, (_, index) => (
-                                    <Image
-                                        key={index}
-                                        className="bedebo-logo mx-11 h-14 w-auto max-w-none"
-                                        src="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2Fb6803f61759f4bc99cefbb8033ffe7c4?format=webp&width=800&height=1200"
-                                        alt={index === 0 ? "Partner logos including USAID, Feed the Future, Sukoon and CAMS Engineering" : ""}
-                                        width={800}
-                                        height={58}
-                                    />
-                                ))}
-                            </div>
+                            {trustedByLogos.map((logo) => (
+                                <Image
+                                    key={logo.src}
+                                    className="bedebo-logo mx-12 h-10 w-auto max-w-none"
+                                    src={logo.src}
+                                    alt={logo.alt}
+                                    width={logo.width}
+                                    height={logo.height}
+                                />
+                            ))}
                         </Marquee>
                     </div>
                 </div>
