@@ -368,6 +368,39 @@ export function BedeboPartnersSection() {
     );
 }
 
+const agriculturalServices = [
+    { title: "Threshing", description: "Harvest and post-harvest processing services." },
+    { title: "Mechanization", description: "Agricultural Service Providers (ASPs) supply machinery and operators." },
+    { title: "Aggregation services", description: "First-mile collection and handling for producers." },
+    { title: "Technical standards", description: "Engineering standards and service development with CAMS." },
+];
+
+export function AgriculturalServicesSection() {
+    return (
+        <section aria-labelledby="agricultural-services-title" className="bg-[#1A3327] py-20 text-white">
+            <div className="bedebo-site-container">
+                <div className="max-w-4xl">
+                    <p className="font-mono text-xs tracking-[0.2em] text-[#3DB268]">AGRICULTURAL SERVICES</p>
+                    <h2 id="agricultural-services-title" className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
+                        Supporting services, delivered with partners.
+                    </h2>
+                    <p className="mt-5 text-base leading-relaxed text-slate-300">
+                        Threshing, mechanization and related services remain part of BEDEBO&apos;s work. They support the production base behind the premium offer.
+                    </p>
+                </div>
+                <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {agriculturalServices.map((service) => (
+                        <article key={service.title} className="rounded-lg border border-white/10 bg-[#132A1F] p-5">
+                            <h3 className="text-base font-semibold text-white">{service.title}</h3>
+                            <p className="mt-2 text-sm leading-relaxed text-slate-300">{service.description}</p>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
 export function ColdChainSection() {
     return (
         <section aria-labelledby="cold-chain-title" className="bedebo-site-container pb-20">
