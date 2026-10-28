@@ -492,8 +492,8 @@ export function ColdChainSection() {
             <div className="max-w-4xl">
                 <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">COLD CHAIN & LOGISTICS</p>
                 <h2 id="cold-chain-title" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] sm:text-4xl dark:text-slate-50">
-                    Freshness protected from farm gate<br />
-                    <span className="text-[#3DB268]">to delivery.</span>
+                    Freshness protected from<br />
+                    <span className="text-[#3DB268]">Farm gate to delivery</span>
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-slate-500 dark:text-slate-300">Fresh horticultural products lose value quickly when harvesting, handling, transport, storage and market access are poorly coordinated. BEDEBO treats loss reduction as value creation, not merely as an operational issue.</p>
             </div>
