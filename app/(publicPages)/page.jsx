@@ -1,7 +1,6 @@
 "use client"
 import SectionTitle from "@/components/SectionTitle";
 import { useThemeContext } from "@/context/ThemeContext";
-import { companiesLogo } from "@/data/companiesLogo";
 import { featuresData } from "@/data/featuresData";
 import OurImpact from "@/sections/OurImpact";
 import GetInvolved from "@/sections/GetInvolved";
@@ -131,8 +130,15 @@ export default function Page() {
                     <div className="bedebo-logo-marquee">
                         <Marquee className="mx-auto max-w-5xl pb-12" gradient={true} speed={25} gradientColor={theme === "dark" ? "#0A120E" : "#fff"}>
                             <div className="flex items-center justify-center">
-                                {[...companiesLogo, ...companiesLogo].map((company, index) => (
-                                    <Image key={index} className="bedebo-logo mx-11" src={company.logo} alt={company.name} width={100} height={100} />
+                                {Array.from({ length: 3 }, (_, index) => (
+                                    <Image
+                                        key={index}
+                                        className="bedebo-logo mx-11 h-14 w-auto max-w-none"
+                                        src="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2Fb6803f61759f4bc99cefbb8033ffe7c4?format=webp&width=800&height=1200"
+                                        alt={index === 0 ? "Partner logos including USAID, Feed the Future, Sukoon and CAMS Engineering" : ""}
+                                        width={800}
+                                        height={58}
+                                    />
                                 ))}
                             </div>
                         </Marquee>
