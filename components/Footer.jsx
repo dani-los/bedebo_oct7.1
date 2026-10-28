@@ -47,8 +47,10 @@ export default function Footer() {
                 <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-2 lg:gap-20">
                     <div>
                         <p className="font-mono text-xs tracking-[0.2em] text-[#3DB268]">CONTACT / BECOME A PARTNER</p>
-                        <h2 id="contact-title" className="mt-4 text-4xl font-extrabold leading-[1.1] tracking-tight md:text-5xl">
-                            Tell us what you need, or what you can supply.
+                        <h2 id="contact-title" className="mt-4 text-4xl font-extrabold leading-[1.1] tracking-tight text-[#3DB268] md:text-5xl">
+                            Tell us what you need,<br />
+                            or what you can<br />
+                            supply.
                         </h2>
                         <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75">
                             We reply to qualified business enquiries from buyers, vendors, growers and partners. Choose the option that fits you and we will route your message to the right team.
@@ -94,7 +96,7 @@ export default function Footer() {
                                             type="button"
                                             aria-pressed={isSelected}
                                             onClick={() => setSelectedRole(role)}
-                                            className={`h-11 rounded-md border px-3 text-sm font-medium transition-colors ${isSelected ? "border-[#EE6B4D] bg-[#EE6B4D] text-white" : "border-white/15 bg-[#0c1812] text-white/85 hover:border-white/30"}`}
+                                            className={`h-11 rounded-md border px-3 text-sm font-medium transition-colors ${isSelected ? "border-[#267A47] bg-[#267A47] text-white" : "border-white/15 bg-[#0c1812] text-white/85 hover:border-white/30"}`}
                                         >
                                             {role}
                                         </button>
@@ -149,7 +151,7 @@ export default function Footer() {
                             <textarea id="contact-requirements" name="requirements" rows={4} placeholder="Specifications, delivery days, packaging, certifications you need" className="w-full resize-y rounded-md border border-white/15 bg-[#0c1812] p-4 text-sm text-white placeholder:text-white/35 outline-none transition-colors focus-visible:border-[#3DB268]" />
                         </div>
 
-                        <button type="button" className="h-12 rounded-md bg-[#EE6B4D] px-8 font-semibold text-white transition-colors hover:bg-[#dc5a3d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                        <button type="button" className="h-12 rounded-md bg-[#267A47] px-8 font-semibold text-white transition-colors hover:bg-[#1E663A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                             Send enquiry
                         </button>
                     </form>
