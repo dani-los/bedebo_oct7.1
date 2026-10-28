@@ -84,7 +84,7 @@ export default function Footer() {
                         </address>
                     </div>
 
-                    <form className="space-y-5 rounded-2xl border border-white/10 bg-[#11201a] p-6 shadow-xl shadow-black/20 sm:p-8">
+                    <form className="space-y-5 rounded-2xl border border-white/10 bg-[#11201a]/95 p-6 shadow-xl shadow-black/20 sm:p-8">
                         <fieldset>
                             <legend className="mb-2 text-xs font-semibold text-white">I am a</legend>
                             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
