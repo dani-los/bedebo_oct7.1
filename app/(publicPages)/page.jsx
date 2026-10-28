@@ -8,6 +8,7 @@ import GetInvolved from "@/sections/GetInvolved";
 import CoreValues from "@/sections/CoreValues";
 import OurStory from "@/sections/OurStory";
 import PremiumBuyers from "@/sections/PremiumBuyers";
+import ValueChainTracker from "@/sections/ValueChainTracker";
 import OurBlogs from "@/sections/OurBlogs";
 import Image from "next/image";
 import { ArrowRight, ArrowUp } from "lucide-react";
@@ -293,6 +294,8 @@ export default function Page() {
                     </ol>
                 </div>
             </section>
+
+            <ValueChainTracker />
 
             <CoreValues />
 
