@@ -422,13 +422,13 @@ export function ColdChainSection() {
                         </li>
                     ))}
                 </ul>
-                <figure className="relative min-h-[360px] overflow-hidden rounded-2xl shadow-[0_24px_60px_rgba(15,23,42,0.16)]">
+                <figure className="relative aspect-[2.2/1] overflow-hidden rounded-2xl shadow-[0_24px_60px_rgba(15,23,42,0.16)]">
                     <Image
                         src="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2F77c282c07e4347d99b6a57ac0e764fb2?format=webp&width=800&height=1200"
                         alt="Fresh produce displayed in a supermarket cold section with onions, peppers, tomatoes and cabbages"
                         fill
                         sizes="(min-width: 1024px) 50vw, 100vw"
-                        className="object-cover"
+                        className="object-contain"
                     />
                 </figure>
             </div>
