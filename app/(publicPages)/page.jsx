@@ -255,53 +255,8 @@ export default function Page() {
                 </div>
             </div>
 
-            <div id="value-proposition-3" className="pb-16 md:pb-24">
-                <div className="bedebo-site-container grid grid-cols-1 items-start gap-14 md:grid-cols-2 lg:gap-20">
-                    <div className="md:order-last">
-                        <h2 className="text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">
-                            Farm side — <span className="text-[#3DB268]">Grow for higher-value markets</span>
-                        </h2>
-                        <p className="mt-5 text-base leading-relaxed text-slate-500 dark:text-slate-300">
-                            BEDEBO&apos;s first core value is to build quality into the entire horticultural journey rather than inspect quality only when products reach the market, It can connect production planning, technical support, grading, transparent transactions and suitable buyers
-                        </p>
-                        <ul className="mt-8 divide-y divide-[#1E2841]/10 border-y border-[#1E2841]/10 dark:divide-white/10 dark:border-white/10">
-                            {farmerBenefits.map((benefit) => (
-                                <li key={benefit.title} className="py-4">
-                                    <p className="flex items-center gap-3 font-semibold text-[#1E2841] dark:text-slate-50">
-                                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#3DB268]" aria-hidden="true" />
-                                        {benefit.title}
-                                    </p>
-                                    <p className="mt-1 pl-5 text-sm leading-relaxed text-slate-500 dark:text-slate-300">{benefit.description}</p>
-                                </li>
-                            ))}
-                        </ul>
-                        <blockquote className="mt-8 border-l-4 border-[#3DB268] pl-5 text-lg font-semibold text-[#1E2841] dark:text-slate-50">
-                            Grow Quality. Access Better Markets. Earn More from Every Harvest.
-                        </blockquote>
-                        <p className="mt-8 rounded-lg border border-[#3DB268]/30 bg-[#3DB268]/10 px-4 py-3 text-sm text-[#1E2841] dark:text-slate-100">
-                            Better quality-linked returns are an opportunity, not a guarantee of premium prices for every farmer.
-                        </p>
-                        <button type="button" className="mt-6 rounded-full bg-[#267A47] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#1E663A]">
-                            Register as a grower
-                        </button>
-                    </div>
-
-                    <div className="md:order-first">
-                        <div className="relative aspect-[7/4] overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.16)]" style={{ borderRadius: "0 48px 0 48px" }}>
-                            <Image
-                                src="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2Fcc748ff1df7140e383d1591a5b5ad7ec?format=webp&width=800&height=1200"
-                                alt="Workers harvesting tomatoes into green crates in a greenhouse field"
-                                fill
-                                sizes="(min-width: 768px) 50vw, 100vw"
-                                className="object-cover"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </section>
-
             <PremiumBuyers />
+            </section>
 
             <section id="solutions" className="scroll-mt-24">
                 <div className="bedebo-site-container">

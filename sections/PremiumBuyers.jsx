@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import SectionTitle from "@/components/SectionTitle";
 
 const buyerSegments = [
     {
@@ -74,15 +73,15 @@ export default function PremiumBuyers() {
     const active = buyerSegments.find((segment) => segment.id === activeId);
 
     return (
-        <section aria-labelledby="premium-buyers-heading" className="pt-16 pb-12 md:pt-20 md:pb-16">
+        <div id="value-proposition-3" className="pb-16 md:pb-24">
             <div className="bedebo-site-container">
-                <SectionTitle
-                    label="FOR PREMIUM BUYERS"
-                    title={<>Premium Fresh Produce<br />for Businesses That<br />Demand Quality.</>}
-                    description="A procurement manager needs consistent specifications, enough volume, predictable deliveries, clear terms and a supplier who answers when something goes wrong. Choose your business type to see what we offer."
-                    alignment="left"
-                    headingId="premium-buyers-heading"
-                />
+                <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">FOR PREMIUM BUYERS</p>
+                <h2 id="premium-buyers-heading" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">
+                    Premium Fresh Produce for Businesses That Demand Quality.
+                </h2>
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-500 dark:text-slate-300">
+                    A procurement manager needs consistent specifications, enough volume, predictable deliveries, clear terms and a supplier who answers when something goes wrong. Choose your business type to see what we offer.
+                </p>
 
                 <div className="mt-10 grid grid-cols-1 overflow-hidden rounded-2xl border border-[#1E2841]/10 bg-slate-50 shadow-sm md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] dark:border-white/10 dark:bg-white/5">
                     <div role="tablist" aria-label="Business types" aria-orientation="vertical" className="divide-y divide-[#1E2841]/10 dark:divide-white/10">
@@ -104,7 +103,7 @@ export default function PremiumBuyers() {
                                     }`}
                                 >
                                     <span className="block font-semibold text-[#1E2841] dark:text-slate-50">{segment.name}</span>
-                                    <span className="mt-1 block font-mono text-xs leading-relaxed text-slate-500 dark:text-slate-300">{segment.tags}</span>
+                                    <span className="mt-1 block text-sm leading-relaxed text-slate-500 dark:text-slate-300">{segment.tags}</span>
                                 </button>
                             );
                         })}
@@ -143,6 +142,6 @@ export default function PremiumBuyers() {
                     ))}
                 </ol>
             </div>
-        </section>
+        </div>
     );
 }
