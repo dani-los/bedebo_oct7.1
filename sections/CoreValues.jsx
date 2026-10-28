@@ -500,7 +500,7 @@ export function ColdChainSection() {
             <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch">
                 <ul className="divide-y divide-slate-200 border-y border-slate-200 dark:divide-slate-800 dark:border-slate-800">
                     {coldChainSteps.map((step) => (
-                        <li key={step.title} className="grid gap-2 py-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:gap-6">
+                        <li key={step.title} className="grid gap-2 py-4 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-6">
                             <h3 className="text-sm font-semibold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
                             <p className="text-sm leading-6 text-slate-500 dark:text-slate-300">{step.detail}</p>
                         </li>
