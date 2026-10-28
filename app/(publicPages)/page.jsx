@@ -101,7 +101,7 @@ export default function Page() {
                 </div>
             </section>
 
-            <section aria-labelledby="value-framework-heading" className="value-framework">
+            <section aria-labelledby="value-framework-heading" className="pt-24 pb-16 md:pt-32 md:pb-20">
                 <div className="bedebo-site-container">
                     <SectionTitle
                         label="THE BEDEBO FARM-TO-MARKET VALUE FRAMEWORK"
@@ -111,12 +111,12 @@ export default function Page() {
                         alignment="left"
                         headingId="value-framework-heading"
                     />
-                    <ol className="value-framework-grid">
+                    <ol className="mt-14 grid grid-cols-1 border-t-2 border-[#1E2841] sm:grid-cols-2 lg:grid-cols-4 dark:border-slate-100">
                         {valueFrameworkSteps.map((step) => (
-                            <li key={step.number} className="value-framework-step">
-                                <span className="value-framework-number">{step.number}</span>
-                                <h3>{step.title}</h3>
-                                <p>{step.description}</p>
+                            <li key={step.number} className="border-b border-[#1E2841]/10 py-6 pr-6 dark:border-white/10">
+                                <span className="block font-mono text-xs tracking-widest text-[#267A47] dark:text-[#3DB268]">{step.number}</span>
+                                <h3 className="mt-3 mb-2 text-xl font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
+                                <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
                             </li>
                         ))}
                     </ol>
