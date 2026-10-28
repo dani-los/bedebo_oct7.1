@@ -1,12 +1,19 @@
 "use client";
 
-import { Mail, MapPin, Phone } from "lucide-react";
-import Image from "next/image";
+import { ChevronDown, Mail, MapPin, Phone } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+
+const roles = ["Premium buyer", "Vendor", "Farmer", "Partner"];
+const produceOptions = ["Tomato", "Onion", "Cabbage", "Papaya", "Pepper", "Green bean", "Other"];
+const volumeOptions = ["Not sure yet", "Less than 1 tonne", "1–5 tonnes", "5–20 tonnes", "20+ tonnes"];
+
+const inputClassName = "h-11 w-full rounded-md border border-white/15 bg-[#0c1812] px-4 text-sm text-white placeholder:text-white/35 outline-none transition-colors focus-visible:border-[#3DB268]";
 
 export default function Footer() {
     const sectionRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
+    const [selectedRole, setSelectedRole] = useState(roles[0]);
+    const [selectedProduce, setSelectedProduce] = useState(["Tomato"]);
 
     useEffect(() => {
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -25,6 +32,10 @@ export default function Footer() {
         return () => observer.disconnect();
     }, []);
 
+    const toggleProduce = (item) => {
+        setSelectedProduce((current) => (current.includes(item) ? current.filter((value) => value !== item) : [...current, item]));
+    };
+
     return (
         <footer
             id="contact"
@@ -32,30 +43,18 @@ export default function Footer() {
             aria-labelledby="contact-title"
             className={`relative isolate mt-12 scroll-mt-24 overflow-hidden bg-[#0a140c] text-white transition-all duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:transition-none motion-reduce:opacity-100 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
         >
-            <Image
-                src="/assets/contact-field.webp"
-                alt="Aerial view of a tractor working a farm field"
-                fill
-                sizes="100vw"
-                className="z-0 object-cover"
-            />
-            <div className="absolute inset-0 z-[1]" style={{ backgroundColor: "rgba(10, 20, 12, 0.65)" }} />
-
-            <div className="bedebo-site-container relative z-10 flex min-h-[600px] flex-col pb-6 pt-16">
-                <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-12">
+            <div className="bedebo-site-container relative z-10 flex flex-col pb-6 pt-20">
+                <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-2 lg:gap-20">
                     <div>
-                        <div className="flex items-center gap-3 text-[#3DB268]">
-                            <span className="h-px w-10 bg-[#3DB268]" aria-hidden="true" />
-                            <p className="text-xs font-semibold uppercase tracking-[0.25em]">Get in Touch</p>
-                        </div>
-                        <h2 id="contact-title" className="mt-4 text-4xl font-bold tracking-tight">
-                            Contact <span className="text-[#3DB268]">Us</span>
+                        <p className="font-mono text-xs tracking-[0.2em] text-[#3DB268]">CONTACT / BECOME A PARTNER</p>
+                        <h2 id="contact-title" className="mt-4 text-4xl font-extrabold leading-[1.1] tracking-tight md:text-5xl">
+                            Tell us what you need, or what you can supply.
                         </h2>
-                        <p className="mt-5 max-w-xl text-sm leading-6 text-white/90">
-                            We are eager to hear from you. Whether you are a farmer, potential partner, or just interested in learning more about our work, contact us today.
+                        <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75">
+                            We reply to qualified business enquiries from buyers, vendors, growers and partners. Choose the option that fits you and we will route your message to the right team.
                         </p>
 
-                        <address className="mt-6 space-y-4 not-italic">
+                        <address className="mt-10 space-y-5 not-italic">
                             <div className="flex items-start gap-4">
                                 <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-white/40 bg-white/10">
                                     <MapPin size={20} strokeWidth={1.7} aria-hidden="true" />
@@ -83,26 +82,80 @@ export default function Footer() {
                         </address>
                     </div>
 
-                    <form className="space-y-4 rounded-[32px] border border-white/25 bg-white/10 p-4 shadow-xl shadow-black/10 backdrop-blur-lg sm:p-6">
-                        <div>
-                            <label htmlFor="contact-name" className="sr-only">Name</label>
-                            <input id="contact-name" name="name" type="text" placeholder="Name" className="h-12 w-full rounded-full border border-transparent bg-white/85 px-6 text-sm text-slate-800 outline-none placeholder:text-slate-600 focus-visible:border-[#3DB268] focus-visible:ring-2 focus-visible:ring-[#3DB268]" />
+                    <form className="space-y-5 rounded-2xl border border-white/10 bg-[#11201a] p-6 shadow-xl shadow-black/20 sm:p-8">
+                        <fieldset>
+                            <legend className="mb-2 text-xs font-semibold text-white">I am a</legend>
+                            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                                {roles.map((role) => {
+                                    const isSelected = role === selectedRole;
+                                    return (
+                                        <button
+                                            key={role}
+                                            type="button"
+                                            aria-pressed={isSelected}
+                                            onClick={() => setSelectedRole(role)}
+                                            className={`h-11 rounded-md border px-3 text-sm font-medium transition-colors ${isSelected ? "border-[#EE6B4D] bg-[#EE6B4D] text-white" : "border-white/15 bg-[#0c1812] text-white/85 hover:border-white/30"}`}
+                                        >
+                                            {role}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </fieldset>
+
+                        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                            <div>
+                                <label htmlFor="contact-name" className="mb-2 block text-xs font-semibold text-white">Your name</label>
+                                <input id="contact-name" name="name" type="text" className={inputClassName} />
+                            </div>
+                            <div>
+                                <label htmlFor="contact-business" className="mb-2 block text-xs font-semibold text-white">Business or organization</label>
+                                <input id="contact-business" name="business" type="text" className={inputClassName} />
+                            </div>
+                            <div>
+                                <label htmlFor="contact-location" className="mb-2 block text-xs font-semibold text-white">Location</label>
+                                <input id="contact-location" name="location" type="text" placeholder="City or woreda" className={inputClassName} />
+                            </div>
+                            <div>
+                                <label htmlFor="contact-volume" className="mb-2 block text-xs font-semibold text-white">Volume per week</label>
+                                <div className="relative">
+                                    <select id="contact-volume" name="volume" defaultValue={volumeOptions[0]} className={`${inputClassName} cursor-pointer appearance-none pr-10`}>
+                                        {volumeOptions.map((option) => (
+                                            <option key={option} value={option} className="bg-[#0c1812]">{option}</option>
+                                        ))}
+                                    </select>
+                                    <ChevronDown size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white" aria-hidden="true" />
+                                </div>
+                            </div>
                         </div>
+
+                        <fieldset>
+                            <legend className="mb-2 text-xs font-semibold text-white">Produce of interest</legend>
+                            <div className="flex flex-wrap gap-3">
+                                {produceOptions.map((item) => {
+                                    const isChecked = selectedProduce.includes(item);
+                                    return (
+                                        <label key={item} className={`flex cursor-pointer items-center gap-2 rounded-md border px-3 py-2 text-sm transition-colors ${isChecked ? "border-[#3DB268]/60 text-white" : "border-white/15 text-white/80 hover:border-white/30"}`}>
+                                            <input type="checkbox" checked={isChecked} onChange={() => toggleProduce(item)} className="size-3.5 accent-[#3DB268]" />
+                                            {item}
+                                        </label>
+                                    );
+                                })}
+                            </div>
+                        </fieldset>
+
                         <div>
-                            <label htmlFor="contact-email" className="sr-only">Email</label>
-                            <input id="contact-email" name="email" type="email" placeholder="Email" className="h-12 w-full rounded-full border border-transparent bg-white/85 px-6 text-sm text-slate-800 outline-none placeholder:text-slate-600 focus-visible:border-[#3DB268] focus-visible:ring-2 focus-visible:ring-[#3DB268]" />
+                            <label htmlFor="contact-requirements" className="mb-2 block text-xs font-semibold text-white">Requirements or message</label>
+                            <textarea id="contact-requirements" name="requirements" rows={4} placeholder="Specifications, delivery days, packaging, certifications you need" className="w-full resize-y rounded-md border border-white/15 bg-[#0c1812] p-4 text-sm text-white placeholder:text-white/35 outline-none transition-colors focus-visible:border-[#3DB268]" />
                         </div>
-                        <div>
-                            <label htmlFor="contact-message" className="sr-only">Message</label>
-                            <textarea id="contact-message" name="message" placeholder="Message" className="h-[100px] w-full resize-y rounded-[28px] border border-transparent bg-white/85 px-6 py-5 text-sm text-slate-800 outline-none placeholder:text-slate-600 focus-visible:border-[#3DB268] focus-visible:ring-2 focus-visible:ring-[#3DB268]" />
-                        </div>
-                        <button type="button" className="h-12 w-full rounded-full bg-[#3DB268] text-base font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[#319b59] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-                            Submit
+
+                        <button type="button" className="h-12 rounded-md bg-[#EE6B4D] px-8 font-semibold text-white transition-colors hover:bg-[#dc5a3d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                            Send enquiry
                         </button>
                     </form>
                 </div>
 
-                <div className="mt-auto border-t border-white/25 pt-5 text-center text-xs text-white/85">
+                <div className="mt-20 border-t border-white/15 pt-5 text-center text-xs text-white/85">
                     Copyright © {new Date().getFullYear()}, Powered by{" "}
                     <a href="#contact" className="text-[#3DB268] underline-offset-4 transition hover:underline">Bedebo Ethiopia</a>
                 </div>
