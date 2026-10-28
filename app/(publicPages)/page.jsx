@@ -140,6 +140,8 @@ export default function Page() {
                 </div>
             </section>
 
+            <CoreValues />
+
             <section aria-labelledby="value-framework-heading" className="value-framework pt-16 pb-12 md:pt-20 md:pb-16">
                 <div className="bedebo-site-container">
                     <SectionTitle
@@ -318,8 +320,6 @@ export default function Page() {
             </section>
 
             <ValueChainTracker />
-
-            <CoreValues />
 
             <OurStory />
 
