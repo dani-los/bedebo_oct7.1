@@ -2,17 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
-import { Check, ShieldCheck, Target, FileText, Share2, Smartphone } from "lucide-react";
+import { Check, Target, FileText } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
-import Traceability from "@/sections/Traceability";
-
-const tabIcons = [Share2, Smartphone, ShieldCheck];
-
-const tabItems = [
-    { label: "Value chain integration", role: "The partnership layer", title: "The partnership layer", description: "All actors work as partners, not as disconnected middlemen.", points: ["Farm-to-market linkages", "Coordinated production", "Shared services", "Value addition", "Shared benefit"], icon: Share2, tone: "green" },
-    { label: "Digital integration", role: "The information layer", title: "The information layer", description: "BEDEBO supports farmer coordination, aggregation, logistics, market linkage, payment tracking and end-to-end visibility.", points: ["Connected platforms", "Real-time visibility", "Data-driven decisions", "Digital transactions", "Inclusion for all farmers"], icon: Smartphone, tone: "green" },
-    { label: "Quality and traceability", role: "The trust layer", title: "The trust layer, farm to table", description: "Customers can trust what they eat and verify where it came from.", points: ["Quality standards", "Batch traceability", "Rapid response", "Consumer confidence", "Export readiness"], icon: ShieldCheck, tone: "green" },
-];
 
 const phraseParts = ["Freshness Protected.", "Quality Assured.", "Markets Connected.", "Value Shared."];
 const phraseColors = ["#27965a", "#6b4fd8", "#2f6fed", "#c27a14"];
@@ -24,14 +15,6 @@ const values = [
     { title: "Digital Market Connection", quote: "Connecting the right product to the right buyer at the right time.", detail: "BEDEBO's defining capability is the integration of physical horticultural supply with digital market coordination.", color: "#27965a" },
     { title: "Fair & Transparent Value", quote: "Quality determines value—and value should be visible across the chain.", detail: "This allows BEDEBO to pursue two objectives simultaneously: premium value for premium quality and appropriate, affordable market channels for other commercially acceptable grades.", color: "#27965a" },
     { title: "Reliable & Shared Growth", quote: "A stronger value chain must create value for every critical actor.", detail: "The existing model explicitly combines CAMS-led physical service infrastructure and standards with BEDEBO-led digital coordination and market linkage. When farmers produce better, service providers operate efficiently, logistics protect quality, BEDEBO coordinates transparently and buyers receive reliable products, the entire horticulture ecosystem grows together.", color: "#27965a" },
-];
-
-const platforms = [
-    { title: "Farm: registration and grading", steps: ["The farmer is registered in the Bedebo App.", "Product and type are selected and recorded.", "Weight is registered and the produce is graded.", "Produce leaves in 100 kg woven sacks, shipped to the Union.", "Data goes to central Bedebo."] },
-    { title: "Union: check-in and QR crates", steps: ["Product is checked in and received by the ALAs.", "Sacks are converted to QR-labeled crates, one set per farmer with no mixing.", "Data is stored at central Bedebo.", "When the warehouse requests stock, crates are checked out and loaded onto the cold truck."] },
-    { title: "Warehouse: request and cold storage", steps: ["The warehouse requests stock.", "The request goes through central Bedebo to the Union.", "The cold truck carries the crates from the Union to the warehouse.", "Crates are unloaded and checked in to cold storage.", "Data is sent to central Bedebo."] },
-    { title: "Vendor: order and delivery", steps: ["The vendor places an order in the Bedebo platform.", "Crates are checked out and loaded onto the cold truck.", "The truck carries the order from the warehouse to the vendor.", "Crates are received and delivery is confirmed to central Bedebo."] },
-    { title: "Bedebo central", steps: ["Every registration, check-in, check-out, request, and order is recorded here.", "The whole journey stays visible and traceable, from the farmer to the vendor."] },
 ];
 
 const qualitySteps = [
@@ -57,120 +40,6 @@ const coldChainSteps = [
     { title: "Coordinated transport", detail: "Pick-up and delivery slots planned against harvest and order timing." },
     { title: "Digital scheduling", detail: "Agro-Link Agents and the platform keep every actor on the same plan." },
 ];
-
-function isoSceneSVG() {
-    var P = function (x, y, z) { return [Math.round(360 + (x - y) * 30), Math.round(100 + (x + y) * 17.32 - z)]; },
-        Q = function (a, f) { return '<polygon points="' + a.map(function (q) { return P(q[0], q[1], q[2]); }).join(' ') + '" fill="' + f + '"/>'; },
-        B = function (x, y, w, d, h, z, c) { var t = z + h; return Q([[x + w, y, z], [x + w, y + d, z], [x + w, y + d, t], [x + w, y, t]], c[2]) + Q([[x, y + d, z], [x + w, y + d, z], [x + w, y + d, t], [x, y + d, t]], c[1]) + Q([[x, y, t], [x + w, y, t], [x + w, y + d, t], [x, y + d, t]], c[0]); },
-        WH = ['#fff', '#e2e8f0', '#cbd5e1'], CR = ['#f2cc8b', '#d29c4c', '#b5843b'], SK = ['#efe0b8', '#d9c28a', '#c2a96f'], GR = ['#63c48c', '#3da56b', '#2f8a58'], TL = ['#8fe6b2', '#3DB268', '#267A47'], BL = ['#8fe6b2', '#3DB268', '#267A47'], DK = ['#3f7652', '#267A47', '#1e5935'], RD = ['#f3917f', '#da6550', '#bf5340'], GN = ['#8fe6b2', '#27965a', '#1f7a49'];
-    var N = [
-        { n: 'Farm', x: -2, y: 4, o: function (x, y) { var r = ''; [.4, 1.3, 2.1].forEach(function (a) { r += B(x + .4, y + a, .5, .5, 8, 0, GR) + B(x + 1, y + a, .5, .5, 8, 0, GR); }); return r + B(x + 1.9, y + .6, .8, .8, 15, 0, SK) + B(x + 1.9, y + 1.7, .8, .8, 15, 0, SK); } },
-        { n: 'Union', x: 4, y: -2, o: function (x, y) { return [[.4, .3], [1.3, .3], [.4, 1.1], [1.3, 1.1]].map(function (a) { return B(x + a[0], y + a[1], .8, .8, 14, 0, CR); }).join('') + B(x + .4, y + .3, .8, .8, 14, 14, CR) + B(x + .3, y + 2, 1.7, .8, 18, 0, WH) + B(x + 2, y + 2.05, .7, .7, 13, 0, BL); } },
-        { n: 'Warehouse (cold storage)', x: 10, y: 4, o: function (x, y) { var c = P(x + 1.5, y + 1.5, 40), s = ''; for (var a = 0; a < 3; a++) { var t = a * Math.PI / 3, dx = 8 * Math.cos(t), dy = 8 * Math.sin(t); s += '<line x1="' + (c[0] - dx) + '" y1="' + (c[1] - dy) + '" x2="' + (c[0] + dx) + '" y2="' + (c[1] + dy) + '" stroke="#fff" stroke-width="2.4"/>'; } return B(x + .5, y + .5, 2, 2, 40, 0, TL) + B(x + .9, y + 2.5, .6, .04, 24, 0, WH) + s; } },
-        { n: 'Vendor/Market', x: 4, y: 10, o: function (x, y) { return B(x + .6, y + .8, 1.8, 1.3, 14, 0, WH) + B(x + .5, y + .7, .95, 1.5, 6, 26, RD) + B(x + 1.45, y + .7, .95, 1.5, 6, 26, WH) + B(x + .7, y + 2.2, .5, .5, 8, 0, CR) + B(x + 1.4, y + 2.2, .5, .5, 8, 0, GR); } },
-        { n: 'Bedebo central', x: 4, y: 4, o: function (x, y) {
-            var r = B(x + .4, y + .6, .8, 1.2, 46, 0, DK) + B(x + 1.3, y + .6, .8, 1.2, 46, 0, DK) + B(x + 2.2, y + .6, .6, 1.2, 46, 0, DK), L = '';
-            [10, 22].forEach(function (z) { r += B(x + .5, y + 1.8, .5, .05, 3, z, GN) + B(x + 1.4, y + 1.8, .5, .05, 3, z, GN); });
-            [.8, 1.7, 2.5].forEach(function (a) {
-                var p = P(x + a, y + 1.2, 46), q = P(x + a, y + 1.2, 64);
-                L += '<line x1="' + p[0] + '" y1="' + p[1] + '" x2="' + q[0] + '" y2="' + q[1] + '" stroke="#27965a" stroke-width="2" stroke-dasharray="3 3"/>';
-            });
-            r += L + B(x + .7, y + 1.15, 1.9, .08, 32, 64, WH);
-            [[1, 8], [1.35, 16], [1.7, 24], [2.05, 13], [2.4, 20]].forEach(function (b) { r += B(x + b[0], y + 1.24, .18, .03, b[1], 70, GN); });
-            var c = P(x + 1.65, y + 1.2, 112);
-            [10, 18, 26].forEach(function (k, i) { r += '<path d="M' + (c[0] - k) + ' ' + c[1] + 'A' + k + ' ' + k + ' 0 0 1 ' + (+c[0] + k) + ' ' + c[1] + '" fill="none" stroke="#27965a" stroke-width="2.6" stroke-linecap="round" opacity="' + [1, .6, .3][i] + '"/>'; });
-            return r + '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="3.5" fill="#27965a"/>';
-        } },
-    ], s = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 540" role="group" aria-label="Isometric diagram of the Bedebo central platform connected to farm, Union, warehouse and Vendor/Market">',
-        F = function (x, y, w, d, z, f) { return Q([[x, y, z], [x + w, y, z], [x + w, y + d, z], [x, y + d, z]], f); };
-    [[40, 200, 330, 45], [40, 330, 300, 150], [690, 230, 430, 50], [690, 380, 300, 150]].forEach(function (l) { s += '<line x1="' + l[0] + '" y1="' + l[1] + '" x2="' + l[2] + '" y2="' + l[3] + '" stroke="#94a3b8" stroke-opacity=".55" stroke-dasharray="4 7"/>'; });
-    var W = [[5, 1, 1, 3], [5, 7, 1, 3], [1, 5, 3, 1], [7, 5, 3, 1]];
-    N.forEach(function (p) { s += F(p.x + .4, p.y + .9, 3, 3, -46, 'rgba(15,23,42,.12)'); });
-    W.forEach(function (w) { s += F(w[0] + .4, w[1] + .9, w[2], w[3], -46, 'rgba(15,23,42,.1)') + B(w[0], w[1], w[2], w[3], 14, -14, WH); });
-    N.forEach(function (p) { s += B(p.x, p.y, 3, 3, 14, -14, WH); });
-    N.map(function (p, i) { return [p, i]; }).sort(function (a, b) { return a[0].x + a[0].y - b[0].x - b[0].y; }).forEach(function (q) {
-        var p = q[0], f = P(p.x + 3, p.y + 3, -14), w = Math.round(p.n.length * 6.6 + 24);
-        s += '<g class="iso-n" data-i="' + q[1] + '" role="button" aria-label="' + p.n + '">' + Q([[p.x, p.y, 0], [p.x + 3, p.y, 0], [p.x + 3, p.y + 3, 0], [p.x, p.y + 3, 0]], 'none').replace('fill="none"', 'class="iso-hl"') + '<g class="iso-ob">' + p.o(p.x, p.y) + '</g><rect x="' + (f[0] - w / 2) + '" y="' + (f[1] + 8) + '" width="' + w + '" height="22" rx="11" fill="#fff"/><text x="' + f[0] + '" y="' + (f[1] + 23) + '" text-anchor="middle" font-size="12" font-weight="500" fill="#14304f">' + p.n + '</text></g>';
-    });
-    return s + '</svg>';
-}
-
-function IntroCard({ item }) {
-    const tone = "border-slate-200 border-l-[#27965a] bg-white dark:border-slate-800 dark:border-l-[#3DB268] dark:bg-slate-900";
-    const chipTone = "bg-[#27965a]/10 text-[#267A47] dark:bg-[#27965a]/20 dark:text-[#8de0ae]";
-    const Chip = chipTone;
-    const Icon = item.icon;
-    return (
-        <div className={`mb-6 w-full rounded-[18px] border p-4 sm:p-5 ${item.description ? "border-l-[5px]" : ""} ${tone}`}>
-            {item.description ? (
-                <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-                    <span className="grid size-12 shrink-0 place-items-center rounded-[14px] bg-[#27965a]/10 text-[#27965a] dark:bg-[#27965a]/20 dark:text-[#8de0ae]"><Icon size={25} aria-hidden="true" /></span>
-                    <div className="min-w-0">
-                        <h3 className="text-lg font-semibold text-slate-800 dark:text-white">{item.title}</h3>
-                        <p className="mt-1 max-w-4xl text-sm leading-6 text-slate-600 dark:text-slate-300 sm:text-base">{item.description}</p>
-                        <ul className="mt-3 flex flex-wrap gap-1.5">
-                            {item.points.map((point) => <li key={point} className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ${Chip}`}><span aria-hidden="true" className="size-1.5 rounded-full bg-current opacity-70" />{point}</li>)}
-                        </ul>
-                    </div>
-                </div>
-            ) : (
-                <>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em]">{item.role}</p>
-                    <div className="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:items-center">
-                        <h3 className="text-xl font-semibold text-slate-800 dark:text-white">{item.label}</h3>
-                        <ul className="grid gap-2 text-sm leading-5 text-slate-600 dark:text-slate-300 sm:grid-cols-3 md:gap-3">
-                            {item.points.map((point) => <li key={point} className="flex gap-2"><Check size={15} className="mt-0.5 shrink-0" /><span>{point}</span></li>)}
-                        </ul>
-                    </div>
-                </>
-            )}
-        </div>
-    );
-}
-
-function DigitalIntegration() {
-    const sceneRef = useRef(null);
-    const [selected, setSelected] = useState(0);
-
-    useEffect(() => {
-        const svg = isoSceneSVG().replace(/class="iso-n"/g, 'class="iso-n" tabindex="0"');
-        if (sceneRef.current) sceneRef.current.innerHTML = svg;
-    }, []);
-
-    useEffect(() => {
-        sceneRef.current?.querySelectorAll(".iso-n").forEach((node) => {
-            const isSelected = Number(node.dataset.i) === selected;
-            node.classList.toggle("sel", isSelected);
-            node.setAttribute("aria-pressed", String(isSelected));
-        });
-    }, [selected]);
-
-    const selectNode = (node) => {
-        const value = Number(node?.dataset.i);
-        if (Number.isInteger(value) && value >= 0 && value < platforms.length) setSelected(value);
-    };
-
-    return (
-        <div className="w-full">
-            <div ref={sceneRef} className="iso-scene mx-auto w-full overflow-visible rounded-2xl md:w-4/5 md:max-w-[900px]" onClick={(event) => selectNode(event.target.closest(".iso-n[data-i]"))} onMouseOver={(event) => selectNode(event.target.closest(".iso-n[data-i]"))} onFocus={(event) => selectNode(event.target.closest(".iso-n[data-i]"))} onKeyDown={(event) => {
-                const node = event.target.closest(".iso-n[data-i]");
-                if (node && (event.key === "Enter" || event.key === " ")) {
-                    event.preventDefault();
-                    selectNode(node);
-                }
-            }} />
-            <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-7">
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4 dark:border-slate-800">
-                    <h3 className="text-base font-semibold text-[#267A47] dark:text-[#75D59A] sm:text-lg">{platforms[selected].title}</h3>
-                    <span className="text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400">Step {selected + 1} of 5</span>
-                </div>
-                <ol className="mt-5 grid gap-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
-                    {platforms[selected].steps.map((step, index) => <li key={step} className="flex gap-3"><span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#27965a]/10 text-xs font-semibold text-[#267A47] dark:bg-[#27965a]/20 dark:text-[#8de0ae]">{index + 1}</span><span>{step}</span></li>)}
-                </ol>
-            </div>
-        </div>
-    );
-}
 
 function CrateQr() {
     return <QRCodeSVG value="BEDEBO-BATCH:BD-ETH-2026-004218|FARMER:BF-2048|CROP:TOMATO" size={144} marginSize={4} level="M" title="Crate trace QR code" className="size-36 max-w-full rounded-lg bg-white p-2" />;
@@ -437,54 +306,63 @@ export default function CoreValues() {
     );
 }
 
-export function CoreValuesIntegration() {
-    const integrationTabs = tabItems.slice(0, 2);
-    const [activeTab, setActiveTab] = useState(0);
-    const [tabPill, setTabPill] = useState({ left: 5, width: 0 });
-    const tabRefs = useRef([]);
-    const tabColor = "#267A47";
-    const selectTab = (index) => setActiveTab((index + integrationTabs.length) % integrationTabs.length);
+const partnerLayers = [
+    { label: "PHYSICAL LAYER", title: "CAMS-led infrastructure and standards", description: "Engineering, mechanization, ASP development and the technical systems that raise productivity and standardize handling." },
+    { label: "DIGITAL LAYER", title: "BEDEBO-led coordination and linkage", description: "Market linkage, transactions, logistics coordination, payment tracking and traceability across the chain." },
+];
 
-    useEffect(() => {
-        const updatePill = () => {
-            const tab = tabRefs.current[activeTab];
-            if (tab) setTabPill({ left: tab.offsetLeft, width: tab.offsetWidth });
-        };
-        updatePill();
-        window.addEventListener("resize", updatePill);
-        return () => window.removeEventListener("resize", updatePill);
-    }, [activeTab]);
+const partnerRows = [
+    { actor: "Farmers / producer organizations", role: "Produce to planned demand and quality requirements", value: "Reliable production base and product origin" },
+    { actor: "CAMS Engineering", role: "Standards, mechanization, ASP development, technical systems", value: "Productivity, standardization, physical service capability" },
+    { actor: "ASPs", role: "Mechanization, aggregation, first-mile logistics, cold-chain services", value: "Efficient movement, freshness, reduced loss" },
+    { actor: "ALAs", role: "Farmer coordination, demand aggregation, data capture, market support", value: "Last-mile digital and commercial connectivity" },
+    { actor: "BEDEBO", role: "Digital coordination, market linkage, transactions, logistics coordination, traceability", value: "Integrates the entire commercial value chain" },
+    { actor: "Logistics / cold-chain partners", role: "Transport, pre-cooling, cold storage, delivery", value: "Quality preservation and delivery reliability" },
+    { actor: "Market buyers", role: "Demand, specifications, purchasing, feedback", value: "Market pull and commercial sustainability" },
+    { actor: "Final customers", role: "Purchase and consume the products", value: "Demand for freshness, quality, safety and value" },
+];
 
-    const handleTabKeyDown = (event) => {
-        let nextTab = activeTab;
-        if (event.key === "ArrowRight") nextTab = (activeTab + 1) % integrationTabs.length;
-        if (event.key === "ArrowLeft") nextTab = (activeTab - 1 + integrationTabs.length) % integrationTabs.length;
-        if (event.key === "Home") nextTab = 0;
-        if (event.key === "End") nextTab = integrationTabs.length - 1;
-        if (nextTab !== activeTab) {
-            event.preventDefault();
-            selectTab(nextTab);
-            tabRefs.current[nextTab]?.focus();
-        }
-    };
-
+export function BedeboPartnersSection() {
     return (
-        <section className="bedebo-site-container pb-20">
-            <div className="mt-14 w-full md:mt-16">
-                <div role="tablist" aria-label="Core value chain layers" aria-orientation="horizontal" className="relative mb-6 flex w-full gap-1 overflow-x-auto rounded-[18px] border border-slate-200 bg-white p-[5px] dark:border-slate-800 dark:bg-slate-900" onKeyDown={handleTabKeyDown}>
-                    <span aria-hidden="true" className="pointer-events-none absolute bottom-[5px] top-[5px] z-0 rounded-[14px] transition-[left,width,background-color] duration-300" style={{ left: tabPill.left, width: tabPill.width, backgroundColor: tabColor }} />
-                    {integrationTabs.map((item, index) => {
-                        const Icon = tabIcons[index];
-                        return <button key={item.label} ref={(node) => { tabRefs.current[index] = node; }} id={`core-tab-${index}`} type="button" role="tab" aria-label={item.label} aria-selected={activeTab === index} aria-controls={`core-panel-${index}`} tabIndex={activeTab === index ? 0 : -1} onClick={() => selectTab(index)} className={`relative z-10 flex min-w-max flex-1 items-center justify-center gap-2 rounded-[14px] px-4 py-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#27965a] ${activeTab === index ? "text-white" : "text-slate-600 dark:text-slate-300"}`}><Icon size={18} aria-hidden="true" /><span className="hidden sm:inline">{item.label}</span></button>;
-                    })}
-                </div>
-                <div id={`core-panel-${activeTab}`} role="tabpanel" aria-labelledby={`core-tab-${activeTab}`} tabIndex={0} className={`min-w-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#27965a]`}>
-                    <IntroCard item={tabItems[activeTab]} />
-                    {activeTab === 0 && <Traceability />}
-                    {activeTab === 1 && <DigitalIntegration />}
-                </div>
+        <section aria-labelledby="bedebo-partners-title" className="bedebo-site-container pb-20">
+            <div className="max-w-4xl">
+                <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">ABOUT BEDEBO & PARTNERS</p>
+                <h2 id="bedebo-partners-title" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] sm:text-4xl dark:text-slate-50">
+                    One coordinated system,<br />
+                    <span className="text-[#3DB268]">many capable partners.</span>
+                </h2>
+                <p className="mt-5 text-base leading-relaxed text-slate-500 dark:text-slate-300">BEDEBO does not perform every function alone. Physical service infrastructure and standards come from CAMS. Digital coordination and market linkage come from BEDEBO.</p>
             </div>
-
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
+                {partnerLayers.map((layer) => (
+                    <article key={layer.label} className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+                        <p className="font-mono text-[10px] tracking-[0.18em] text-[#267A47] dark:text-[#3DB268]">{layer.label}</p>
+                        <h3 className="mt-3 text-lg font-semibold text-[#1E2841] dark:text-slate-50">{layer.title}</h3>
+                        <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-300">{layer.description}</p>
+                    </article>
+                ))}
+            </div>
+            <div className="mt-8 overflow-x-auto rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+                <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+                    <thead>
+                        <tr className="border-b border-slate-200 dark:border-slate-800">
+                            <th scope="col" className="px-5 py-3 font-mono text-[10px] font-medium tracking-[0.18em] text-[#267A47] dark:text-[#3DB268]">ACTOR</th>
+                            <th scope="col" className="px-5 py-3 font-mono text-[10px] font-medium tracking-[0.18em] text-[#267A47] dark:text-[#3DB268]">CORE ROLE</th>
+                            <th scope="col" className="px-5 py-3 font-mono text-[10px] font-medium tracking-[0.18em] text-[#267A47] dark:text-[#3DB268]">VALUE CREATED</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {partnerRows.map((row) => (
+                            <tr key={row.actor} className="border-b border-slate-200 last:border-b-0 dark:border-slate-800">
+                                <th scope="row" className="px-5 py-3.5 font-semibold text-[#1E2841] dark:text-slate-50">{row.actor}</th>
+                                <td className="px-5 py-3.5 leading-6 text-slate-500 dark:text-slate-300">{row.role}</td>
+                                <td className="px-5 py-3.5 leading-6 text-slate-500 dark:text-slate-300">{row.value}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            <p className="mt-4 text-xs leading-5 text-slate-500 dark:text-slate-400">ASP: Agricultural Service Provider. ALA: Agro-Link Agent. CAMS: as named in the BEDEBO project documents.</p>
             <div className="mt-10 flex w-full items-center justify-center rounded-2xl bg-[#27965a] px-5 py-4 text-center text-sm font-semibold leading-5 text-white sm:px-8 sm:py-5 sm:text-base">Coordinating the journey from production to market</div>
         </section>
     );
@@ -524,7 +402,6 @@ export function ColdChainSection() {
 }
 
 export function QualityTraceabilitySection() {
-    const item = tabItems[2];
     return (
         <section aria-labelledby="quality-traceability-title" className="bedebo-site-container pb-20">
             <div className="max-w-4xl">
@@ -534,8 +411,8 @@ export function QualityTraceabilitySection() {
                     <span className="text-[#3DB268]">source.</span> Know the journey.
                 </h2>
                 <div className="mt-6 max-w-2xl border-l-4 border-[#3DB268] pl-5">
-                    <h3 className="text-lg font-semibold text-[#1E2841] dark:text-slate-50">{item.title}</h3>
-                    <p className="mt-1 text-base leading-relaxed text-slate-500 dark:text-slate-300">{item.description}</p>
+                    <h3 className="text-lg font-semibold text-[#1E2841] dark:text-slate-50">The trust layer, farm to table</h3>
+                    <p className="mt-1 text-base leading-relaxed text-slate-500 dark:text-slate-300">Customers can trust what they eat and verify where it came from.</p>
                 </div>
             </div>
             <div className="mt-10">

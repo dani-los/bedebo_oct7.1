@@ -5,7 +5,7 @@ import { companiesLogo } from "@/data/companiesLogo";
 import { featuresData } from "@/data/featuresData";
 import OurImpact from "@/sections/OurImpact";
 import GetInvolved from "@/sections/GetInvolved";
-import CoreValues, { ColdChainSection, CoreValuesIntegration, QualityTraceabilitySection } from "@/sections/CoreValues";
+import CoreValues, { BedeboPartnersSection, ColdChainSection, QualityTraceabilitySection } from "@/sections/CoreValues";
 import OurStory from "@/sections/OurStory";
 import PremiumBuyers from "@/sections/PremiumBuyers";
 import ValueChainTracker from "@/sections/ValueChainTracker";
@@ -325,7 +325,7 @@ export default function Page() {
 
             <QualityTraceabilitySection />
 
-            <CoreValuesIntegration />
+            <BedeboPartnersSection />
 
             <OurStory />
 
