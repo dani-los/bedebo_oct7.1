@@ -25,6 +25,16 @@ const valueFrameworkSteps = [
     { number: "08", title: "Deliver", description: "Reliable supply to the right customer" },
 ];
 
+const digitalMarketplaceSteps = [
+    { number: "01", title: "Market demand" },
+    { number: "02", title: "Production coordination" },
+    { number: "03", title: "Aggregation" },
+    { number: "04", title: "Quality matching" },
+    { number: "05", title: "Logistics" },
+    { number: "06", title: "Buyer" },
+    { number: "07", title: "Payment & data" },
+];
+
 const farmerBenefits = [
     { title: "Production planning", description: "Grow what the market has asked for, in the volumes and weeks it needs." },
     { title: "Technical and service support", description: "Access to mechanization, aggregation and cold-chain services through partners." },
@@ -262,6 +272,26 @@ export default function Page() {
             </div>
 
             <PremiumBuyers />
+            </section>
+
+            <section aria-labelledby="digital-marketplace-heading" className="pt-4 pb-16 md:pb-24">
+                <div className="bedebo-site-container">
+                    <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">DIGITAL MARKETPLACE</p>
+                    <h2 id="digital-marketplace-heading" className="mt-4 max-w-3xl text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">
+                        Technology that matches the <span className="text-[#3DB268]">right product to the right buyer.</span>
+                    </h2>
+                    <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-500 dark:text-slate-300">
+                        The platform joins physical supply with digital coordination. It brings together supply visibility, quality matching, orders, logistics and payment tracking in one place.
+                    </p>
+                    <ol className="mt-10 grid grid-cols-1 overflow-hidden rounded-xl border border-[#1E2841]/10 bg-white divide-y divide-[#1E2841]/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 xl:grid-cols-7 xl:divide-x dark:border-white/10 dark:bg-white/5 dark:divide-white/10">
+                        {digitalMarketplaceSteps.map((step) => (
+                            <li key={step.number} className="p-5">
+                                <span className="font-mono text-[11px] tracking-widest text-[#267A47] dark:text-[#3DB268]">{step.number}</span>
+                                <h3 className="mt-3 text-sm font-bold leading-snug text-[#1E2841] dark:text-slate-50">{step.title}</h3>
+                            </li>
+                        ))}
+                    </ol>
+                </div>
             </section>
 
             <CoreValues />
