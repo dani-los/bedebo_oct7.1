@@ -13,6 +13,17 @@ import { ArrowRight } from "lucide-react";
 import Marquee from "react-fast-marquee";
 import { useEffect, useRef } from "react";
 
+const valueFrameworkSteps = [
+    { number: "01", title: "Farm", description: "Quality production and organized farmers" },
+    { number: "02", title: "Harvest", description: "Standardized harvesting and handling" },
+    { number: "03", title: "Aggregate", description: "Crate-based collection and quality control" },
+    { number: "04", title: "Cool", description: "Pre-cooling and cold storage" },
+    { number: "05", title: "Move", description: "Coordinated and traceable logistics" },
+    { number: "06", title: "Grade", description: "Quality classification and market matching" },
+    { number: "07", title: "Connect", description: "BEDEBO digital market linkage" },
+    { number: "08", title: "Deliver", description: "Reliable supply to the right customer" },
+];
+
 export default function Page() {
     const { theme } = useThemeContext();
     const heroRef = useRef(null);
@@ -87,6 +98,28 @@ export default function Page() {
                             </div>
                         </Marquee>
                     </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="value-framework-heading" className="value-framework">
+                <div className="bedebo-site-container">
+                    <SectionTitle
+                        label="THE BEDEBO FARM-TO-MARKET VALUE FRAMEWORK"
+                        title="We coordinate the whole journey,"
+                        highlight="not just the sale."
+                        description="BEDEBO creates value by protecting quality, cutting post-harvest loss and linking each lot to the right customer. Eight steps carry produce from the farm to the buyer's door."
+                        alignment="left"
+                        headingId="value-framework-heading"
+                    />
+                    <ol className="value-framework-grid">
+                        {valueFrameworkSteps.map((step) => (
+                            <li key={step.number} className="value-framework-step">
+                                <span className="value-framework-number">{step.number}</span>
+                                <h3>{step.title}</h3>
+                                <p>{step.description}</p>
+                            </li>
+                        ))}
+                    </ol>
                 </div>
             </section>
 
