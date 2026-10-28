@@ -278,9 +278,9 @@ export default function Page() {
                 <div className="bedebo-site-container">
                     <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">DIGITAL MARKETPLACE</p>
                     <h2 id="digital-marketplace-heading" className="mt-4 max-w-3xl text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">
-                        Technology that matches the <span className="text-[#3DB268]">right product to the right buyer.</span>
+                        Technology that matches the<br /><span className="text-[#3DB268]">right product to the right buyer.</span>
                     </h2>
-                    <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-500 dark:text-slate-300">
+                    <p className="mt-5 max-w-4xl text-base leading-relaxed text-slate-500 dark:text-slate-300">
                         The platform joins physical supply with digital coordination. It brings together supply visibility, quality matching, orders, logistics and payment tracking in one place.
                     </p>
                     <ol className="mt-10 grid grid-cols-1 overflow-hidden rounded-xl border border-[#1E2841]/10 bg-white divide-y divide-[#1E2841]/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 xl:grid-cols-7 xl:divide-x dark:border-white/10 dark:bg-white/5 dark:divide-white/10">
