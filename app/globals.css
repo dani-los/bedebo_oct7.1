@@ -520,6 +520,7 @@ button {
     height: 88px;
     padding-block: 0;
     background-color: transparent;
+    border-radius: 12px;
     transition: height 220ms ease, background-color 300ms ease, color 300ms ease, border-color 300ms ease;
 }
 
