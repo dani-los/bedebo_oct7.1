@@ -55,13 +55,13 @@ const yieldComparison = [
 ];
 
 const trustedByLogos = [
-    { src: "/images/partners/feed-the-future.png", alt: "Feed the Future", width: 82, height: 60 },
-    { src: "/images/partners/challenge-fund-for-youth-employment.png", alt: "Challenge Fund for Youth Employment", width: 48, height: 44 },
-    { src: "/images/partners/xsyn-corporation.png", alt: "XSyn Corporation", width: 75, height: 40 },
-    { src: "/images/partners/sukoon.png", alt: "Sukoon", width: 59, height: 37 },
-    { src: "/images/partners/cams-engineering.png", alt: "CAMS Engineering", width: 68, height: 44 },
-    { src: "/images/partners/usaid.png", alt: "USAID", width: 75, height: 28 },
-    { src: "/images/partners/soybean-innovation-lab.png", alt: "Soybean Innovation Lab", width: 83, height: 44 },
+    { src: "https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2Fb44b4d5c0ffe438f9bcaa048b079fdaf?format=webp&width=800&height=1200", alt: "USAID From the American People", width: 260, height: 85 },
+    { src: "https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2Fe372c09b6e0e4646abb88f1b162789a6?format=webp&width=800&height=1200", alt: "Soybean Innovation Lab", width: 260, height: 68 },
+    { src: "https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2F595c922e8f824785b98622706ffbb10d?format=webp&width=800&height=1200", alt: "Feed the Future", width: 260, height: 100 },
+    { src: "https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2Fd290255aecc3414384008ef6f72f0aeb?format=webp&width=800&height=1200", alt: "Challenge Fund for Youth Employment", width: 260, height: 280 },
+    { src: "https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2F95250f63b1d44599935d59286cebcd05?format=webp&width=800&height=1200", alt: "XSyn Corporation", width: 260, height: 130 },
+    { src: "https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2F14da894a0bb0439db5d836e05a7ed1c8?format=webp&width=800&height=1200", alt: "Sukoon", width: 200, height: 100 },
+    { src: "https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2F500a868cda7440f1a1c414c69d4d2775?format=webp&width=800&height=1200", alt: "CAMS Engineering", width: 736, height: 386 },
 ];
 
 export default function Page() {
