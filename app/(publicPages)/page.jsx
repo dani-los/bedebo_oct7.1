@@ -192,9 +192,6 @@ export default function Page() {
                         <blockquote className="mt-8 border-l-4 border-[#3DB268] pl-5 text-lg font-semibold text-[#1E2841] dark:text-slate-50">
                             Grow Quality. Access Better Markets. Earn More from Every Harvest.
                         </blockquote>
-                        <p className="mt-8 rounded-lg border border-[#3DB268]/30 bg-[#3DB268]/10 px-4 py-3 text-sm text-[#1E2841] dark:text-slate-100">
-                            Better quality-linked returns are an opportunity, not a guarantee of premium prices for every farmer.
-                        </p>
                         <button type="button" className="mt-6 rounded-full bg-[#267A47] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#1E663A]">
                             Register as a grower
                         </button>
