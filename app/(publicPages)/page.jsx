@@ -138,15 +138,16 @@ export default function Page() {
                         Trusting by leading brands, including —
                     </h3>
                     <div className="bedebo-logo-marquee">
-                        <Marquee className="mx-auto max-w-5xl pb-12" gradient={true} speed={25} gradientColor={theme === "dark" ? "#0A120E" : "#fff"}>
+                        <Marquee className="mx-auto max-w-5xl pb-12" gradient={true} speed={25} autoFill gradientColor={theme === "dark" ? "#0A120E" : "#fff"}>
                             {trustedByLogos.map((logo) => (
                                 <Image
                                     key={logo.src}
-                                    className="bedebo-logo mx-12 h-10 w-auto max-w-none"
+                                    className="bedebo-logo mx-12 h-12 w-auto max-w-none"
                                     src={logo.src}
                                     alt={logo.alt}
                                     width={logo.width}
                                     height={logo.height}
+                                    priority
                                 />
                             ))}
                         </Marquee>
