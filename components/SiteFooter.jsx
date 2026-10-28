@@ -33,7 +33,7 @@ export default function SiteFooter() {
         <footer aria-label="Site footer" className="bg-[#030d07] text-white">
             <div className="bedebo-site-container grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-10">
                 <div className="max-w-sm">
-                    <Image src="/assets/bedebo-ethiopia.webp" alt="Bedebo Ethiopia" width={140} height={140} className="h-16 w-auto" />
+                    <Image src="/assets/bedebo-ethiopia.webp" alt="Bedebo Ethiopia" width={140} height={140} className="mx-auto block h-16 w-auto" />
                     <p className="mt-6 text-xl font-bold leading-snug text-white md:text-2xl">
                         Freshness Protected. Quality Assured. Markets Connected. Value Shared.
                     </p>
