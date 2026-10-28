@@ -520,10 +520,23 @@ export function ColdChainSection() {
 }
 
 export function QualityTraceabilitySection() {
+    const item = tabItems[2];
     return (
-        <section className="bedebo-site-container pb-20">
-            <IntroCard item={tabItems[2]} />
-            <QualityTrace />
+        <section aria-labelledby="quality-traceability-title" className="bedebo-site-container pb-20">
+            <div className="max-w-4xl">
+                <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">QUALITY & TRACEABILITY</p>
+                <h2 id="quality-traceability-title" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] sm:text-4xl dark:text-slate-50">
+                    Know the product. Know the<br />
+                    source. Know the journey.
+                </h2>
+                <div className="mt-6 max-w-2xl border-l-4 border-[#3DB268] pl-5">
+                    <h3 className="text-lg font-semibold text-[#1E2841] dark:text-slate-50">{item.title}</h3>
+                    <p className="mt-1 text-base leading-relaxed text-slate-500 dark:text-slate-300">{item.description}</p>
+                </div>
+            </div>
+            <div className="mt-10">
+                <QualityTrace />
+            </div>
         </section>
     );
 }
