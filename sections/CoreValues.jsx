@@ -413,7 +413,7 @@ export function ColdChainSection() {
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-slate-500 dark:text-slate-300">Fresh horticultural products lose value quickly when harvesting, handling, transport, storage and market access are poorly coordinated. BEDEBO treats loss reduction as value creation, not merely as an operational issue.</p>
             </div>
-            <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch">
+            <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-stretch">
                 <ul className="divide-y divide-slate-200 border-y border-slate-200 dark:divide-slate-800 dark:border-slate-800">
                     {coldChainSteps.map((step) => (
                         <li key={step.title} className="grid gap-2 py-4 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-6">
