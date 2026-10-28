@@ -2,16 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
-import { Check, ClipboardCheck, House, ShieldCheck, Sun, Truck, Snowflake, Target, FileText, Share2, Smartphone } from "lucide-react";
+import { Check, ShieldCheck, Target, FileText, Share2, Smartphone } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
 import Traceability from "@/sections/Traceability";
 
-const tabIcons = [Share2, Smartphone, Snowflake, ShieldCheck];
+const tabIcons = [Share2, Smartphone, ShieldCheck];
 
 const tabItems = [
     { label: "Value chain integration", role: "The partnership layer", title: "The partnership layer", description: "All actors work as partners, not as disconnected middlemen.", points: ["Farm-to-market linkages", "Coordinated production", "Shared services", "Value addition", "Shared benefit"], icon: Share2, tone: "green" },
     { label: "Digital integration", role: "The information layer", title: "The information layer", description: "BEDEBO supports farmer coordination, aggregation, logistics, market linkage, payment tracking and end-to-end visibility.", points: ["Connected platforms", "Real-time visibility", "Data-driven decisions", "Digital transactions", "Inclusion for all farmers"], icon: Smartphone, tone: "green" },
-    { label: "Cold chain integration", role: "The freshness layer", title: "Freshness & Post-Harvest Loss Reduction", description: "Fresh horticultural products lose value quickly when harvesting, handling, transport, storage and market access are poorly coordinated. BEDEBO treats loss reduction as value creation, not merely as an operational issue.", points: ["Crate-based handling", "Solar pre-cooling", "Cold rooms", "Coordinated logistics", "Digital scheduling"], icon: Snowflake, tone: "green" },
     { label: "Quality and traceability", role: "The trust layer", title: "The trust layer, farm to table", description: "Customers can trust what they eat and verify where it came from.", points: ["Quality standards", "Batch traceability", "Rapid response", "Consumer confidence", "Export readiness"], icon: ShieldCheck, tone: "green" },
 ];
 
@@ -25,15 +24,6 @@ const values = [
     { title: "Digital Market Connection", quote: "Connecting the right product to the right buyer at the right time.", detail: "BEDEBO's defining capability is the integration of physical horticultural supply with digital market coordination.", color: "#27965a" },
     { title: "Fair & Transparent Value", quote: "Quality determines value—and value should be visible across the chain.", detail: "This allows BEDEBO to pursue two objectives simultaneously: premium value for premium quality and appropriate, affordable market channels for other commercially acceptable grades.", color: "#27965a" },
     { title: "Reliable & Shared Growth", quote: "A stronger value chain must create value for every critical actor.", detail: "The existing model explicitly combines CAMS-led physical service infrastructure and standards with BEDEBO-led digital coordination and market linkage. When farmers produce better, service providers operate efficiently, logistics protect quality, BEDEBO coordinates transparently and buyers receive reliable products, the entire horticulture ecosystem grows together.", color: "#27965a" },
-];
-
-const crops = [
-    { name: "Tomato (mature green)", min: "12.5 to 15°C", humidity: "90 to 95%", note: "Chilling sensitive. Colder storage causes flavor loss and pitting." },
-    { name: "Onion (dry, cured)", min: "0°C", humidity: "60 to 80%", note: "Keep dry and well ventilated to limit sprouting and rot." },
-    { name: "Cabbage", min: "0°C", humidity: "95 to 100%", note: "Cold and humid storage prevents wilting." },
-    { name: "Papaya*", min: "10 to 15°C", humidity: "85 to 90%", note: "Chilling sensitive. Handle gently to avoid bruising." },
-    { name: "Pepper*", min: "7 to 12°C", humidity: "90 to 95%", note: "Chilling sensitive. Best range depends on pepper type." },
-    { name: "Green bean", min: "4 to 7°C", humidity: "about 95%", note: "Short storage life, about 7 to 10 days." },
 ];
 
 const platforms = [
@@ -60,11 +50,12 @@ const protectionChecks = [
     { title: "Arrival quality check", step: 1 },
 ];
 
-const freshnessSteps = [
-    { title: "Solar pre-cooling", detail: "Field heat is removed soon after harvest, powered by renewable energy.", icon: Sun },
-    { title: "Cold rooms and storage", detail: "Crates are held at the right temperature for each crop.", icon: House },
-    { title: "Coordinated logistics", detail: "Transport is timed and traceable from stage to stage.", icon: Truck },
-    { title: "Digital scheduling", detail: "Loss is reported across stages, so problems are found and fixed.", icon: ClipboardCheck },
+const coldChainSteps = [
+    { title: "Crate-based handling", detail: "Standard crates cut physical damage from field to buyer." },
+    { title: "Solar pre-cooling", detail: "Removes field heat soon after harvest to hold freshness." },
+    { title: "Cold rooms and storage", detail: "Temperature-controlled holding at aggregation points and warehouses." },
+    { title: "Coordinated transport", detail: "Pick-up and delivery slots planned against harvest and order timing." },
+    { title: "Digital scheduling", detail: "Agro-Link Agents and the platform keep every actor on the same plan." },
 ];
 
 function isoSceneSVG() {
@@ -177,58 +168,6 @@ function DigitalIntegration() {
                     {platforms[selected].steps.map((step, index) => <li key={step} className="flex gap-3"><span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#27965a]/10 text-xs font-semibold text-[#267A47] dark:bg-[#27965a]/20 dark:text-[#8de0ae]">{index + 1}</span><span>{step}</span></li>)}
                 </ol>
             </div>
-        </div>
-    );
-}
-
-function FreshnessTab() {
-    return (
-        <div className="space-y-6 text-slate-800 dark:text-slate-100">
-            <div className="grid gap-4 sm:grid-cols-2">
-                <article className="rounded-2xl bg-gradient-to-br from-[#27965a] to-[#208454] p-5 text-white sm:p-6">
-                    <p className="text-xs font-medium text-white/85">Farm-to-consumer losses</p>
-                    <p className="mt-1 text-3xl font-semibold tracking-tight sm:text-4xl">46% <span className="text-white/60">→</span> 23%</p>
-                    <p className="mt-1 text-xs text-white/85">Project target: losses cut by half</p>
-                </article>
-                <article className="rounded-2xl bg-gradient-to-br from-[#27965a] to-[#208454] p-5 text-white sm:p-6">
-                    <p className="text-xs font-medium text-white/85">Reaching consumers, per 100 kg harvested</p>
-                    <p className="mt-1 text-3xl font-semibold tracking-tight sm:text-4xl">54 kg <span className="text-white/60">→</span> 77 kg</p>
-                    <p className="mt-1 text-xs text-white/85">Project target based on an illustrative case</p>
-                </article>
-            </div>
-
-            <section aria-labelledby="freshness-steps-title">
-                <h3 id="freshness-steps-title" className="text-lg font-semibold">How the cold chain protects freshness</h3>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Cooling starts soon after harvest and never breaks until delivery.</p>
-                <ol className="relative mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
-                    {freshnessSteps.map((step, index) => {
-                        const Icon = step.icon;
-                        return <li key={step.title} className="relative min-h-36 rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-                            {index < freshnessSteps.length - 1 && <span aria-hidden="true" className="absolute -right-3 top-7 z-10 hidden h-px w-3 bg-[#27965a]/60 xl:block" />}
-                            <span aria-hidden="true" className="absolute right-3 top-1 text-3xl font-semibold text-[#27965a]/[0.08]">0{index + 1}</span>
-                            <span className="mb-3 grid size-9 place-items-center rounded-xl bg-[#27965a]/10 text-[#27965a] dark:bg-[#27965a]/20 dark:text-[#8de0ae]"><Icon size={18} /></span>
-                            <h4 className="text-sm font-semibold">{step.title}</h4>
-                            <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">{step.detail}</p>
-                        </li>;
-                    })}
-                </ol>
-            </section>
-
-            <section aria-labelledby="crop-storage-title">
-                <h3 id="crop-storage-title" className="text-lg font-semibold">Recommended storage by crop</h3>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Each crop has its own best temperature and humidity.</p>
-                <ul className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-                    {crops.map((crop) => <li key={crop.name} className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-                        <h4 className="text-sm font-semibold">{crop.name}</h4>
-                        <dl className="mt-3 grid grid-cols-2 gap-3 text-xs">
-                            <div><dt className="text-slate-500 dark:text-slate-400">Temperature</dt><dd className="mt-0.5 font-semibold text-[#267A47] dark:text-[#75D59A]">{crop.min}</dd></div>
-                            <div><dt className="text-slate-500 dark:text-slate-400">Humidity</dt><dd className="mt-0.5 font-semibold text-[#267A47] dark:text-[#75D59A]">{crop.humidity}</dd></div>
-                        </dl>
-                        <p className="mt-3 border-t border-slate-100 pt-2 text-xs leading-5 text-slate-500 dark:border-slate-800 dark:text-slate-400">{crop.note}</p>
-                    </li>)}
-                </ul>
-                <p className="mt-3 text-[11px] leading-5 text-slate-500 dark:text-slate-400">Ranges are general guidance from the University of California, Davis Postharvest Technology Center and extension publications. *Varies by cultivar and ripeness; confirm with BEDEBO’s agronomists before publishing.</p>
-            </section>
         </div>
     );
 }
@@ -549,9 +488,32 @@ export function CoreValuesIntegration() {
 
 export function ColdChainSection() {
     return (
-        <section className="bedebo-site-container pb-20">
-            <IntroCard item={tabItems[2]} />
-            <FreshnessTab />
+        <section aria-labelledby="cold-chain-title" className="bedebo-site-container pb-20">
+            <div className="max-w-3xl">
+                <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">COLD CHAIN & LOGISTICS</p>
+                <h2 id="cold-chain-title" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] sm:text-4xl dark:text-slate-50">
+                    <span className="block">Freshness protected</span>
+                    <span className="block">from farm gate</span>
+                    <span className="block">to delivery.</span>
+                </h2>
+                <p className="mt-5 text-base leading-relaxed text-slate-500 dark:text-slate-300">Fresh horticultural products lose value quickly when harvesting, handling, transport, storage and market access are poorly coordinated. BEDEBO treats loss reduction as value creation, not merely as an operational issue.</p>
+            </div>
+            <ul className="mt-8 divide-y divide-slate-200 border-y border-slate-200 dark:divide-slate-800 dark:border-slate-800">
+                {coldChainSteps.map((step) => (
+                    <li key={step.title} className="grid gap-2 py-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:gap-6">
+                        <h3 className="text-sm font-semibold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
+                        <p className="text-sm leading-6 text-slate-500 dark:text-slate-300">{step.detail}</p>
+                    </li>
+                ))}
+            </ul>
+            <figure className="mt-8">
+                <div className="flex aspect-[16/7] items-end rounded-2xl border border-dashed border-[#3DB268]/60 bg-[repeating-linear-gradient(135deg,rgba(61,178,104,0.08)_0_12px,transparent_12px_24px)] p-5 dark:bg-[repeating-linear-gradient(135deg,rgba(61,178,104,0.12)_0_12px,transparent_12px_24px)]">
+                    <figcaption className="max-w-md rounded-xl bg-white p-4 shadow-sm dark:bg-slate-900">
+                        <p className="font-mono text-[10px] tracking-[0.18em] text-[#267A47] dark:text-[#3DB268]">PHOTO SLOT - COLD CHAIN</p>
+                        <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Pre-cooled crates being loaded into a temperature-controlled vehicle at a BEDEBO cold room.</p>
+                    </figcaption>
+                </div>
+            </figure>
         </section>
     );
 }
@@ -559,7 +521,7 @@ export function ColdChainSection() {
 export function QualityTraceabilitySection() {
     return (
         <section className="bedebo-site-container pb-20">
-            <IntroCard item={tabItems[3]} />
+            <IntroCard item={tabItems[2]} />
             <QualityTrace />
         </section>
     );
