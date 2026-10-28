@@ -7,6 +7,7 @@ import OurImpact from "@/sections/OurImpact";
 import GetInvolved from "@/sections/GetInvolved";
 import CoreValues from "@/sections/CoreValues";
 import OurStory from "@/sections/OurStory";
+import PremiumBuyers from "@/sections/PremiumBuyers";
 import OurBlogs from "@/sections/OurBlogs";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
@@ -299,6 +300,8 @@ export default function Page() {
                 </div>
             </div>
             </section>
+
+            <PremiumBuyers />
 
             <section id="solutions" className="scroll-mt-24">
                 <div className="bedebo-site-container">
