@@ -157,10 +157,6 @@ export default function Footer() {
                     </form>
                 </div>
 
-                <div className="mt-20 border-t border-white/15 pt-5 text-center text-xs text-white/85">
-                    Copyright © {new Date().getFullYear()}, Powered by{" "}
-                    <a href="#contact" className="text-[#3DB268] underline-offset-4 transition hover:underline">Bedebo Ethiopia</a>
-                </div>
             </div>
         </footer>
     );

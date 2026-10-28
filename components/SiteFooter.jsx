@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const footerColumns = [
     {
         title: "PRODUCE",
@@ -30,9 +32,12 @@ export default function SiteFooter() {
     return (
         <footer aria-label="Site footer" className="bg-[#030d07] text-white">
             <div className="bedebo-site-container grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-10">
-                <p className="max-w-sm text-xl font-bold leading-snug text-white md:text-2xl">
-                    Freshness Protected. Quality Assured. Markets Connected. Value Shared.
-                </p>
+                <div className="max-w-sm">
+                    <Image src="/assets/bedebo-ethiopia.webp" alt="Bedebo Ethiopia" width={140} height={140} className="h-16 w-auto" />
+                    <p className="mt-6 text-xl font-bold leading-snug text-white md:text-2xl">
+                        Freshness Protected. Quality Assured. Markets Connected. Value Shared.
+                    </p>
+                </div>
 
                 {footerColumns.map((column) => (
                     <nav key={column.title} aria-label={column.title}>
@@ -48,6 +53,10 @@ export default function SiteFooter() {
                         </ul>
                     </nav>
                 ))}
+            </div>
+            <div className="border-t border-white/15 py-5 text-center text-xs text-white/85">
+                Copyright © {new Date().getFullYear()}, Powered by{" "}
+                <a href="#contact" className="text-[#3DB268] underline-offset-4 transition hover:underline">Bedebo Ethiopia</a>
             </div>
         </footer>
     );
