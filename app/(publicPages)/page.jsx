@@ -216,7 +216,7 @@ export default function Page() {
                 <div className="bedebo-site-container grid grid-cols-1 items-start gap-14 md:grid-cols-2 lg:gap-20">
                     <div className="md:order-last">
                         <h2 className="text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">
-                            Vendor side — <span className="text-[#3DB268]">Source better, sell with confidence</span>
+                            Vendor side — <span className="text-[#3DB268]">Better Source, sell with confidence</span>
                         </h2>
                         <p className="mt-5 text-base leading-relaxed text-slate-500 dark:text-slate-300">
                             BEDEBO&apos;s first core value is to build quality into the entire horticultural journey rather than inspect quality only when products reach the market, It can connect production planning, technical support, grading, transparent transactions and suitable buyers
