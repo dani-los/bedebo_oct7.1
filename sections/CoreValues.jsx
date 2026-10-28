@@ -363,7 +363,7 @@ export function BedeboPartnersSection() {
                 </table>
             </div>
             <p className="mt-4 text-xs leading-5 text-slate-500 dark:text-slate-400">ASP: Agricultural Service Provider. ALA: Agro-Link Agent. CAMS: as named in the BEDEBO project documents.</p>
-            <div className="mt-10 flex w-full items-center justify-center rounded-2xl bg-[#27965a] px-5 py-4 text-center text-sm font-semibold leading-5 text-white sm:px-8 sm:py-5 sm:text-base">Coordinating the journey from production to market</div>
+            <div className="mt-10 flex w-full items-center justify-center rounded-2xl bg-[#1A3327] px-5 py-4 text-center text-sm font-semibold leading-5 text-white sm:px-8 sm:py-5 sm:text-base">Coordinating the journey from production to market</div>
         </section>
     );
 }
