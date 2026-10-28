@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 const chainStages = [
-    { name: "Production", title: "Planned growing", description: "Crops are planted to the volumes and weeks the market has requested.", records: ["Grower and plot", "Planting date", "Variety"] },
+    { name: "Production", title: "Planned growing", description: "Produce is planted to the volumes and weeks the market has requested.", records: ["Farmer and plot", "Planting date", "Produce Variety"] },
     { name: "Harvest", title: "Harvest timing", description: "Produce is picked at the stage that suits its shelf life and grade.", records: ["Harvest date", "Picker crew", "Field lot code"] },
     { name: "Aggregation", title: "Crate collection", description: "Produce from several growers is collected and checked at one point.", records: ["Crate count", "Weight per lot", "Intake check"] },
     { name: "Pre-cooling", title: "Pre-cooling", description: "Field heat removed soon after harvest.", records: ["Pre-cooling start and end", "Core temperature", "Facility"] },
