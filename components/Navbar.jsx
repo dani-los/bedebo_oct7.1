@@ -83,10 +83,10 @@ export default function Navbar() {
             <a href="/">
                 <Image className="bedebo-navbar-logo h-16 w-auto shrink-0 md:h-17" src="/assets/bedebo-ethiopia.webp" alt="Bedebo Ethiopia" width={140} height={140} priority fetchPriority="high" />
             </a>
-            <div className="hidden flex-1 items-center justify-center gap-5 xl:flex xl:gap-7">
+            <div className="hidden flex-none items-center justify-center gap-5 xl:flex xl:gap-7">
                 {navLinks.map((link) => {
                     const active = isActiveLink(link);
-                    return <Link key={link.name} href={resolveHref(link.href)} aria-current={active ? "location" : undefined} className={`bedebo-nav-link rounded-sm transition-colors hover:text-[#3DB268] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3DB268] ${active ? "font-semibold text-[#3DB268]" : ""}`}>{link.name}</Link>;
+                    return <Link key={link.name} href={resolveHref(link.href)} aria-current={active ? "location" : undefined} className={`bedebo-nav-link rounded-sm transition-colors hover:text-[#3DB268] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3DB268] ${active ? "font-semibold text-[#3DB268]" : ""} text-sm`}>{link.name}</Link>;
                 })}
             </div>
             <div className="flex items-center gap-4">
