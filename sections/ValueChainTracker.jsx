@@ -8,7 +8,7 @@ const chainStages = [
     { name: "Aggregation", title: "Crate collection", description: "Produce from several growers is collected and checked at one point.", records: ["Crate count", "Weight per lot", "Intake check"] },
     { name: "Pre-cooling", title: "Pre-cooling", description: "Field heat removed soon after harvest.", records: ["Pre-cooling start and end", "Core temperature", "Facility"] },
     { name: "Transport", title: "Cold transport", description: "Produce moves in temperature-controlled vehicles on a coordinated schedule.", records: ["Vehicle and driver", "Departure time", "Temperature log"] },
-    { name: "Grading", title: "Grading", description: "Produce is sorted against a written specification.", records: ["Grade assigned", "Rejects", "Grader"] },
+    { name: "Grading", title: "Grading", description: "Classification against the specification.", records: ["Grade assigned", "Rejects", "Market standard"] },
     { name: "Cold storage", title: "Cold storage", description: "Graded lots are held at the right temperature until they are ordered.", records: ["Storage temperature", "Entry and exit time", "Lot location"] },
     { name: "Market delivery", title: "Market delivery", description: "Lots are delivered to the buyer against the confirmed order.", records: ["Delivery time", "Order reference", "Receiving check"] },
     { name: "Customer", title: "Customer receipt", description: "The buyer confirms receipt and quality.", records: ["Buyer confirmation", "Quality feedback", "Payment status"] },
