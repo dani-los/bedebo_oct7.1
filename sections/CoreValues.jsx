@@ -194,19 +194,23 @@ function QualityTrace() {
         const timer = window.setTimeout(() => setTraceStep((current) => current + 1), 2000);
         return () => window.clearTimeout(timer);
     }, [traceRunning, traceStep]);
+    const restartTrace = () => {
+        setTraceStep(-1);
+        setTraceRunning(true);
+    };
     const completedChecks = protectionChecks.filter(({ step }) => traceStep >= step).length;
 
     return (
         <article className="w-full overflow-hidden rounded-2xl border border-slate-200 border-t-4 border-t-[#3DB268] bg-white p-5 shadow-sm dark:border-slate-800 dark:border-t-[#3DB268] dark:bg-slate-900 sm:p-7">
             <div className="grid gap-7 lg:grid-cols-[270px_minmax(0,1fr)]">
                 <div>
-                    <div className="relative flex flex-col items-center rounded-2xl border-[1.5px] border-dashed border-[#3DB268]/50 bg-[#3DB268]/[0.04] p-4 dark:border-[#3DB268]/40 dark:bg-[#27965a]/10">
+                    <button type="button" onClick={restartTrace} className="relative flex w-full cursor-pointer flex-col items-center rounded-2xl border-[1.5px] border-dashed border-[#3DB268]/50 bg-[#3DB268]/[0.04] p-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3DB268] dark:border-[#3DB268]/40 dark:bg-[#27965a]/10">
                         <div className="relative overflow-hidden rounded-lg p-2">
                             <CrateQr />
                             <span aria-hidden="true" className={`pointer-events-none absolute inset-x-2 top-0 h-0.5 bg-[#3DB268] shadow-[0_0_12px_3px_rgba(61,178,104,0.45)] ${traceRunning ? "qr-scan-line" : "opacity-0"}`} />
                         </div>
-                        <p aria-live="polite" className="mt-3 text-center text-sm font-medium text-slate-600 dark:text-slate-300">{traceRunning ? "Auto-scanning crate ID BD-ETH-2026-004218" : "Crate ID BD-ETH-2026-004218 scanned"}</p>
-                    </div>
+                        <span aria-live="polite" className="mt-3 text-center text-sm font-medium text-slate-600 dark:text-slate-300">{traceRunning ? "Auto-scanning crate ID BD-ETH-2026-004218" : "Crate ID BD-ETH-2026-004218 scanned"}</span>
+                    </button>
                     <div className="mt-7">
                         <div className="flex flex-wrap items-center justify-between gap-3">
                             <h3 className="text-lg font-semibold">Quality checks</h3>
@@ -526,8 +530,8 @@ export function QualityTraceabilitySection() {
             <div className="max-w-4xl">
                 <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">QUALITY & TRACEABILITY</p>
                 <h2 id="quality-traceability-title" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] sm:text-4xl dark:text-slate-50">
-                    Know the product. Know the<br />
-                    source. Know the journey.
+                    Know the product. <span className="text-[#3DB268]">Know the</span><br />
+                    <span className="text-[#3DB268]">source.</span> Know the journey.
                 </h2>
                 <div className="mt-6 max-w-2xl border-l-4 border-[#3DB268] pl-5">
                     <h3 className="text-lg font-semibold text-[#1E2841] dark:text-slate-50">{item.title}</h3>
