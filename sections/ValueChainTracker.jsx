@@ -1,7 +1,6 @@
 "use client"
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 
 const chainStages = [
     { name: "Production", title: "Planned growing", description: "Produce is planted to the volumes and weeks the market has requested.", records: ["Farmer and plot", "Planting date", "Produce Variety"] },
@@ -74,26 +73,6 @@ export default function ValueChainTracker() {
                     </div>
                 </div>
 
-                <figure className="mt-6 grid overflow-hidden rounded-2xl border border-[#1E2841]/10 bg-white shadow-sm md:grid-cols-2 dark:border-white/10 dark:bg-white/5">
-                    <div className="relative min-h-[260px] md:min-h-[360px]">
-                        <Image
-                            src="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2Fb4f8b23dc6eb4bb4965ba20b81f6a0c8?format=webp&width=800&height=1200"
-                            alt="BEDEBO Ethiopia mobile app showing a login screen and a dashboard with active orders"
-                            fill
-                            sizes="(min-width: 768px) 50vw, 100vw"
-                            className="object-cover"
-                        />
-                    </div>
-                    <figcaption className="flex flex-col justify-center p-8 md:p-12">
-                        <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">THE CONNECTION</p>
-                        <h3 className="mt-4 text-2xl font-bold leading-tight text-[#1E2841] md:text-3xl dark:text-slate-50">
-                            Behind better markets.
-                        </h3>
-                        <p className="mt-4 text-base leading-relaxed text-slate-500 dark:text-slate-300">
-                            BDP is the common digital coordination layer across Bedebo’s horticultural value chain and agricultural mechanization services, connecting people, produce movement and service needs.
-                        </p>
-                    </figcaption>
-                </figure>
             </div>
         </section>
     );
