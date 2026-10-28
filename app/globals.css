@@ -551,6 +551,7 @@ button {
 
 .bedebo-navbar.bedebo-navbar--hero-matched {
     background-color: var(--hero-background);
+    border-radius: 12px;
 }
 
 .dark .bedebo-navbar-logo {
