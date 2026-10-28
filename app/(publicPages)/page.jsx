@@ -214,7 +214,7 @@ export default function Page() {
 
             <div id="value-proposition-2" className="pb-16 md:pb-24">
                 <div className="bedebo-site-container grid grid-cols-1 items-start gap-14 md:grid-cols-2 lg:gap-20">
-                    <div>
+                    <div className="md:order-last">
                         <h2 className="text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">
                             Vendor side — <span className="text-[#3DB268]">Source better, sell with confidence</span>
                         </h2>
@@ -240,7 +240,7 @@ export default function Page() {
                         </button>
                     </div>
 
-                    <div>
+                    <div className="md:order-first">
                         <div className="relative aspect-[7/4] overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.16)]" style={{ borderRadius: "0 48px 0 48px" }}>
                             <Image
                                 src="https://cdn.builder.io/api/v1/image/assets%2F58a1aba6d1a74d7587bcdc0052ba9d95%2F5247a03fce49458999b38320a60a0908?format=webp&width=800&height=1200"
