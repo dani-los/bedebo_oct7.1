@@ -105,7 +105,7 @@ export default function Page() {
                 <div className="bedebo-site-container">
                     <SectionTitle
                         label="THE BEDEBO FARM-TO-MARKET VALUE FRAMEWORK"
-                        title="We coordinate the whole journey,"
+                        title={<>We coordinate the whole<br />journey,</>}
                         highlight="not just the sale."
                         description="BEDEBO creates value by protecting quality, cutting post-harvest loss and linking each lot to the right customer. Eight steps carry produce from the farm to the buyer's door."
                         alignment="left"
