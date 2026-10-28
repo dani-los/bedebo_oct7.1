@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ArrowUpRight, Leaf } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
 
 export default function OurStory({
@@ -29,15 +28,6 @@ export default function OurStory({
                     <div className={`absolute inset-0 z-10 overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.16)] ${chamferedImage ? "" : "rounded-[72px]"}`} style={chamferedImage ? { borderRadius: "0 48px 0 48px" } : undefined}>
                         <Image fill sizes="(max-width: 768px) 100vw, 600px" className={chamferedImage ? "object-cover" : "object-cover object-[35%_center]"} src={image} alt={imageAlt} />
                     </div>
-                    {!chamferedImage && (
-                        <a href="#impact" className="absolute -left-2 top-1/2 z-20 flex -translate-y-1/2 items-center gap-3 rounded-2xl border border-white/60 bg-white/75 px-4 py-3 shadow-lg shadow-slate-950/10 backdrop-blur-xl transition-transform hover:-translate-y-[55%] dark:border-white/10 dark:bg-slate-900/70 sm:-left-8 sm:px-5">
-                            <span className="flex size-10 items-center justify-center rounded-full bg-[#3DB268]/15 text-[#267A47] dark:text-[#75D59A]">
-                                <Leaf size={19} />
-                            </span>
-                            <span className="text-sm font-semibold text-[#267A47] dark:text-[#75D59A]">Our Impact</span>
-                            <ArrowUpRight size={17} className="text-[#267A47] dark:text-[#75D59A]" />
-                        </a>
-                    )}
                 </div>
 
                 <div className={`max-w-xl ${reverse ? "md:order-first" : ""}`}>
