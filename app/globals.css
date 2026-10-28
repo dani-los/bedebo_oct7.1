@@ -512,6 +512,10 @@ button {
     opacity: 0.7;
 }
 
+.value-framework .section-header-description {
+    max-width: none;
+}
+
 .bedebo-navbar {
     height: 88px;
     padding-block: 0;

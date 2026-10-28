@@ -101,7 +101,7 @@ export default function Page() {
                 </div>
             </section>
 
-            <section aria-labelledby="value-framework-heading" className="pt-16 pb-12 md:pt-20 md:pb-16">
+            <section aria-labelledby="value-framework-heading" className="value-framework pt-16 pb-12 md:pt-20 md:pb-16">
                 <div className="bedebo-site-container">
                     <SectionTitle
                         label="THE BEDEBO FARM-TO-MARKET VALUE FRAMEWORK"
@@ -110,13 +110,12 @@ export default function Page() {
                         description="BEDEBO creates value by protecting quality, cutting post-harvest loss and linking each lot to the right customer. Eight steps carry produce from the farm to the buyer's door."
                         alignment="left"
                         headingId="value-framework-heading"
-                        className="[&_.section-header-description]:max-w-none"
                     />
-                    <ol className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    <ol className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                         {valueFrameworkSteps.map((step) => (
-                            <li key={step.number} className="rounded-2xl border border-[#1E2841]/10 bg-slate-50 p-6 shadow-sm dark:border-white/10 dark:bg-white/5">
-                                <span className="inline-block rounded-full bg-[#267A47] px-3 py-1 font-mono text-xs tracking-widest text-white">{step.number}</span>
-                                <h3 className="mt-3 mb-2 text-xl font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
+                            <li key={step.number} className="rounded-xl border border-[#1E2841]/10 bg-slate-50 p-4 shadow-sm dark:border-white/10 dark:bg-white/5">
+                                <span className="inline-block rounded-full bg-[#267A47] px-2.5 py-0.5 font-mono text-[11px] tracking-widest text-white">{step.number}</span>
+                                <h3 className="mt-2 mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
                                 <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
                             </li>
                         ))}
