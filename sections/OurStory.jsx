@@ -23,7 +23,7 @@ export default function OurStory({
                 <div className={`relative mx-auto w-full ${reverse ? "md:order-last" : ""} ${chamferedImage ? "aspect-[7/4] max-w-[600px] md:mt-9 transition-transform duration-500 ease-out hover:scale-[1.03]" : "aspect-square max-w-[420px]"}`}>
                     <div className="absolute bottom-0 left-0 z-0 h-[36%] w-[44%] opacity-60" style={{ backgroundImage: "radial-gradient(#3DB268 1.5px, transparent 1.5px)", backgroundSize: "16px 16px" }} />
                     <div className={`absolute inset-0 z-10 overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.16)] ${chamferedImage ? "" : "border-[3px] border-white dark:border-slate-950 rounded-full"}`} style={chamferedImage ? { borderRadius: "0 48px 0 48px" } : undefined}>
-                        <Image fill sizes="(max-width: 768px) 100vw, 600px" className={chamferedImage ? "object-cover" : "bg-white object-contain dark:bg-slate-950"} src={image} alt={imageAlt} />
+                        <Image fill sizes="(max-width: 768px) 100vw, 600px" className={chamferedImage ? "object-cover" : "object-cover object-[35%_center]"} src={image} alt={imageAlt} />
                     </div>
                 </div>
 
