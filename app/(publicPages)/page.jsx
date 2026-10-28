@@ -101,7 +101,7 @@ export default function Page() {
                 </div>
             </section>
 
-            <section aria-labelledby="value-framework-heading" className="pt-24 pb-16 md:pt-32 md:pb-20">
+            <section aria-labelledby="value-framework-heading" className="pt-16 pb-12 md:pt-20 md:pb-16">
                 <div className="bedebo-site-container">
                     <SectionTitle
                         label="THE BEDEBO FARM-TO-MARKET VALUE FRAMEWORK"
@@ -110,6 +110,7 @@ export default function Page() {
                         description="BEDEBO creates value by protecting quality, cutting post-harvest loss and linking each lot to the right customer. Eight steps carry produce from the farm to the buyer's door."
                         alignment="left"
                         headingId="value-framework-heading"
+                        className="[&_.section-header-description]:max-w-none"
                     />
                     <ol className="mt-14 grid grid-cols-1 border-t-2 border-[#1E2841] sm:grid-cols-2 lg:grid-cols-4 dark:border-slate-100">
                         {valueFrameworkSteps.map((step) => (
@@ -125,7 +126,7 @@ export default function Page() {
 
             <OurStory />
 
-            <section id="value-propositions" aria-label="Value propositions" className="scroll-mt-20 pt-24 pb-12 md:pt-32 md:pb-8">
+            <section id="value-propositions" aria-label="Value propositions" className="scroll-mt-20 pt-16 pb-12 md:pt-20 md:pb-8">
             <OurStory
                 embedded
                 id="value-proposition-1"
