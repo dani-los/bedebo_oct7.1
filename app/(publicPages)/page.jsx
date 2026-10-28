@@ -188,7 +188,7 @@ export default function Page() {
 
             <section id="value-propositions" aria-label="Value propositions" className="scroll-mt-20 pt-16 pb-12 md:pt-20 md:pb-8">
             <div id="value-proposition-1" className="pb-16 md:pb-24">
-                <div className="bedebo-site-container grid grid-cols-1 items-start gap-14 md:grid-cols-2 lg:gap-20">
+                <div className="bedebo-site-container grid grid-cols-1 items-center gap-14 md:grid-cols-2 lg:gap-20">
                     <div>
                         <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">VALUE PROPOSITIONS</p>
                         <h2 className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">
