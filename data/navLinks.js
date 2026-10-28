@@ -1,9 +1,11 @@
 export const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "#about" },
-    { name: "Solutions", href: "#solutions" },
-    { name: "Impact", href: "#impact" },
-    { name: "Blog", href: "/#blog" },
+    { name: "About", href: "#about" },
+    { name: "Core Values", href: "#core-values" },
+    { name: "Propositions", href: "#value-propositions" },
+    { name: "Digital", href: "#digital-marketplace" },
+    { name: "Cold Chain", href: "#cold-chain" },
+    { name: "Partners", href: "#bedebo-partners" },
+    { name: "Solution", href: "#solutions" },
 ];
 
 export const footerLinks = [

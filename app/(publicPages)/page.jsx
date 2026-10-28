@@ -299,7 +299,7 @@ export default function Page() {
             <PremiumBuyers />
             </section>
 
-            <section aria-labelledby="digital-marketplace-heading" className="pt-4 pb-16 md:pb-24">
+            <section id="digital-marketplace" aria-labelledby="digital-marketplace-heading" className="scroll-mt-24 pt-4 pb-16 md:pb-24">
                 <div className="bedebo-site-container">
                     <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">DIGITAL MARKETPLACE</p>
                     <h2 id="digital-marketplace-heading" className="mt-4 max-w-3xl text-3xl font-bold leading-tight text-[#1E2841] md:text-4xl dark:text-slate-50">

@@ -324,7 +324,7 @@ const partnerRows = [
 
 export function BedeboPartnersSection() {
     return (
-        <section aria-labelledby="bedebo-partners-title" className="bedebo-site-container pb-20">
+        <section id="bedebo-partners" aria-labelledby="bedebo-partners-title" className="bedebo-site-container scroll-mt-24 pb-20">
             <div className="max-w-4xl">
                 <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">ABOUT BEDEBO & PARTNERS</p>
                 <h2 id="bedebo-partners-title" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] sm:text-4xl dark:text-slate-50">
@@ -403,7 +403,7 @@ export function AgriculturalServicesSection() {
 
 export function ColdChainSection() {
     return (
-        <section aria-labelledby="cold-chain-title" className="bedebo-site-container pb-20">
+        <section id="cold-chain" aria-labelledby="cold-chain-title" className="bedebo-site-container scroll-mt-24 pb-20">
             <div className="max-w-4xl">
                 <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">COLD CHAIN & LOGISTICS</p>
                 <h2 id="cold-chain-title" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] sm:text-4xl dark:text-slate-50">
