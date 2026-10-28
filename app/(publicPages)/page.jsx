@@ -112,10 +112,10 @@ export default function Page() {
                         headingId="value-framework-heading"
                         className="[&_.section-header-description]:max-w-none"
                     />
-                    <ol className="mt-14 grid grid-cols-1 border-t-2 border-[#1E2841] sm:grid-cols-2 lg:grid-cols-4 dark:border-slate-100">
+                    <ol className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                         {valueFrameworkSteps.map((step) => (
-                            <li key={step.number} className="border-b border-[#1E2841]/10 py-6 pr-6 dark:border-white/10">
-                                <span className="block font-mono text-xs tracking-widest text-[#267A47] dark:text-[#3DB268]">{step.number}</span>
+                            <li key={step.number} className="rounded-2xl border border-[#1E2841]/10 bg-slate-50 p-6 shadow-sm dark:border-white/10 dark:bg-white/5">
+                                <span className="inline-block rounded-full bg-[#267A47] px-3 py-1 font-mono text-xs tracking-widest text-white">{step.number}</span>
                                 <h3 className="mt-3 mb-2 text-xl font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
                                 <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
                             </li>
