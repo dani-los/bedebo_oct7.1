@@ -377,7 +377,7 @@ const agriculturalServices = [
 
 export function AgriculturalServicesSection() {
     return (
-        <section aria-labelledby="agricultural-services-title" className="bg-[#1A3327] py-20 text-white">
+        <section id="agricultural-services" aria-labelledby="agricultural-services-title" className="bg-[#1A3327] py-20 text-white">
             <div className="bedebo-site-container">
                 <div className="max-w-4xl">
                     <p className="font-mono text-xs tracking-[0.2em] text-[#3DB268]">AGRICULTURAL SERVICES</p>

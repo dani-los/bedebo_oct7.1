@@ -8,12 +8,14 @@ import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { useThemeContext } from "@/context/ThemeContext";
 
+const heroMatchedSectionIds = ["contact", "agricultural-services"];
+
 export default function Navbar() {
     const [openMobileMenu, setOpenMobileMenu] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOverHero, setIsOverHero] = useState(false);
-    const [isOverContact, setIsOverContact] = useState(false);
+    const [isOverHeroMatchedSection, setIsOverHeroMatchedSection] = useState(false);
     const pathname = usePathname();
     const { theme } = useThemeContext();
 
@@ -22,9 +24,10 @@ export default function Navbar() {
             setIsScrolled(window.scrollY > 20);
             const hero = document.querySelector(".bedebo-hero");
             setIsOverHero(Boolean(hero) && hero.getBoundingClientRect().bottom > 80);
-            const contact = document.getElementById("contact");
-            const contactRect = contact?.getBoundingClientRect();
-            setIsOverContact(Boolean(contactRect) && contactRect.top <= 104 && contactRect.bottom > 104);
+            setIsOverHeroMatchedSection(heroMatchedSectionIds.some((id) => {
+                const rect = document.getElementById(id)?.getBoundingClientRect();
+                return Boolean(rect) && rect.top <= 104 && rect.bottom > 104;
+            }));
         };
         updateScrolledState();
         window.addEventListener("scroll", updateScrolledState, { passive: true });
@@ -83,7 +86,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className={`bedebo-navbar bedebo-site-container fixed inset-x-0 top-0 z-50 flex items-center justify-between ${isScrolled ? "bedebo-navbar--scrolled" : ""} ${isOverHero ? "bedebo-navbar--over-hero" : ""} ${isOverContact ? "bedebo-navbar--contact" : ""} ${openMobileMenu ? "" : "bedebo-navbar--blur"} ${pathname === "/" ? "text-[#1E2841]" : ""}`}>
+        <nav className={`bedebo-navbar bedebo-site-container fixed inset-x-0 top-0 z-50 flex items-center justify-between ${isScrolled ? "bedebo-navbar--scrolled" : ""} ${isOverHero ? "bedebo-navbar--over-hero" : ""} ${isOverHeroMatchedSection ? "bedebo-navbar--hero-matched" : ""} ${openMobileMenu ? "" : "bedebo-navbar--blur"} ${pathname === "/" ? "text-[#1E2841]" : ""}`}>
             <a href="/">
                 <Image className="bedebo-navbar-logo h-16 w-auto shrink-0 md:h-17" src="/assets/bedebo-ethiopia.webp" alt="Bedebo Ethiopia" width={140} height={140} priority fetchPriority="high" />
             </a>
