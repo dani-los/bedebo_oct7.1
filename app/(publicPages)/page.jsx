@@ -331,7 +331,7 @@ export default function Page() {
 
             <OurStory
                 id="about"
-                highlight="the Company"
+                highlight={"the\u00A0Company"}
                 description="We connect Ethiopian growers and professional buyers through premium horticulture, supported by the Bedebo Digital Platform pilot."
                 quote="A good harvest is only the beginning"
             />
