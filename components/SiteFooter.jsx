@@ -30,7 +30,7 @@ const footerColumns = [
 
 export default function SiteFooter() {
     return (
-        <footer aria-label="Site footer" className="bg-[#030d07] text-white">
+        <footer aria-label="Site footer" className="bg-[#1A3327] text-white">
             <div className="bedebo-site-container grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-10">
                 <div className="max-w-sm">
                     <Image src="/assets/bedebo-ethiopia.webp" alt="Bedebo Ethiopia" width={140} height={140} className="mx-auto block h-16 w-auto" />

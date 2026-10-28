@@ -41,7 +41,7 @@ export default function Footer() {
             id="contact"
             ref={sectionRef}
             aria-labelledby="contact-title"
-            className={`relative isolate mt-12 scroll-mt-24 overflow-hidden bg-[#0a140c] text-white transition-all duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:transition-none motion-reduce:opacity-100 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+            className={`relative isolate mt-12 scroll-mt-24 overflow-hidden bg-[#1A3327] text-white transition-all duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:transition-none motion-reduce:opacity-100 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
         >
             <div className="bedebo-site-container relative z-10 flex flex-col pb-6 pt-20">
                 <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-2 lg:gap-20">
