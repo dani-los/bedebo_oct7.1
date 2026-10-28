@@ -10,9 +10,9 @@ import OurStory from "@/sections/OurStory";
 import PremiumBuyers from "@/sections/PremiumBuyers";
 import OurBlogs from "@/sections/OurBlogs";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUp } from "lucide-react";
 import Marquee from "react-fast-marquee";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const valueFrameworkSteps = [
     { number: "01", title: "Farm", description: "Quality production and organized farmers" },
@@ -47,6 +47,14 @@ const yieldComparison = [
 export default function Page() {
     const { theme } = useThemeContext();
     const heroRef = useRef(null);
+    const [showBackToTop, setShowBackToTop] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setShowBackToTop(window.scrollY > 600);
+        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     useEffect(() => {
         const hero = heroRef.current;
@@ -282,7 +290,14 @@ export default function Page() {
 
             <OurBlogs />
 
-
+            <button
+                type="button"
+                aria-label="Back to top"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className={`fixed bottom-6 right-6 z-40 flex size-12 items-center justify-center rounded-full bg-[#267A47] text-white shadow-lg transition-all duration-300 hover:bg-[#1E663A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3DB268] ${showBackToTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}
+            >
+                <ArrowUp aria-hidden="true" size={22} strokeWidth={2.2} />
+            </button>
         </>
     );
 }
