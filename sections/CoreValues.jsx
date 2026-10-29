@@ -5,6 +5,7 @@ import Image from "next/image";
 import { QRCodeSVG } from "qrcode.react";
 import { Check, Target, FileText } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
+import useSectionProgress from "@/components/useSectionProgress";
 
 const phraseParts = ["Freshness Protected.", "Quality Assured.", "Markets Connected.", "Value Shared."];
 const phraseColors = ["#27965a", "#6b4fd8", "#2f6fed", "#c27a14"];
@@ -375,27 +376,107 @@ const agriculturalServices = [
     { title: "Technical standards", description: "Engineering standards and service development with CAMS." },
 ];
 
+const agriculturalServiceCardClassName = "rounded-lg border border-white/10 bg-[#132A1F] p-5";
+
+const agriculturalSequence = [
+    {
+        cardIndex: 0,
+        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F53d1777038f44557960f7f9db6b27ac0?format=webp&width=800&height=1200",
+        alt: "Farmers feeding grain into a green threshing machine",
+    },
+    {
+        cardIndex: 1,
+        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2Fd6d67110f0b1460ea4e6876be029bf8f?format=webp&width=800&height=1200",
+        alt: "Rows of green threshing machines in a warehouse",
+    },
+    {
+        cardIndex: 2,
+        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F8e1382d9c29e4ae3bb14109b76ec4c09?format=webp&width=800&height=1200",
+        alt: "Threshed grain bagged for collection",
+    },
+    {
+        cardIndex: 3,
+        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F3222c566daec46a085c8817a6dd9be29?format=webp&width=800&height=1200",
+        alt: "Threshing machine in use on a farm",
+    },
+];
+
+const AGRI_LEAD_VH = 100;
+const AGRI_STEP_VH = 50;
+const agriSequenceStart = AGRI_LEAD_VH / (agriculturalSequence.length * AGRI_STEP_VH);
+
+function randomAgriPlacement() {
+    return {
+        left: `calc((100% - 18rem) * ${Math.random()})`,
+        top: `${5 + Math.random() * 45}%`,
+    };
+}
+
 export function AgriculturalServicesSection() {
+    const sectionRef = useRef(null);
+    const progress = useSectionProgress(sectionRef);
+    const [placement, setPlacement] = useState(null);
+
+    const inSequence = progress >= agriSequenceStart && progress < 1;
+    const localProgress = (progress - agriSequenceStart) / (1 - agriSequenceStart);
+    const activeIndex = Math.min(agriculturalSequence.length - 1, Math.max(0, Math.floor(localProgress * agriculturalSequence.length)));
+    const activeStep = agriculturalSequence[activeIndex];
+    const activeService = agriculturalServices[activeStep.cardIndex];
+
+    useEffect(() => {
+        if (inSequence) setPlacement(randomAgriPlacement());
+    }, [activeIndex, inSequence]);
+
     return (
-        <section id="agricultural-services" aria-labelledby="agricultural-services-title" className="bg-[#1A3327] py-20 text-white">
-            <div className="bedebo-site-container">
-                <div className="max-w-4xl">
-                    <p className="font-mono text-xs tracking-[0.2em] text-[#3DB268]">AGRICULTURAL SERVICES</p>
-                    <h2 id="agricultural-services-title" className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-                        Supporting services, delivered with partners.
-                    </h2>
-                    <p className="mt-5 text-base leading-relaxed text-slate-300">
-                        Threshing, mechanization and related services remain part of BEDEBO&apos;s work. They support the production base behind the premium offer.
-                    </p>
-                </div>
-                <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {agriculturalServices.map((service) => (
-                        <article key={service.title} className="rounded-lg border border-white/10 bg-[#132A1F] p-5">
-                            <h3 className="text-base font-semibold text-[#3DB268]">{service.title}</h3>
-                            <p className="mt-2 text-sm leading-relaxed text-slate-300">{service.description}</p>
-                        </article>
+        <section
+            ref={sectionRef}
+            id="agricultural-services"
+            aria-labelledby="agricultural-services-title"
+            className="relative bg-[#1A3327] text-white"
+            style={{ height: `${AGRI_LEAD_VH + agriculturalSequence.length * AGRI_STEP_VH}vh` }}
+        >
+            <div className="sticky top-0 flex h-screen flex-col justify-start overflow-hidden pt-16 md:pt-20">
+                <div className={`absolute inset-0 overflow-hidden transition-opacity duration-500 ${inSequence ? "bg-[#132A1F]" : ""}`}>
+                    {agriculturalSequence.map((step, index) => (
+                        <Image
+                            key={step.src}
+                            src={step.src}
+                            alt={step.alt}
+                            fill
+                            sizes="100vw"
+                            className={`object-cover transition-opacity duration-500 ${inSequence && activeIndex === index ? "opacity-100" : "opacity-0"}`}
+                        />
                     ))}
                 </div>
+
+                <div className={`bedebo-site-container relative transition-opacity duration-500 ${inSequence ? "pointer-events-none opacity-0" : "opacity-100"}`}>
+                    <div className="max-w-4xl">
+                        <p className="font-mono text-xs tracking-[0.2em] text-[#3DB268]">AGRICULTURAL SERVICES</p>
+                        <h2 id="agricultural-services-title" className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
+                            Supporting services, delivered with partners.
+                        </h2>
+                        <p className="mt-5 text-base leading-relaxed text-slate-300">
+                            Threshing, mechanization and related services remain part of BEDEBO&apos;s work. They support the production base behind the premium offer.
+                        </p>
+                    </div>
+                    <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                        {agriculturalServices.map((service) => (
+                            <article key={service.title} className={agriculturalServiceCardClassName}>
+                                <h3 className="text-base font-semibold text-[#3DB268]">{service.title}</h3>
+                                <p className="mt-2 text-sm leading-relaxed text-slate-300">{service.description}</p>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+
+                {inSequence && (
+                    <div className="absolute w-72 max-w-[calc(100%-2rem)]" style={placement ?? { left: "50%", top: "30%" }}>
+                        <article className={agriculturalServiceCardClassName}>
+                            <h3 className="text-base font-semibold text-[#3DB268]">{activeService.title}</h3>
+                            <p className="mt-2 text-sm leading-relaxed text-slate-300">{activeService.description}</p>
+                        </article>
+                    </div>
+                )}
             </div>
         </section>
     );

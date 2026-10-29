@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import SectionTitle from "@/components/SectionTitle";
+import useSectionProgress from "@/components/useSectionProgress";
 
 const valueFrameworkSteps = [
     { number: "01", title: "Farm", description: "Quality production and organized farmers" },
@@ -51,35 +52,8 @@ function randomTop() {
 
 export default function FrameworkSequence() {
     const sectionRef = useRef(null);
-    const [progress, setProgress] = useState(-1);
+    const progress = useSectionProgress(sectionRef);
     const [placement, setPlacement] = useState(null);
-
-    useEffect(() => {
-        let frame = 0;
-
-        const update = () => {
-            frame = 0;
-            const section = sectionRef.current;
-            if (!section) return;
-            const range = section.offsetHeight - window.innerHeight;
-            const scrolled = -section.getBoundingClientRect().top;
-            setProgress(scrolled / range);
-        };
-
-        const requestUpdate = () => {
-            if (!frame) frame = requestAnimationFrame(update);
-        };
-
-        update();
-        window.addEventListener("scroll", requestUpdate, { passive: true });
-        window.addEventListener("resize", requestUpdate);
-
-        return () => {
-            window.removeEventListener("scroll", requestUpdate);
-            window.removeEventListener("resize", requestUpdate);
-            if (frame) cancelAnimationFrame(frame);
-        };
-    }, []);
 
     const inSequence = progress >= SEQUENCE_START && progress < 1;
     const localProgress = (progress - SEQUENCE_START) / (1 - SEQUENCE_START);
