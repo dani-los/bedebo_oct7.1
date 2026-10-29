@@ -394,7 +394,7 @@ const agriculturalFrames = [
         label: { left: "11.1%", top: "90.5%", placement: "below" },
     },
     {
-        title: agriculturalServices[2].title,
+        title: agriculturalServices[1].title,
         src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F0fa9b7c1c8d7409d91d7a2055c95c82d?format=webp&width=800&height=1200",
         alt: "Threshing machine towed by a donkey on a farm",
         box: { left: "66%", top: "17.7%", width: "33.4%", height: "34.9%" },
