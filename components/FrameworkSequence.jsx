@@ -21,14 +21,16 @@ const sequenceImages = [
     { src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2Ffc823da9dd71405c954e144fa5a7de74?format=webp&width=800&height=1200", alt: "Tomato crates stacked in a cold storage room" },
     { src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2Fa599e37c06b041869dd3bcefa658dacb?format=webp&width=800&height=1200", alt: "Cabbage crates being loaded into a refrigerated truck" },
     { src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F4f054748e2564e448d811735c5fe7cd6?format=webp&width=800&height=1200", alt: "Crates being checked at the back of a BEDEBO refrigerated truck" },
+    { src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2Ff7295a4b3c4b4795b70ea44255be61db?format=webp&width=800&height=1200", alt: "BEDEBO cold storage room with produce crates on shelves" },
 ];
 
 const sequence = [
     { cardIndexes: [0], imageIndex: 0 },
     { cardIndexes: [2], imageIndex: 2 },
-    { cardIndexes: [3], imageIndex: 3 },
+    { cardIndexes: [3], imageIndex: 5 },
     { cardIndexes: [5], imageIndex: 1 },
-    { cardIndexes: [4, 7], imageIndex: 4 },
+    { cardIndexes: [4], imageIndex: 3 },
+    { cardIndexes: [7], imageIndex: 4 },
 ];
 
 const cardClassName = "rounded-xl border border-[#1E2841]/10 bg-slate-50 p-4 shadow-sm dark:border-white/10 dark:bg-white/5";
