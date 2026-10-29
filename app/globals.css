@@ -646,6 +646,7 @@ button {
     to { transform: scaleX(1); }
 }
 
+
 .core-values-carousel:hover .core-value-progress,
 .core-values-carousel:focus-within .core-value-progress,
 .core-values-carousel:not(.is-in-view) .core-value-progress {

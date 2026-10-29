@@ -5,6 +5,7 @@ import Image from "next/image";
 import { QRCodeSVG } from "qrcode.react";
 import { Check, Target, FileText } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
+import useSectionProgress from "@/components/useSectionProgress";
 
 const phraseParts = ["Freshness Protected.", "Quality Assured.", "Markets Connected.", "Value Shared."];
 const phraseColors = ["#27965a", "#6b4fd8", "#2f6fed", "#c27a14"];
@@ -253,7 +254,7 @@ export default function CoreValues() {
     };
 
     return (
-        <section id="core-values" aria-labelledby="core-values-title" className="bedebo-site-container scroll-mt-24">
+        <section id="core-values" aria-labelledby="core-values-title" className="bedebo-site-container scroll-mt-24 pb-12 md:pb-16">
             <SectionTitle label="CORE VALUES" title="Our Core" highlight="Values" headingId="core-values-title" />
             <div className="mt-7 w-full">
                 <div className="grid items-stretch gap-4 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
@@ -375,28 +376,99 @@ const agriculturalServices = [
     { title: "Technical standards", description: "Engineering standards and service development with CAMS." },
 ];
 
+const agriculturalServiceCardClassName = "rounded-lg border border-white/10 bg-[#132A1F] p-5";
+
+const agriculturalFrames = [
+    {
+        title: agriculturalServices[0].title,
+        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2Fdcdc8402584e4f1e8d5a80b3542342ab?format=webp&width=800&height=1200",
+        alt: "Green threshing machines lined up in a warehouse",
+        box: { left: "1.6%", top: "6.9%", width: "33.1%", height: "34.9%" },
+        label: { left: "1.6%", top: "2.9%", placement: "above" },
+    },
+    {
+        title: agriculturalServices[1].title,
+        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F568dc1b65ce0482baee8813e3a5cb1ee?format=webp&width=800&height=1200",
+        alt: "Women gathered around a green threshing machine",
+        box: { left: "10.6%", top: "46.8%", width: "35.1%", height: "36.8%" },
+        label: { left: "11.1%", top: "90.5%", placement: "below" },
+    },
+    {
+        title: agriculturalServices[1].title,
+        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F0fa9b7c1c8d7409d91d7a2055c95c82d?format=webp&width=800&height=1200",
+        alt: "Threshing machine towed by a donkey on a farm",
+        box: { left: "66%", top: "17.7%", width: "33.4%", height: "34.9%" },
+        label: { left: "65.9%", top: "14.3%", placement: "above" },
+    },
+    {
+        title: agriculturalServices[3].title,
+        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F9dce9c45a0684baabba0dc6a8bf928d2?format=webp&width=800&height=1200",
+        alt: "Threshed grain packed into sacks beside a green machine",
+        box: { left: "48.25%", top: "60.8%", width: "35%", height: "36.5%" },
+        label: { right: "0%", top: "96.6%", placement: "below" },
+    },
+];
+
+const AGRI_SEQUENCE_VH = 100;
+
 export function AgriculturalServicesSection() {
+    const sectionRef = useRef(null);
+    const progress = useSectionProgress(sectionRef);
+    const framed = progress >= 0;
+    const p = Math.min(1, Math.max(0, progress));
+
     return (
-        <section id="agricultural-services" aria-labelledby="agricultural-services-title" className="bg-[#1A3327] py-20 text-white">
-            <div className="bedebo-site-container">
-                <div className="max-w-4xl">
-                    <p className="font-mono text-xs tracking-[0.2em] text-[#3DB268]">AGRICULTURAL SERVICES</p>
-                    <h2 id="agricultural-services-title" className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-                        Supporting services, delivered with partners.
-                    </h2>
-                    <p className="mt-5 text-base leading-relaxed text-slate-300">
-                        Threshing, mechanization and related services remain part of BEDEBO&apos;s work. They support the production base behind the premium offer.
-                    </p>
+        <section ref={sectionRef} id="agricultural-services" aria-labelledby="agricultural-services-title" className="relative bg-[#1A3327] text-white">
+            <div className={`sticky top-0 flex flex-col justify-start overflow-hidden pt-16 md:pt-20 ${framed ? "h-screen" : ""}`}>
+                <div
+                    className={`absolute inset-0 flex items-center justify-center pt-16 transition-opacity duration-500 md:pt-20 ${framed ? "bg-[#132A1F] opacity-100" : "opacity-0"}`}
+                    style={{
+                        "--stage": "min(calc((100vw - 2rem) * 1.2), calc((100vh - 7rem) * 800 / 378))",
+                        transform: `translateX(calc(${(1 - p) * 100}% + ${p} * (-45% + var(--stage) * 0.484)))`,
+                    }}
+                >
+                    <div className="relative" style={{ aspectRatio: "800 / 378", width: "var(--stage)" }}>
+                        {agriculturalFrames.map(({ title, src, alt, box, label }) => (
+                            <div key={title}>
+                                <div className="absolute overflow-hidden bg-[#132A1F]" style={box}>
+                                    <Image
+                                        src={src}
+                                        alt={alt}
+                                        fill
+                                        sizes="(min-width: 1024px) 40vw, 80vw"
+                                        className="object-contain"
+                                    />
+                                </div>
+                                <p className={`absolute whitespace-nowrap text-sm font-semibold text-[#3DB268] md:text-base ${label.placement === "above" ? "-translate-y-full" : ""}`} style={{ left: label.left, right: label.right, top: label.top }}>
+                                    {title}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {agriculturalServices.map((service) => (
-                        <article key={service.title} className="rounded-lg border border-white/10 bg-[#132A1F] p-5">
-                            <h3 className="text-base font-semibold text-[#3DB268]">{service.title}</h3>
-                            <p className="mt-2 text-sm leading-relaxed text-slate-300">{service.description}</p>
-                        </article>
-                    ))}
+
+                <div className={`bedebo-site-container relative transition-opacity duration-500 ${framed ? "pointer-events-none opacity-0" : "opacity-100"}`}>
+                    <div className="max-w-4xl">
+                        <p className="font-mono text-xs tracking-[0.2em] text-[#3DB268]">AGRICULTURAL SERVICES</p>
+                        <h2 id="agricultural-services-title" className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
+                            Supporting services, delivered with partners.
+                        </h2>
+                        <p className="mt-5 text-base leading-relaxed text-slate-300">
+                            Threshing, mechanization and related services remain part of BEDEBO&apos;s work. They support the production base behind the premium offer.
+                        </p>
+                    </div>
+                    <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                        {agriculturalServices.map((service) => (
+                            <article key={service.title} className={agriculturalServiceCardClassName}>
+                                <h3 className="text-base font-semibold text-[#3DB268]">{service.title}</h3>
+                                <p className="mt-2 text-sm leading-relaxed text-slate-300">{service.description}</p>
+                            </article>
+                        ))}
+                    </div>
                 </div>
+
             </div>
+            <div aria-hidden="true" style={{ height: `${AGRI_SEQUENCE_VH}vh` }} />
         </section>
     );
 }
@@ -437,7 +509,7 @@ export function ColdChainSection() {
 
 export function QualityTraceabilitySection() {
     return (
-        <section aria-labelledby="quality-traceability-title" className="bedebo-site-container pb-20">
+        <section aria-labelledby="quality-traceability-title" className="bedebo-site-container pb-10">
             <div className="max-w-4xl">
                 <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">QUALITY & TRACEABILITY</p>
                 <h2 id="quality-traceability-title" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] sm:text-4xl dark:text-slate-50">
