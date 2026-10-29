@@ -33,15 +33,20 @@ const sequence = [
 const cardClassName = "rounded-xl border border-[#1E2841]/10 bg-slate-50 p-4 shadow-sm dark:border-white/10 dark:bg-white/5";
 const overlayCardClassName = `${cardClassName} dark:bg-slate-900`;
 
-// Each step gets two viewports of scrolling; the first viewport shows the complete section before the sequence starts.
-const SCROLL_STEPS = sequence.length * 2;
-const SEQUENCE_START = 1 / SCROLL_STEPS;
+// The first viewport of scrolling shows the complete section before the sequence starts; each step then takes 1.5 viewports.
+const LEAD_VH = 100;
+const STEP_VH = 150;
+const SEQUENCE_START = LEAD_VH / (sequence.length * STEP_VH);
 
 function randomPlacement() {
     return {
         left: `calc((100% - 18rem) * ${Math.random()})`,
         top: `${5 + Math.random() * 45}%`,
     };
+}
+
+function randomTop() {
+    return `${5 + Math.random() * 45}%`;
 }
 
 export default function FrameworkSequence() {
@@ -82,7 +87,8 @@ export default function FrameworkSequence() {
     const activeStep = sequence[activeIndex];
 
     useEffect(() => {
-        if (inSequence) setPlacement(randomPlacement());
+        if (!inSequence) return;
+        setPlacement(sequence[activeIndex].cardIndexes.length > 1 ? { top: randomTop() } : randomPlacement());
     }, [activeIndex, inSequence]);
 
     return (
@@ -90,7 +96,7 @@ export default function FrameworkSequence() {
             ref={sectionRef}
             aria-labelledby="value-framework-heading"
             className="value-framework relative"
-            style={{ height: `${(SCROLL_STEPS + 1) * 100}vh` }}
+            style={{ height: `${LEAD_VH + sequence.length * STEP_VH}vh` }}
         >
             <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-8 md:pt-10">
                 <div className="absolute inset-0 overflow-hidden bg-slate-100 transition-opacity duration-500 dark:bg-slate-900">
@@ -127,22 +133,32 @@ export default function FrameworkSequence() {
                     </ol>
                 </div>
 
-                {inSequence && (
+                {inSequence && activeStep.cardIndexes.length > 1 && (
+                    <div
+                        className="absolute inset-x-0 flex flex-col gap-4 px-4 sm:flex-row sm:justify-between sm:px-[6%]"
+                        style={{ top: placement?.top ?? "30%" }}
+                    >
+                        {activeStep.cardIndexes.map((cardIndex) => {
+                            const step = valueFrameworkSteps[cardIndex];
+                            return (
+                                <div key={step.number} className={`${overlayCardClassName} w-full sm:w-72`}>
+                                    <h3 className="mt-2 mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
+                                    <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
+
+                {inSequence && activeStep.cardIndexes.length === 1 && (
                     <div
                         className="absolute w-72 max-w-[calc(100%-2rem)]"
                         style={placement ?? { left: "50%", top: "30%" }}
                     >
-                        <ul className="grid gap-4">
-                            {activeStep.cardIndexes.map((cardIndex) => {
-                                const step = valueFrameworkSteps[cardIndex];
-                                return (
-                                    <li key={step.number} className={overlayCardClassName}>
-                                        <h3 className="mt-2 mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
-                                        <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
-                                    </li>
-                                );
-                            })}
-                        </ul>
+                        <div className={overlayCardClassName}>
+                            <h3 className="mt-2 mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{valueFrameworkSteps[activeStep.cardIndexes[0]].title}</h3>
+                            <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{valueFrameworkSteps[activeStep.cardIndexes[0]].description}</p>
+                        </div>
                     </div>
                 )}
             </div>
