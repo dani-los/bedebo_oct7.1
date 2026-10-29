@@ -378,74 +378,72 @@ const agriculturalServices = [
 
 const agriculturalServiceCardClassName = "rounded-lg border border-white/10 bg-[#132A1F] p-5";
 
-const agriculturalSequence = [
+const agriculturalFrames = [
     {
-        cardIndex: 0,
+        title: agriculturalServices[0].title,
         src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2Fdcdc8402584e4f1e8d5a80b3542342ab?format=webp&width=800&height=1200",
         alt: "Green threshing machines lined up in a warehouse",
+        box: { left: "1.6%", top: "6.9%", width: "33.1%", height: "34.9%" },
+        label: { left: "1.6%", top: "2.9%", placement: "above" },
     },
     {
-        cardIndex: 1,
+        title: agriculturalServices[1].title,
         src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F568dc1b65ce0482baee8813e3a5cb1ee?format=webp&width=800&height=1200",
         alt: "Women gathered around a green threshing machine",
+        box: { left: "10.6%", top: "46.8%", width: "35.1%", height: "36.8%" },
+        label: { left: "11.1%", top: "90.5%", placement: "below" },
     },
     {
-        cardIndex: 1,
+        title: agriculturalServices[2].title,
         src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F9dce9c45a0684baabba0dc6a8bf928d2?format=webp&width=800&height=1200",
         alt: "Threshed grain packed into sacks beside a green machine",
+        box: { left: "66%", top: "17.7%", width: "33.4%", height: "34.9%" },
+        label: { left: "65.9%", top: "14.3%", placement: "above" },
     },
     {
-        cardIndex: 3,
+        title: agriculturalServices[3].title,
         src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F0fa9b7c1c8d7409d91d7a2055c95c82d?format=webp&width=800&height=1200",
         alt: "Threshing machine towed by a donkey on a farm",
+        box: { left: "48.25%", top: "60.8%", width: "35%", height: "36.5%" },
+        label: { right: "0%", top: "96.6%", placement: "below" },
     },
 ];
 
-const AGRI_STEP_VH = 50;
-const agriSpacerVh = AGRI_STEP_VH * agriculturalSequence.length + 100;
-
-function randomAgriLeft() {
-    return `calc((100% - 18rem) * ${Math.random()})`;
-}
+const AGRI_SEQUENCE_VH = 100;
 
 export function AgriculturalServicesSection() {
     const sectionRef = useRef(null);
     const progress = useSectionProgress(sectionRef);
-    const [left, setLeft] = useState(null);
-
-    const inSequence = progress >= 0 && progress < 1;
-    const activeIndex = Math.min(agriculturalSequence.length - 1, Math.max(0, Math.floor(progress * agriculturalSequence.length)));
-    const activeStep = agriculturalSequence[activeIndex];
-    const activeService = agriculturalServices[activeStep.cardIndex];
-
-    useEffect(() => {
-        if (inSequence) setLeft(randomAgriLeft());
-    }, [activeStep.cardIndex, inSequence]);
+    const framed = progress >= 0;
+    const p = Math.min(1, Math.max(0, progress));
+    const fade = Math.min(1, Math.max(0, (p - 0.6) / 0.4));
 
     return (
         <section ref={sectionRef} id="agricultural-services" aria-labelledby="agricultural-services-title" className="relative bg-[#1A3327] text-white">
-            <div className={`sticky top-0 flex flex-col justify-start overflow-hidden pt-16 md:pt-20 ${inSequence ? "h-screen" : ""}`}>
-                <div className={`absolute inset-0 overflow-hidden ${inSequence ? "bg-[#132A1F]" : ""}`}>
-                    {agriculturalSequence.map((step, index) => {
-                        const shown = inSequence && activeIndex === index;
-                        return (
-                            <Image
-                                key={`${step.src}-${index}`}
-                                src={step.src}
-                                alt={step.alt}
-                                fill
-                                sizes="100vw"
-                                className={`object-cover transition-[clip-path,opacity] duration-700 ease-out ${shown ? "z-10" : "z-0"}`}
-                                style={{
-                                    clipPath: shown ? "inset(0 0 0 0)" : "inset(0 0 0 100%)",
-                                    opacity: shown ? 1 : 0,
-                                }}
-                            />
-                        );
-                    })}
+            <div className={`sticky top-0 flex flex-col justify-start overflow-hidden pt-16 md:pt-20 ${framed ? "h-screen" : ""}`}>
+                <div className={`absolute inset-0 flex items-center justify-center px-4 pt-16 transition-opacity duration-500 md:pt-20 ${framed ? "bg-[#132A1F] opacity-100" : "opacity-0"}`}>
+                    <div className="relative w-full max-w-5xl" style={{ aspectRatio: "800 / 378", width: "min(100%, 64rem, calc((100vh - 10rem) * 800 / 378))" }}>
+                        {agriculturalFrames.map(({ title, src, alt, box, label }) => (
+                            <div key={title}>
+                                <div className="absolute overflow-hidden rounded-sm border-2 border-[#3DB268]/70 bg-[#132A1F]" style={box}>
+                                    <Image
+                                        src={src}
+                                        alt={alt}
+                                        fill
+                                        sizes="(min-width: 1024px) 40vw, 80vw"
+                                        className="object-contain"
+                                        style={{ transform: `translateX(${(1 - p) * 100}%)`, opacity: fade }}
+                                    />
+                                </div>
+                                <p className={`absolute whitespace-nowrap text-sm font-semibold text-[#3DB268] md:text-base ${label.placement === "above" ? "-translate-y-full border-b-2 border-[#3DB268] pb-1" : "border-t-2 border-[#3DB268] pt-1"}`} style={{ left: label.left, right: label.right, top: label.top }}>
+                                    {title}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
-                <div className={`bedebo-site-container relative transition-opacity duration-500 ${inSequence ? "pointer-events-none opacity-0" : "opacity-100"}`}>
+                <div className={`bedebo-site-container relative transition-opacity duration-500 ${framed ? "pointer-events-none opacity-0" : "opacity-100"}`}>
                     <div className="max-w-4xl">
                         <p className="font-mono text-xs tracking-[0.2em] text-[#3DB268]">AGRICULTURAL SERVICES</p>
                         <h2 id="agricultural-services-title" className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
@@ -465,18 +463,8 @@ export function AgriculturalServicesSection() {
                     </div>
                 </div>
 
-                {inSequence && (
-                    <div className="absolute top-1/2 w-72 max-w-[calc(100%-2rem)] -translate-y-1/2" style={{ left: left ?? "50%" }}>
-                        <div key={activeStep.cardIndex} className="agri-card-enter">
-                            <article className={agriculturalServiceCardClassName}>
-                                <h3 className="text-base font-semibold text-[#3DB268]">{activeService.title}</h3>
-                                <p className="mt-2 text-sm leading-relaxed text-slate-300">{activeService.description}</p>
-                            </article>
-                        </div>
-                    </div>
-                )}
             </div>
-            <div aria-hidden="true" style={{ height: `${agriSpacerVh}vh` }} />
+            <div aria-hidden="true" style={{ height: `${AGRI_SEQUENCE_VH}vh` }} />
         </section>
     );
 }
