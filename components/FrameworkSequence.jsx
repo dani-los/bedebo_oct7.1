@@ -31,13 +31,23 @@ const sequence = [
 ];
 
 const cardClassName = "rounded-xl border border-[#1E2841]/10 bg-slate-50 p-4 shadow-sm dark:border-white/10 dark:bg-white/5";
+const overlayCardClassName = `${cardClassName} dark:bg-slate-900`;
 
-// The first viewport of scrolling shows the complete framework section; the parallax starts after it.
-const SEQUENCE_START = 1 / sequence.length;
+// Each step gets two viewports of scrolling; the first viewport shows the complete section before the sequence starts.
+const SCROLL_STEPS = sequence.length * 2;
+const SEQUENCE_START = 1 / SCROLL_STEPS;
+
+function randomPlacement() {
+    return {
+        left: `calc((100% - 18rem) * ${Math.random()})`,
+        top: `${5 + Math.random() * 45}%`,
+    };
+}
 
 export default function FrameworkSequence() {
     const sectionRef = useRef(null);
     const [progress, setProgress] = useState(-1);
+    const [placement, setPlacement] = useState(null);
 
     useEffect(() => {
         let frame = 0;
@@ -71,14 +81,18 @@ export default function FrameworkSequence() {
     const activeIndex = Math.min(sequence.length - 1, Math.max(0, Math.floor(localProgress * sequence.length)));
     const activeStep = sequence[activeIndex];
 
+    useEffect(() => {
+        if (inSequence) setPlacement(randomPlacement());
+    }, [activeIndex, inSequence]);
+
     return (
         <section
             ref={sectionRef}
             aria-labelledby="value-framework-heading"
             className="value-framework relative"
-            style={{ height: `${(sequence.length + 1) * 100}vh` }}
+            style={{ height: `${(SCROLL_STEPS + 1) * 100}vh` }}
         >
-            <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-16 md:pt-20">
+            <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-8 md:pt-10">
                 <div className="absolute inset-0 overflow-hidden bg-slate-100 transition-opacity duration-500 dark:bg-slate-900">
                     {sequenceImages.map((image, index) => (
                         <Image
@@ -114,12 +128,15 @@ export default function FrameworkSequence() {
                 </div>
 
                 {inSequence && (
-                    <div className="bedebo-site-container absolute inset-0 flex items-center justify-center">
-                        <ul className="grid w-full max-w-sm gap-4">
+                    <div
+                        className="absolute w-72 max-w-[calc(100%-2rem)]"
+                        style={placement ?? { left: "50%", top: "30%" }}
+                    >
+                        <ul className="grid gap-4">
                             {activeStep.cardIndexes.map((cardIndex) => {
                                 const step = valueFrameworkSteps[cardIndex];
                                 return (
-                                    <li key={step.number} className={cardClassName}>
+                                    <li key={step.number} className={overlayCardClassName}>
                                         <h3 className="mt-2 mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
                                         <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
                                     </li>

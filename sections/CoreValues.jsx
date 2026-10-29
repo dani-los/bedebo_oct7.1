@@ -437,7 +437,7 @@ export function ColdChainSection() {
 
 export function QualityTraceabilitySection() {
     return (
-        <section aria-labelledby="quality-traceability-title" className="bedebo-site-container pb-20">
+        <section aria-labelledby="quality-traceability-title" className="bedebo-site-container pb-10">
             <div className="max-w-4xl">
                 <p className="font-mono text-xs tracking-[0.2em] text-[#267A47] dark:text-[#3DB268]">QUALITY & TRACEABILITY</p>
                 <h2 id="quality-traceability-title" className="mt-4 text-3xl font-bold leading-tight text-[#1E2841] sm:text-4xl dark:text-slate-50">
