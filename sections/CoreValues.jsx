@@ -423,7 +423,7 @@ export function AgriculturalServicesSection() {
                 <div
                     className={`absolute inset-0 flex items-center justify-center pt-16 transition-opacity duration-500 md:pt-20 ${framed ? "bg-[#132A1F] opacity-100" : "opacity-0"}`}
                     style={{
-                        "--stage": "min(calc((100vw - 2rem) * 1.05), calc((100vh - 8rem) * 800 / 378))",
+                        "--stage": "min(calc((100vw - 2rem) * 1.2), calc((100vh - 7rem) * 800 / 378))",
                         transform: `translateX(calc(${(1 - p) * 100}% + ${p} * (-45% + var(--stage) * 0.484)))`,
                     }}
                 >
