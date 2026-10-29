@@ -4,14 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import SectionTitle from "@/components/SectionTitle";
 
 const valueFrameworkSteps = [
-    { title: "Farm", description: "Quality production and organized farmers" },
-    { title: "Harvest", description: "Standardized harvesting and handling" },
-    { title: "Aggregate", description: "Crate-based collection and quality control" },
-    { title: "Cool", description: "Pre-cooling and cold storage" },
-    { title: "Move", description: "Coordinated and traceable logistics" },
-    { title: "Grade", description: "Quality classification and market matching" },
-    { title: "Connect", description: "BEDEBO digital market linkage" },
-    { title: "Deliver", description: "Reliable supply to the right customer" },
+    { number: "01", title: "Farm", description: "Quality production and organized farmers" },
+    { number: "02", title: "Harvest", description: "Standardized harvesting and handling" },
+    { number: "03", title: "Aggregate", description: "Crate-based collection and quality control" },
+    { number: "04", title: "Cool", description: "Pre-cooling and cold storage" },
+    { number: "05", title: "Move", description: "Coordinated and traceable logistics" },
+    { number: "06", title: "Grade", description: "Quality classification and market matching" },
+    { number: "07", title: "Connect", description: "BEDEBO digital market linkage" },
+    { number: "08", title: "Deliver", description: "Reliable supply to the right customer" },
 ];
 
 const sequenceImages = [
@@ -29,6 +29,8 @@ const sequence = [
     { cardIndexes: [5], imageIndex: 1 },
     { cardIndexes: [4, 7], imageIndex: 4 },
 ];
+
+const cardClassName = "rounded-xl border border-[#1E2841]/10 bg-slate-50 p-4 shadow-sm dark:border-white/10 dark:bg-white/5";
 
 export default function FrameworkSequence() {
     const sectionRef = useRef(null);
@@ -69,22 +71,11 @@ export default function FrameworkSequence() {
         <section
             ref={sectionRef}
             aria-labelledby="value-framework-heading"
-            className="value-framework relative"
+            className="value-framework relative pt-16 md:pt-20"
             style={{ height: `${(sequence.length + 1) * 100}vh` }}
         >
-            <div className="sticky top-0 h-screen overflow-hidden">
-                {sequenceImages.map((image, index) => (
-                    <Image
-                        key={image.src}
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="100vw"
-                        className={`object-cover transition-opacity duration-500 ${inSequence && activeStep.imageIndex === index ? "opacity-100" : "opacity-0"}`}
-                    />
-                ))}
-
-                <div className="bedebo-site-container relative flex h-full flex-col gap-4 py-6">
+            <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+                <div className="bedebo-site-container">
                     <div className={`transition-opacity duration-500 ${inSequence ? "pointer-events-none opacity-0" : "opacity-100"}`}>
                         <SectionTitle
                             label="THE BEDEBO FARM-TO-MARKET VALUE FRAMEWORK"
@@ -96,30 +87,46 @@ export default function FrameworkSequence() {
                         />
                     </div>
 
-                    <div className="flex min-h-0 flex-1 items-center justify-center">
-                        {inSequence && (
-                            <ul className="grid w-full max-w-sm gap-3">
-                                {activeStep.cardIndexes.map((cardIndex) => {
-                                    const step = valueFrameworkSteps[cardIndex];
-                                    return (
-                                        <li key={step.title} className="rounded-xl border border-[#1E2841]/10 bg-slate-50 p-4 shadow-lg dark:border-white/10 dark:bg-slate-900/90">
-                                            <h3 className="mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
-                                            <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        )}
-                    </div>
+                    <div className="relative mt-10">
+                        <div className={`absolute inset-0 overflow-hidden rounded-xl bg-slate-100 transition-opacity duration-500 dark:bg-slate-900 ${inSequence ? "opacity-100" : "opacity-0"}`}>
+                            {sequenceImages.map((image, index) => (
+                                <Image
+                                    key={image.src}
+                                    src={image.src}
+                                    alt={image.alt}
+                                    fill
+                                    sizes="(min-width: 1024px) 1100px, 100vw"
+                                    className={`object-contain transition-opacity duration-500 ${inSequence && activeStep.imageIndex === index ? "opacity-100" : "opacity-0"}`}
+                                />
+                            ))}
+                        </div>
 
-                    <ol className={`grid shrink-0 grid-cols-2 gap-3 transition-opacity duration-500 md:grid-cols-4 ${inSequence ? "pointer-events-none opacity-0" : "opacity-100"}`}>
-                        {valueFrameworkSteps.map((step) => (
-                            <li key={step.title} className="rounded-xl border border-[#1E2841]/10 bg-slate-50 p-3 shadow-sm dark:border-white/10 dark:bg-white/5">
-                                <h3 className="mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
-                                <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
-                            </li>
-                        ))}
-                    </ol>
+                        {inSequence && (
+                            <div className="absolute inset-0 flex items-center justify-center p-4">
+                                <ul className="grid w-full max-w-sm gap-4">
+                                    {activeStep.cardIndexes.map((cardIndex) => {
+                                        const step = valueFrameworkSteps[cardIndex];
+                                        return (
+                                            <li key={step.number} className={cardClassName}>
+                                                <h3 className="mt-2 mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
+                                                <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        )}
+
+                        <ol className={`grid grid-cols-1 gap-4 transition-opacity duration-500 sm:grid-cols-2 lg:grid-cols-4 ${inSequence ? "pointer-events-none opacity-0" : "opacity-100"}`}>
+                            {valueFrameworkSteps.map((step) => (
+                                <li key={step.number} className={cardClassName}>
+                                    <span className="inline-block rounded-full bg-[#267A47] px-2.5 py-0.5 font-mono text-[11px] tracking-widest text-white">{step.number}</span>
+                                    <h3 className="mt-2 mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
+                                    <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
                 </div>
             </div>
         </section>
