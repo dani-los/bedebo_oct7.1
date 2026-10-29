@@ -7,6 +7,7 @@ import CoreValues, { AgriculturalServicesSection, BedeboPartnersSection, ColdCha
 import OurStory from "@/sections/OurStory";
 import PremiumBuyers from "@/sections/PremiumBuyers";
 import ValueChainTracker from "@/sections/ValueChainTracker";
+import FrameworkParallax from "@/components/FrameworkParallax";
 import Image from "next/image";
 import { ArrowRight, ArrowUp } from "lucide-react";
 import Marquee from "react-fast-marquee";
@@ -181,6 +182,7 @@ export default function Page() {
                             </li>
                         ))}
                     </ol>
+                    <FrameworkParallax />
                 </div>
             </section>
 
