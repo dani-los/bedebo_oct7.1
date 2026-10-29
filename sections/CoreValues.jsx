@@ -422,10 +422,10 @@ export function AgriculturalServicesSection() {
         <section ref={sectionRef} id="agricultural-services" aria-labelledby="agricultural-services-title" className="relative bg-[#1A3327] text-white">
             <div className={`sticky top-0 flex flex-col justify-start overflow-hidden pt-16 md:pt-20 ${framed ? "h-screen" : ""}`}>
                 <div className={`absolute inset-0 flex items-center justify-center px-4 pt-16 transition-opacity duration-500 md:pt-20 ${framed ? "bg-[#132A1F] opacity-100" : "opacity-0"}`}>
-                    <div className="relative w-full max-w-6xl" style={{ aspectRatio: "800 / 378", width: "min(100%, 80rem, calc((100vh - 8rem) * 800 / 378))" }}>
+                    <div className="relative w-full" style={{ aspectRatio: "800 / 378", width: "min(100%, calc((100vh - 8rem) * 800 / 378))" }}>
                         {agriculturalFrames.map(({ title, src, alt, box, label }) => (
                             <div key={title}>
-                                <div className="absolute overflow-hidden rounded-sm border-2 border-[#3DB268]/70 bg-[#132A1F]" style={box}>
+                                <div className="absolute overflow-hidden bg-[#132A1F]" style={box}>
                                     <Image
                                         src={src}
                                         alt={alt}
