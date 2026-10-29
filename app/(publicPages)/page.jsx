@@ -7,22 +7,11 @@ import CoreValues, { AgriculturalServicesSection, BedeboPartnersSection, ColdCha
 import OurStory from "@/sections/OurStory";
 import PremiumBuyers from "@/sections/PremiumBuyers";
 import ValueChainTracker from "@/sections/ValueChainTracker";
-import FrameworkParallax from "@/components/FrameworkParallax";
+import FrameworkSequence from "@/components/FrameworkSequence";
 import Image from "next/image";
 import { ArrowRight, ArrowUp } from "lucide-react";
 import Marquee from "react-fast-marquee";
 import { useEffect, useRef, useState } from "react";
-
-const valueFrameworkSteps = [
-    { number: "01", title: "Farm", description: "Quality production and organized farmers" },
-    { number: "02", title: "Harvest", description: "Standardized harvesting and handling" },
-    { number: "03", title: "Aggregate", description: "Crate-based collection and quality control" },
-    { number: "04", title: "Cool", description: "Pre-cooling and cold storage" },
-    { number: "05", title: "Move", description: "Coordinated and traceable logistics" },
-    { number: "06", title: "Grade", description: "Quality classification and market matching" },
-    { number: "07", title: "Connect", description: "BEDEBO digital market linkage" },
-    { number: "08", title: "Deliver", description: "Reliable supply to the right customer" },
-];
 
 const digitalMarketplaceSteps = [
     { number: "01", title: "Market demand" },
@@ -163,28 +152,7 @@ export default function Page() {
 
             <CoreValues />
 
-            <section aria-labelledby="value-framework-heading" className="value-framework pt-16 pb-12 md:pt-20 md:pb-16">
-                <div className="bedebo-site-container">
-                    <SectionTitle
-                        label="THE BEDEBO FARM-TO-MARKET VALUE FRAMEWORK"
-                        title={<>We coordinate the whole<br />journey,</>}
-                        highlight="not just the sale."
-                        description="BEDEBO creates value by protecting quality, cutting post-harvest loss and linking each lot to the right customer. Eight steps carry produce from the farm to the buyer's door."
-                        alignment="left"
-                        headingId="value-framework-heading"
-                    />
-                    <ol className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                        {valueFrameworkSteps.map((step) => (
-                            <li key={step.number} className="rounded-xl border border-[#1E2841]/10 bg-slate-50 p-4 shadow-sm dark:border-white/10 dark:bg-white/5">
-                                <span className="inline-block rounded-full bg-[#267A47] px-2.5 py-0.5 font-mono text-[11px] tracking-widest text-white">{step.number}</span>
-                                <h3 className="mt-2 mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
-                                <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
-                            </li>
-                        ))}
-                    </ol>
-                    <FrameworkParallax />
-                </div>
-            </section>
+            <FrameworkSequence />
 
             <section id="value-propositions" aria-label="Value propositions" className="scroll-mt-20 pt-16 pb-12 md:pt-20 md:pb-8">
             <div id="value-proposition-1" className="pb-16 md:pb-24">
