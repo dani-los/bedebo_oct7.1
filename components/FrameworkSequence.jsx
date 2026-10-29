@@ -98,8 +98,8 @@ export default function FrameworkSequence() {
             className="value-framework relative"
             style={{ height: `${LEAD_VH + sequence.length * STEP_VH}vh` }}
         >
-            <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-8 md:pt-10">
-                <div className="absolute inset-0 overflow-hidden bg-slate-100 transition-opacity duration-500 dark:bg-slate-900">
+            <div className="sticky top-0 flex h-screen flex-col justify-start overflow-hidden pt-8 md:pt-10">
+                <div className={`absolute inset-0 overflow-hidden transition-opacity duration-500 ${inSequence ? "bg-slate-100 dark:bg-slate-900" : ""}`}>
                     {sequenceImages.map((image, index) => (
                         <Image
                             key={image.src}
