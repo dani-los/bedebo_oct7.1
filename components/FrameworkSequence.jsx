@@ -4,14 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import SectionTitle from "@/components/SectionTitle";
 
 const valueFrameworkSteps = [
-    { number: "01", title: "Farm", description: "Quality production and organized farmers" },
-    { number: "02", title: "Harvest", description: "Standardized harvesting and handling" },
-    { number: "03", title: "Aggregate", description: "Crate-based collection and quality control" },
-    { number: "04", title: "Cool", description: "Pre-cooling and cold storage" },
-    { number: "05", title: "Move", description: "Coordinated and traceable logistics" },
-    { number: "06", title: "Grade", description: "Quality classification and market matching" },
-    { number: "07", title: "Connect", description: "BEDEBO digital market linkage" },
-    { number: "08", title: "Deliver", description: "Reliable supply to the right customer" },
+    { title: "Farm", description: "Quality production and organized farmers" },
+    { title: "Harvest", description: "Standardized harvesting and handling" },
+    { title: "Aggregate", description: "Crate-based collection and quality control" },
+    { title: "Cool", description: "Pre-cooling and cold storage" },
+    { title: "Move", description: "Coordinated and traceable logistics" },
+    { title: "Grade", description: "Quality classification and market matching" },
+    { title: "Connect", description: "BEDEBO digital market linkage" },
+    { title: "Deliver", description: "Reliable supply to the right customer" },
 ];
 
 const sequenceImages = [
@@ -64,7 +64,6 @@ export default function FrameworkSequence() {
     const inSequence = progress >= 0 && progress < 1;
     const activeIndex = Math.min(sequence.length - 1, Math.max(0, Math.floor(progress * sequence.length)));
     const activeStep = sequence[activeIndex];
-    const revealedCardIndexes = new Set(sequence.slice(0, activeIndex + 1).flatMap((step) => step.cardIndexes));
 
     return (
         <section
@@ -73,46 +72,53 @@ export default function FrameworkSequence() {
             className="value-framework relative"
             style={{ height: `${(sequence.length + 1) * 100}vh` }}
         >
-            <div className="sticky top-0 flex h-screen flex-col overflow-hidden">
-                <div className="bedebo-site-container flex h-full min-h-0 flex-col gap-4 py-6">
-                    <SectionTitle
-                        label="THE BEDEBO FARM-TO-MARKET VALUE FRAMEWORK"
-                        title={<>We coordinate the whole<br />journey,</>}
-                        highlight="not just the sale."
-                        description="BEDEBO creates value by protecting quality, cutting post-harvest loss and linking each lot to the right customer. Eight steps carry produce from the farm to the buyer's door."
-                        alignment="left"
-                        headingId="value-framework-heading"
+            <div className="sticky top-0 h-screen overflow-hidden">
+                {sequenceImages.map((image, index) => (
+                    <Image
+                        key={image.src}
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        sizes="100vw"
+                        className={`object-cover transition-opacity duration-500 ${inSequence && activeStep.imageIndex === index ? "opacity-100" : "opacity-0"}`}
                     />
+                ))}
 
-                    <div className="relative min-h-0 flex-1">
-                        {sequenceImages.map((image, index) => (
-                            <Image
-                                key={image.src}
-                                src={image.src}
-                                alt={image.alt}
-                                fill
-                                sizes="(min-width: 768px) 80vw, 100vw"
-                                className={`object-contain transition-opacity duration-500 ${inSequence && activeStep.imageIndex === index ? "opacity-100" : "opacity-0"}`}
-                            />
-                        ))}
+                <div className="bedebo-site-container relative flex h-full flex-col gap-4 py-6">
+                    <div className={`transition-opacity duration-500 ${inSequence ? "pointer-events-none opacity-0" : "opacity-100"}`}>
+                        <SectionTitle
+                            label="THE BEDEBO FARM-TO-MARKET VALUE FRAMEWORK"
+                            title={<>We coordinate the whole<br />journey,</>}
+                            highlight="not just the sale."
+                            description="BEDEBO creates value by protecting quality, cutting post-harvest loss and linking each lot to the right customer. Eight steps carry produce from the farm to the buyer's door."
+                            alignment="left"
+                            headingId="value-framework-heading"
+                        />
                     </div>
 
-                    <ol className="grid shrink-0 grid-cols-2 gap-3 md:grid-cols-4">
-                        {valueFrameworkSteps.map((step, index) => {
-                            const isActive = inSequence && activeStep.cardIndexes.includes(index);
-                            const isDimmed = inSequence && !revealedCardIndexes.has(index);
+                    <div className="flex min-h-0 flex-1 items-center justify-center">
+                        {inSequence && (
+                            <ul className="grid w-full max-w-sm gap-3">
+                                {activeStep.cardIndexes.map((cardIndex) => {
+                                    const step = valueFrameworkSteps[cardIndex];
+                                    return (
+                                        <li key={step.title} className="rounded-xl border border-[#1E2841]/10 bg-slate-50 p-4 shadow-lg dark:border-white/10 dark:bg-slate-900/90">
+                                            <h3 className="mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
+                                            <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        )}
+                    </div>
 
-                            return (
-                                <li
-                                    key={step.number}
-                                    className={`rounded-xl border bg-slate-50 p-3 shadow-sm transition-all duration-500 dark:bg-white/5 ${isActive ? "border-[#3DB268] ring-2 ring-[#3DB268]/40" : "border-[#1E2841]/10 dark:border-white/10"} ${isDimmed ? "opacity-40" : "opacity-100"}`}
-                                >
-                                    <span className="inline-block rounded-full bg-[#267A47] px-2.5 py-0.5 font-mono text-[11px] tracking-widest text-white">{step.number}</span>
-                                    <h3 className="mt-2 mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
-                                    <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
-                                </li>
-                            );
-                        })}
+                    <ol className={`grid shrink-0 grid-cols-2 gap-3 transition-opacity duration-500 md:grid-cols-4 ${inSequence ? "pointer-events-none opacity-0" : "opacity-100"}`}>
+                        {valueFrameworkSteps.map((step) => (
+                            <li key={step.title} className="rounded-xl border border-[#1E2841]/10 bg-slate-50 p-3 shadow-sm dark:border-white/10 dark:bg-white/5">
+                                <h3 className="mb-1 text-base font-bold text-[#1E2841] dark:text-slate-50">{step.title}</h3>
+                                <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-300">{step.description}</p>
+                            </li>
+                        ))}
                     </ol>
                 </div>
             </div>
