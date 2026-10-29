@@ -416,13 +416,18 @@ export function AgriculturalServicesSection() {
     const progress = useSectionProgress(sectionRef);
     const framed = progress >= 0;
     const p = Math.min(1, Math.max(0, progress));
-    const fade = Math.min(1, Math.max(0, (p - 0.6) / 0.4));
 
     return (
         <section ref={sectionRef} id="agricultural-services" aria-labelledby="agricultural-services-title" className="relative bg-[#1A3327] text-white">
             <div className={`sticky top-0 flex flex-col justify-start overflow-hidden pt-16 md:pt-20 ${framed ? "h-screen" : ""}`}>
-                <div className={`absolute inset-0 flex items-center justify-center px-4 pt-16 transition-opacity duration-500 md:pt-20 ${framed ? "bg-[#132A1F] opacity-100" : "opacity-0"}`}>
-                    <div className="relative w-full" style={{ aspectRatio: "800 / 378", width: "min(100%, calc((100vh - 8rem) * 800 / 378))" }}>
+                <div
+                    className={`absolute inset-0 flex items-center justify-center pt-16 transition-opacity duration-500 md:pt-20 ${framed ? "bg-[#132A1F] opacity-100" : "opacity-0"}`}
+                    style={{
+                        "--stage": "min(calc(100vw - 2rem), calc((100vh - 8rem) * 800 / 378))",
+                        transform: `translateX(calc(${(1 - p) * 100}% + ${p} * (-50% + var(--stage) * 0.484)))`,
+                    }}
+                >
+                    <div className="relative" style={{ aspectRatio: "800 / 378", width: "var(--stage)" }}>
                         {agriculturalFrames.map(({ title, src, alt, box, label }) => (
                             <div key={title}>
                                 <div className="absolute overflow-hidden bg-[#132A1F]" style={box}>
@@ -432,7 +437,6 @@ export function AgriculturalServicesSection() {
                                         fill
                                         sizes="(min-width: 1024px) 40vw, 80vw"
                                         className="object-contain"
-                                        style={{ transform: `translateX(${(1 - p) * 100}%)`, opacity: fade }}
                                     />
                                 </div>
                                 <p className={`absolute whitespace-nowrap text-sm font-semibold text-[#3DB268] md:text-base ${label.placement === "above" ? "-translate-y-full" : ""}`} style={{ left: label.left, right: label.right, top: label.top }}>
