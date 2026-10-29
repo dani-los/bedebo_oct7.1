@@ -33,9 +33,9 @@ const sequence = [
 const cardClassName = "rounded-xl border border-[#1E2841]/10 bg-slate-50 p-4 shadow-sm dark:border-white/10 dark:bg-white/5";
 const overlayCardClassName = `${cardClassName} dark:bg-slate-900`;
 
-// The first viewport of scrolling shows the complete section before the sequence starts; each step then takes a fifth of a viewport.
+// The first viewport of scrolling shows the complete section before the sequence starts; each step then takes half a viewport.
 const LEAD_VH = 100;
-const STEP_VH = 20;
+const STEP_VH = 50;
 const SEQUENCE_START = LEAD_VH / (sequence.length * STEP_VH);
 
 function randomPlacement() {
