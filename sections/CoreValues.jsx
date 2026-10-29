@@ -395,15 +395,15 @@ const agriculturalFrames = [
     },
     {
         title: agriculturalServices[2].title,
-        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F9dce9c45a0684baabba0dc6a8bf928d2?format=webp&width=800&height=1200",
-        alt: "Threshed grain packed into sacks beside a green machine",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F0fa9b7c1c8d7409d91d7a2055c95c82d?format=webp&width=800&height=1200",
+        alt: "Threshing machine towed by a donkey on a farm",
         box: { left: "66%", top: "17.7%", width: "33.4%", height: "34.9%" },
         label: { left: "65.9%", top: "14.3%", placement: "above" },
     },
     {
         title: agriculturalServices[3].title,
-        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F0fa9b7c1c8d7409d91d7a2055c95c82d?format=webp&width=800&height=1200",
-        alt: "Threshing machine towed by a donkey on a farm",
+        src: "https://cdn.builder.io/api/v1/image/assets%2F46dd14c24f0848789ec888965e0928ea%2F9dce9c45a0684baabba0dc6a8bf928d2?format=webp&width=800&height=1200",
+        alt: "Threshed grain packed into sacks beside a green machine",
         box: { left: "48.25%", top: "60.8%", width: "35%", height: "36.5%" },
         label: { right: "0%", top: "96.6%", placement: "below" },
     },
@@ -422,7 +422,7 @@ export function AgriculturalServicesSection() {
         <section ref={sectionRef} id="agricultural-services" aria-labelledby="agricultural-services-title" className="relative bg-[#1A3327] text-white">
             <div className={`sticky top-0 flex flex-col justify-start overflow-hidden pt-16 md:pt-20 ${framed ? "h-screen" : ""}`}>
                 <div className={`absolute inset-0 flex items-center justify-center px-4 pt-16 transition-opacity duration-500 md:pt-20 ${framed ? "bg-[#132A1F] opacity-100" : "opacity-0"}`}>
-                    <div className="relative w-full max-w-5xl" style={{ aspectRatio: "800 / 378", width: "min(100%, 64rem, calc((100vh - 10rem) * 800 / 378))" }}>
+                    <div className="relative w-full max-w-6xl" style={{ aspectRatio: "800 / 378", width: "min(100%, 80rem, calc((100vh - 8rem) * 800 / 378))" }}>
                         {agriculturalFrames.map(({ title, src, alt, box, label }) => (
                             <div key={title}>
                                 <div className="absolute overflow-hidden rounded-sm border-2 border-[#3DB268]/70 bg-[#132A1F]" style={box}>
@@ -435,7 +435,7 @@ export function AgriculturalServicesSection() {
                                         style={{ transform: `translateX(${(1 - p) * 100}%)`, opacity: fade }}
                                     />
                                 </div>
-                                <p className={`absolute whitespace-nowrap text-sm font-semibold text-[#3DB268] md:text-base ${label.placement === "above" ? "-translate-y-full border-b-2 border-[#3DB268] pb-1" : "border-t-2 border-[#3DB268] pt-1"}`} style={{ left: label.left, right: label.right, top: label.top }}>
+                                <p className={`absolute whitespace-nowrap text-sm font-semibold text-[#3DB268] md:text-base ${label.placement === "above" ? "-translate-y-full" : ""}`} style={{ left: label.left, right: label.right, top: label.top }}>
                                     {title}
                                 </p>
                             </div>
